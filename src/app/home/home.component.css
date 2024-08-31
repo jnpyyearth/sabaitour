@@ -1,0 +1,29 @@
+.col{
+    width: 330px;
+    height: 281px;
+}
+
+.row {
+    align-items: center;
+}
+
+.btn {
+    width: 278px;
+    height: 44px;
+    background-color: #21CCD0;
+}
+
+.card-img-top2{
+    width: 305px;
+    height: 217px;
+}
+
+.card-img-top3{
+    width: 305px;
+    height: 217px;
+}
+
+.card-img-top4{
+    width: 305px;
+    height: 217px;
+}
