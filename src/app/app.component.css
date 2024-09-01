@@ -1,9 +1,37 @@
-.row {
-    
-    height: 124 px;
-    background-color: #26C19B;
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px));
+    grid-gap: 10px;
 }
+
+img{
+    object-fit: contain;
+    width: 90px;
+    height: 90px;
+    margin-top: 1rem;
+}
+
 
 .container-fluid{
     align-content: center;
+}
+
+.collapse{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container-fluid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    height: 80px;
+    
 }

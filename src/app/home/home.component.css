@@ -13,6 +13,10 @@
     background-color: #21CCD0;
 }
 
+img{
+    filter: brightness(0.9);
+}
+
 .card-img-top2{
     width: 305px;
     height: 217px;
@@ -26,4 +30,39 @@
 .card-img-top4{
     width: 305px;
     height: 217px;
+}
+
+.carousel-inner{
+    width: 1340px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+
+
+.navbar-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:30px;
+    background-color: #26C19B;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    
+}
+
+.hot-season-show{
+    margin: 0.2rem;
+}
+
+.card{
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+
+#firstrow{
+    margin-top: 1rem ;
+    margin-bottom: 8rem;
 }

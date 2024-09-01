@@ -5,6 +5,7 @@ import { NewsComponent } from './news/news.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { NationaltourComponent } from './nationaltour/nationaltour.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'log-out', component: LogOutComponent},
     { path: 'log-in', component: LogInComponent},
     { path: 'about-us', component: AboutUsComponent},
+    { path: 'nationaltour', component: NationaltourComponent}
 
 ];
 

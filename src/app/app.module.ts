@@ -9,6 +9,7 @@ import { NewsComponent } from './news/news.component';
 import { AccountComponent } from './account/account.component';
 import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { NationaltourComponent } from './nationaltour/nationaltour.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LogInComponent } from './log-in/log-in.component';
     NewsComponent,
     AccountComponent,
     LogOutComponent,
-    LogInComponent
+    LogInComponent,
+    NationaltourComponent
   ],
   imports: [
     BrowserModule,
