@@ -1,9 +1,15 @@
-.row {
-    
-    height: 124 px;
-    background-color: #26C19B;
-}
 
+img{
+    object-fit: contain;
+    width: 100px;
+    height: 100px;
+}
 .container-fluid{
     align-content: center;
+}
+.carousel-inner{
+    width: 1340px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 15px;
 }
