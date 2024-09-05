@@ -1,0 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Kanit:wght@500&display=swap');
+
+.star-review {
+    display: flex;
+    align-items: center; 
+    background: linear-gradient(to right, #CC3D0B, #E3670C, #FBB448);
+    width: 220px;
+    height: 40px;
+    border-radius: 10px;
+    border-top: 5rem;
+    
+}
+
+.star-review i {
+    margin-right: 5px;
+    margin-bottom: 0.2rem;
+    margin-left: 0.5rem;
+    color: #FFEEE7;
+}
+
+.day-info {
+    margin-left: 5px; 
+    font-size: 18px;
+    margin-bottom: -1rem;
+}
+
+
+.review {
+    margin-left: 1rem;
+    margin-top: 0.7rem;
+    font-size: 20px;
+    justify-content: space-between;
+}
+
+
+h1{
+    font-family: DM Serif;
+    font-style: initial;
+    font-size: 40px;
+    
+}
+
+.day-info{
+    justify-content: space-between;
+    display: flex;
+}
+
+.container{
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+    background-color: aliceblue;
+    width: 6000px;
+    height: 2000px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), /*เงาหลัก*/
+                0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+img{
+    margin-top: 2rem;
+    margin-left: 2rem;
+    width: 500px;
+    height: 400px;
+    border-radius: 20px;
+   
+}
+
+footer{
+    
+    justify-content: space-between;
+    align-items: center;
+    grid-row: span;
+    box-sizing: border-box;
+    margin-left: -111.8px;
+    margin-bottom: -20px;
+    margin-right: -111.8px;
+    /*background-color: rgb(110, 194, 180) ;*/
+    background: linear-gradient(to right,#4be09b, #b9ccc0,#6eb387, #2ea16b, #7acc99, #b9ccc0,#4be09b);
+    color: rgb(0, 7, 3);
+    font-size: 18px;
+    font-family: "Kanit" sans-serif;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)
+}
+
+footer ul{
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.team-container {
+    display: flex; /* ใช้ Flexbox จัดแถวคอลัมน์ */
+    gap: 20px; /* เพิ่มช่องว่างระหว่างคอลัมน์ */
+}
+
+.nameteam ul {
+    list-style: none; /* เอาเครื่องหมายจุดออก */
+    padding: 0;
+}
+
+.logo-footer{
+    height: 230px;
+    width: 250px;
+    margin: -2rem 0rem 0rem 10px ;
+}
