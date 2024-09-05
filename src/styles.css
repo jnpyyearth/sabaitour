@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
-@import url('https://fonts.cdnfonts.com/css/baloo-chettan');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Kanit:wght@500&display=swap');
 
-.baloo-chettan-main {
-    font-family: "balloo-chettan";
+.kanit {
+    font-family: "kanit" sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-variation-settings: "wdth" 100;
+  }
+
+  body{
+    background-color: rgb(175, 222, 222);
   }
   

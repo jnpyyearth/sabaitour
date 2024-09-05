@@ -1,17 +1,24 @@
 .col{
     width: 330px;
     height: 281px;
+    line-height: 2; /*ปรับความสูงอักษร*/
 }
 
 .row {
     align-items: center;
 }
 
-.btn {
+.btn-primary {
     width: 278px;
     height: 44px;
     background-color: #21CCD0;
+    transition-duration: 0.2s;
+    border: #21CCD0;
+
 }
+.btn-primary:hover {
+    background-color: #00b318; 
+  }
 
 .card-img-top2{
     width: 305px;
@@ -28,4 +35,16 @@
     height: 217px;
 }
 
+.navbar-nav{
+    background-origin: padding-box;
+    background-color: #21CCD0;
+    height: 35px;
+    border-radius: 12px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
+.card{
+    width: 306px;
+    height: 370px;
+}
