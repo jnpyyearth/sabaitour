@@ -12,29 +12,27 @@
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-
-<ul class="navbar-nav">
+<ul class="navbar-nav ">
   <div class="container text-center">
-    <div class="row align-items-center">
-      <div class="col">Hot season!</div>
-      <div class="col" routerLink="/nationaltour">ทั้วร์ต่างประเทศ</div>
-      <div class="col">ทัวร์ในประเทศ</div>
-      <div class="col">แพ็กเกจทัวร์</div>
-    </div>
+      <div class="row align-items-center">
+          <div class="col">
+              Hot season!
+          </div>
+          <div class="col">
+              ทัวร์ต่างประเทศ
+          </div>
+          <div class="col">
+              ทัวร์ในประเทศ
+          </div>
+          <div class="col">
+              แพ็กเกจทัวร์
+          </div>
+      </div>
   </div>
 </ul>
-
-
-
-
 <div class = " hot-season-show">
 
   <div class="container">
@@ -103,7 +101,9 @@
               <p class="card-text">เที่ยว 6 วัน 6 คืน 9,800฿/คน </p>
             </div>
             <div class="card-footer">
-              <small class="text-body-secondary"><button type="button" class="btn btn-primary">ดูรายละเอียดพร้อมจองเลย!</button></small>
+              <small class="text-body-secondary">
+                <button type="button" class="btn btn-primary"  [routerLink]="'/japan-tour'">ดูรายละเอียดพร้อมจองเลย!</button>
+              </small>
             </div>
           </div>
         </div>
@@ -149,4 +149,6 @@
       
      </div>
 </div>
+
+
      

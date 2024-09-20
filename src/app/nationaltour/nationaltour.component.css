@@ -1,0 +1,66 @@
+.col{
+    width: 330px;
+    height: 281px;
+    line-height: 2;
+}
+
+.row {
+    align-items: center;
+}
+
+.btn {
+    width: 278px;
+    height: 44px;
+    background-color: #21CCD0;
+}
+
+img{
+    filter: brightness(0.9);
+}
+
+.card{
+    width: 306px;
+    height: 370px;
+    overflow: hidden;
+    filter: drop-shadow(1px 1px 1px);
+    border-radius: 10px;
+    
+    
+}
+
+.card-footer{
+    border-radius: 5px;
+}
+
+.card-img-top{
+    width: 400px;
+    height: 217px;
+    overflow: hidden;
+}
+
+.carousel-inner{
+    width: 1340px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+
+
+.navbar-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:30px;
+    background-color: #26C19B;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    
+}
+
+
+
+#firstrow{
+    margin-top: 1rem ;
+    margin-bottom: 8rem;
+}

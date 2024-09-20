@@ -10,6 +10,7 @@ import { AccountComponent } from './account/account.component';
 import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NationaltourComponent } from './nationaltour/nationaltour.component';
+import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NationaltourComponent } from './nationaltour/nationaltour.component';
     AccountComponent,
     LogOutComponent,
     LogInComponent,
-    NationaltourComponent
+    NationaltourComponent,
+    JapanTourComponent
   ],
   imports: [
     BrowserModule,
