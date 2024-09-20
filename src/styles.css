@@ -1,11 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Kanit:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
 
-.kanit {
-    font-family: "kanit" sans-serif;
+.Noto-Sans-thai {
+    font-family: "Noto Sans Thai" sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -13,6 +12,6 @@
   }
 
   body{
-    background-color: rgb(175, 222, 222);
+    background-color: rgb(245, 240, 199);
   }
   
