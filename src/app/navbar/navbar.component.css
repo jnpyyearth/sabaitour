@@ -1,0 +1,33 @@
+
+img{
+    object-fit: contain;
+    width: 100px;
+    height: 100px;
+}
+.container-fluid{
+    align-content: center;
+}
+.carousel-inner{
+    width: 1340px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;           /* Aligns the navbar to the top */
+    width: 100%;     /* Ensures the navbar spans the full width of the screen */
+    height: 90px;
+    z-index: 1000;
+    backdrop-filter: blur(30px);
+    background: transparent;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0px 0px 30px  rgba(227, 228, 237, 0.37);
+  }
+
+  .a{
+    font-weight: 700; /* Light */
+  }
+

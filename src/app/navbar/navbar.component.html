@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center"> <!-- ใช้ justify-content-between -->
+        <div class="d-flex align-items-center"> <!-- ส่วนนี้เป็นส่วนของโลโก้และชื่อเว็บ -->
+            <img src="/assets/images/Logo.png" alt="Logo">
+            <a class="navbar-brand ms-2" href="#">SABAI Tour</a> <!-- เพิ่ม ms-2 เพื่อเว้นช่องว่างระหว่างโลโก้กับข้อความ -->
+        </div>
+        
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav"> <!-- ส่วนนี้จะอยู่ตรงกลาง -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/"><i class="bi bi-house"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about-us">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact-us"><i class="bi bi-person-lines-fill"></i> ติดต่อเรา</a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="navbar-nav"> <!-- ส่วนนี้จะอยู่ขวาสุด -->
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/log-in"><i class="bi bi-door-open"></i> Log-in</a>
+            </li>
+        </ul>
+    </div>
+</nav>

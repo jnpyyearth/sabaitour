@@ -1,66 +1,117 @@
 .col{
     width: 330px;
     height: 281px;
-    line-height: 2;
+    line-height: 2; /*ปรับความสูงอักษร*/
 }
 
 .row {
     align-items: center;
 }
 
-.btn {
+.carousel {
+    width: 95%;
+    margin: 1rem auto;
+    padding-top: 20px;
+    
+}
+
+
+
+.carousel-inner{
+    border-radius: 50px;
+    height: 400px;
+    background-repeat: no-repeat; /* Prevents repeating */
+    background-size: cover; /* Adjusts the size to cover the whole screen */
+}
+
+/* .btn-primary {
     width: 278px;
     height: 44px;
     background-color: #21CCD0;
+    transition-duration: 0.2s;
+    border: #21CCD0;
+
+} */
+/* .btn-primary:hover {
+    background-color: #00b318; 
+} */
+
+.card-footer{
+    align-items: center;
 }
 
+.btn{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #00A196;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.1s ease;
+    
+}
+
+.btn:hover{
+    background-color: #fff;
+    color: #00A196;
+    border: 2px solid #00A196;
+    box-shadow: 5px 5px 0px #00A196;
+}
+
+.btn:active{
+    background-color: #FFA900;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+
+
+  
 img{
     filter: brightness(0.9);
+}
+
+.card-img-top{
+    width: 305px;
+    height: 217px;
+}
+
+
+
+
+.navbar-nav{
+    
+    background-origin: padding-box;
+    background-color: #21CCD0;
+    height: 35px;
+    border-radius: 12px;
+    margin: 1rem auto ;
+    width: 95%; /* Ensures the navbar takes up the full width */
+
+    
+    
+}
+
+#rowcard{
+    margin-bottom: 1.5rem;
 }
 
 .card{
     width: 306px;
     height: 370px;
+    border-radius: 25px;
     overflow: hidden;
-    filter: drop-shadow(1px 1px 1px);
-    border-radius: 10px;
-    
     
 }
 
-.card-footer{
-    border-radius: 5px;
+.body{
+    background-color: #ffffff47;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px  rgba(0, 0, 0, 0.329);
 }
 
-.card-img-top{
-    width: 400px;
-    height: 217px;
-    overflow: hidden;
-}
-
-.carousel-inner{
-    width: 1340px;
-    height: 400px;
-    margin: 0 auto;
-    border-radius: 15px;
-}
-
-
-
-.navbar-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height:30px;
-    background-color: #26C19B;
-    border-radius: 5px;
-    margin-top: 0.5rem;
-    
-}
-
-
-
-#firstrow{
-    margin-top: 1rem ;
-    margin-bottom: 8rem;
-}

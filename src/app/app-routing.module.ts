@@ -7,6 +7,7 @@ import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,7 @@ const routes: Routes = [
     { path: 'about-us', component: AboutUsComponent},
     { path: 'nationaltour', component: NationaltourComponent},
     { path: 'japan-tour', component: JapanTourComponent},
-
+    { path: 'navbar', component: NavbarComponent},
 ];
 
 @NgModule({

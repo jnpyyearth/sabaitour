@@ -11,6 +11,7 @@ import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.c
     LogOutComponent,
     LogInComponent,
     NationaltourComponent,
-    JapanTourComponent
+    JapanTourComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
