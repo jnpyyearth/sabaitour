@@ -15,9 +15,6 @@
     
 }
 
-.container{
-    grid-template-columns: repeat(auto-fill);
-}
 
 
 .carousel-inner{
@@ -63,12 +60,13 @@
 
 
   
-
+img{
+    filter: brightness(0.9);
+}
 
 .card-img-top{
     width: 305px;
     height: 217px;
-    filter: brightness(1);
 }
 
 
@@ -104,6 +102,5 @@
     border-radius: 20px;
     box-shadow: 0px 0px 30px  rgba(227, 228, 237, 0.37);
     border: 2px solid rgba(255, 255, 255, 0.18);
-    
 }
 
