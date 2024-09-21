@@ -1,0 +1,13 @@
+
+
+.sidebar {
+    height: 100vh;
+    padding: 20px;
+    margin-left: 5rem;
+
+  }
+  
+  .sidebar .nav-link {
+    font-size: 1.2rem;
+    color: white;
+  }
