@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
+
+.navbar {
+    background-color: #f8f9fa;
+    top: 0 auto;
+    box-shadow: 0 10px 10px  rgba(0, 0, 0, 0.329); 
+    height: 100px;
+    width: 1640px;
+    margin-left: -14rem;
+    margin-top: -1.4rem;
+}
+
+  
+  .navbar-brand {
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    color: #ff6600;
+    font-weight: bold;
+    font-family: Lily Script One;
+  }
+  
+  .nav-link {
+    font-size: 1.2rem;
+  }
+  
+
+  .navbar .form-control {
+    border: 1px solid #C9E2DC ;
+    background-color: #C9E2DC;
+    border-radius: 30px; 
+    transition: all 0.3s; 
+    height: 35px;
+    /* margin-right: 5vw; */
+    margin-right:50rem ;
+  }
+
+  
+form{
+    width: 100% ;
+}
+
+
+.navbar .form-control:focus {
+    border-color: #C9E2DC; 
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+    width: 290px;
+    transition: width 0.3s ease, box-shadow 0.3s ease; /* เอฟเฟกต์การเปลี่ยนแปลงนุ่มนวล */
+  }
+
+
+  img{
+    margin-left: 310px;
+  }

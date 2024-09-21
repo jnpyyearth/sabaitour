@@ -11,6 +11,18 @@ import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeManagerComponent } from './Manager/home-manager/home-manager.component';
+import { AddTourComponent } from './Manager/add-tour/add-tour.component';
+import { ManagerInfoComponent } from './Manager/manager-info/manager-info.component';
+import { SaleReportComponent } from './Manager/sale-report/sale-report.component';
+import { NavbarManagerComponent } from './Manager/navbar-manager/navbar-manager.component';
+import { SidebarManagerComponent } from './Manager/sidebar-manager/sidebar-manager.component';
+import { MyTourProgramComponent } from './Guide/my-tour-program/my-tour-program.component';
+import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.component';
+import { SidebarGuideComponent } from './Guide/sidebar-guide/sidebar-guide.component';
+import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
+
+
 
 
 @NgModule({
@@ -23,7 +35,18 @@ import { NavbarComponent } from './navbar/navbar.component';
     LogOutComponent,
     LogInComponent,
     JapanTourComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeManagerComponent,
+    AddTourComponent,
+    ManagerInfoComponent,
+    SaleReportComponent,
+    NavbarManagerComponent,
+    SidebarManagerComponent,
+    MyTourProgramComponent,
+    NavbarGuideComponent,
+    SidebarGuideComponent,
+    HomeGuideComponent,
+
   ],
   imports: [
     BrowserModule,
