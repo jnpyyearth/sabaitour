@@ -10,6 +10,7 @@ import { NewsComponent } from './news/news.component';
 import { AccountComponent } from './account/account.component';
 import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeManagerComponent } from './Manager/home-manager/home-manager.component';
@@ -38,6 +39,7 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
     AccountComponent,
     LogOutComponent,
     LogInComponent,
+    NationaltourComponent,
     JapanTourComponent,
     NavbarComponent,
     HomeManagerComponent,

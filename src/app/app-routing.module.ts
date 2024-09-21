@@ -5,6 +5,7 @@ import { NewsComponent } from './news/news.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { LogOutComponent } from './log-out/log-out.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddTourComponent } from './Manager/add-tour/add-tour.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
     { path: 'log-out', component: LogOutComponent},
     { path: 'log-in', component: LogInComponent},
     { path: 'about-us', component: AboutUsComponent},
+    { path: 'nationaltour', component: NationaltourComponent},
     { path: 'japan-tour', component: JapanTourComponent},
     { path: 'navbar', component: NavbarComponent},
     { path: 'add-tour', component: AddTourComponent},
