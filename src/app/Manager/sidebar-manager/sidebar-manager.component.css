@@ -2,12 +2,125 @@
 
 .sidebar {
     height: 100vh;
-    padding: 20px;
+    padding: 10px;
     margin-left: 5rem;
-
+    margin-top: 5rem;
+    border-radius: 20px;
   }
   
   .sidebar .nav-link {
     font-size: 1.2rem;
     color: white;
   }
+
+
+  ul{
+    margin-top: 10rem;
+  }
+
+  .nav-link{
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-item .nav-link{
+    font-size: 1.5rem;
+    position: relative;
+    padding-left: 15px; /* เพิ่มระยะห่างเพื่อแสดงแถบไฮไลต์ */
+    transition: all 0.3s ease;
+  }
+  
+
+  .nav-item .nav-link:hover::before, 
+.nav-item .nav-link:focus::before, 
+.nav-item .nav-link.active::before {
+    content: "";
+    position: absolute;
+    top: 0; /*ชิดบน*/
+    left: 0; /*ชิดซ้าย*/
+    height: 100%;
+    width: 5px;
+    background-color: #FFD700; /* สีของแถบไฮไลต์ */
+    border-radius: 0 5px 5px 0;
+}
+
+/* แสดงแถบเมื่อมีการโฮเวอร์หรืออยู่ในสถานะ active/โฟกัส */
+
+.nav-item .nav-link:hover, 
+.nav-item .nav-link:focus, 
+.nav-item .nav-link.active
+  {
+    background-color: rgba(255, 255, 255, 0.2); /* เปลี่ยนสีพื้นหลังเมื่อโฮเวอร์ */
+}
+
+.nav-item:hover .bg-sideorange {
+  background-color: #F7A601; /* หรือเปลี่ยนสีตามต้องการ */
+}
+
+
+.bg-sideorange{
+  margin-left: -5rem;
+}
+
+
+.bg-sideorange {
+  transition: background-color 0.3s;
+}
+
+.bg-sideorange .nav-item-1 .nav-link{
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  padding-left: 15px;
+  padding-top: 6px; 
+  transition: all 0.2s ease;
+  margin-left: 5rem;
+}
+
+.bg-sideorange .nav-item-1 .nav-link:hover, 
+.bg-sideorange .nav-item-1 .nav-link:focus, 
+.bg-sideorange .nav-item-1 .nav-link.active
+  {
+    background-color: rgba(180, 17, 17, 0.854); /* เปลี่ยนสีพื้นหลังเมื่อโฮเวอร์ */
+}
+
+#sale{
+  margin-top: -0.6rem;
+}
+
+#add-guide{
+  margin-top: -0.6rem;
+}
+
+#guide {
+  margin-top: -0.6rem;
+}
+
+#tour {
+  margin-top: -0.6rem;
+}
+
+#all {
+  margin-top: 1rem;
+}
+
+
+
+
+.bg-sideorange .nav-item-1 .nav-link:hover::before, 
+.bg-sideorange .nav-item-1 .nav-link:focus::before, 
+.bg-sideorange .nav-item-1 .nav-link.active::before {
+    content: "";
+    position: absolute;
+    top: 0; /*ชิดบน*/
+    right: 0; /*ชิดซ้าย*/
+    height: 100%;
+    width: 5px;
+    background-color: #1B5327; /* สีของแถบไฮไลต์ */
+    border-radius: 0 5px 5px 0;
+}
+
+.bg-sideorange .nav-item-1 .nav-link{
+  position: relative;
+  transition: all 0.3s ease;
+}

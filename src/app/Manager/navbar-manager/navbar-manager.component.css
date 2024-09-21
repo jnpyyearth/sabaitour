@@ -5,8 +5,8 @@
     top: 0 auto;
     box-shadow: 0 10px 10px  rgba(0, 0, 0, 0.329); 
     height: 100px;
-    width: 1640px;
-    margin-left: -14rem;
+    width: 1560px;
+    margin-left: -9rem;
     margin-top: -1.4rem;
 }
 
@@ -42,7 +42,7 @@ form{
 .navbar .form-control:focus {
     border-color: #C9E2DC; 
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
-    width: 290px;
+    /* width: 290px; */
 
   }
 
@@ -50,3 +50,5 @@ form{
   img{
     margin-left: 310px;
   }
+
+  

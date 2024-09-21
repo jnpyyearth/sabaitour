@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,9 @@ import { MyTourProgramComponent } from './Guide/my-tour-program/my-tour-program.
 import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.component';
 import { SidebarGuideComponent } from './Guide/sidebar-guide/sidebar-guide.component';
 import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
+import { AllTourComponent } from './Manager/all-tour/all-tour.component';
+import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
+import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 
 
 
@@ -46,7 +50,9 @@ import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
     NavbarGuideComponent,
     SidebarGuideComponent,
     HomeGuideComponent,
-
+    AllTourComponent,
+    GuideIntourComponent,
+    GuideInfoComponent,
   ],
   imports: [
     BrowserModule,
