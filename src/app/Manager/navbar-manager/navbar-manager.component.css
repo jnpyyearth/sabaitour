@@ -3,17 +3,18 @@
 .navbar {
     background-color: #f8f9fa;
     top: 0 auto;
+    left: 0;
     box-shadow: 0 10px 10px  rgba(0, 0, 0, 0.329); 
     height: 100px;
-    width: 1560px;
-    margin-left: -9rem;
-    margin-top: -1.4rem;
+    width: 1550px;
+    margin-left: -32rem;
+    margin-top: -2.8rem;
 }
 
   
   .navbar-brand {
     font-family: 'Arial', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     color: #ff6600;
     font-weight: bold;
     font-family: Lily Script One;
@@ -30,7 +31,8 @@
     border-radius: 30px; 
     transition: all 0.3s; 
     height: 35px;
-    margin-right:50rem ;
+    width: 250px;
+    cursor: pointer;
   }
 
   
@@ -38,17 +40,34 @@ form{
     width: 100% ;
 }
 
+.navbar .form-control{
+  background-color: #8fb4ab;
+  
+}
 
 .navbar .form-control:focus {
-    border-color: #C9E2DC; 
+    border-color: #12ad89; 
+    background-color: #12ad89;
+    color: #f8f9fa;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
-    /* width: 290px; */
-
+    width: 350px;
   }
 
 
   img{
-    margin-left: 310px;
+    margin-left: 350px;
+  }
+ 
+  .show-account{
+    background: linear-gradient(0deg, rgba(255,201,38,1) 0%, rgba(240,120,0,1) 100%);
+   color: #f8f9fa;
+   font-size: 25px;
+   width: 800px;
+   height: 70px;
+   margin-right: 1rem;
+   border-radius: 10px;
+   justify-content: center;
+   text-align: center;
+   
   }
 
-  

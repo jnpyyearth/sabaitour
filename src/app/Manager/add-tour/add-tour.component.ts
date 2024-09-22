@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './add-tour.component.css'
 })
 export class AddTourComponent {
-
+ 
 }
