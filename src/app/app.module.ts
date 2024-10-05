@@ -27,7 +27,8 @@ import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
-import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ProgramTourCardComponent } from './program-tour-card/program-tour-card.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     HomeGuideComponent,
     AllTourComponent,
     GuideIntourComponent,
-    GuideInfoComponent
+    GuideInfoComponent,
+    ProgramTourCardComponent
   ],
   imports: [
     BrowserModule,

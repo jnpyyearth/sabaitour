@@ -1,5 +1,4 @@
 const config = require("../config");
-const express = require("express");
 const sql = require("mssql");
 const bcrypt = require('bcrypt');
 

@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let Tour of Tours | async">
+        <div class="card">
+          <img [src]="'assets/images/' + Tour.Tour_Picture" class="card-img-top" alt="Tour Image">
+          <div class="card-body">
+            <h5 class="card-title">ทัวร์:{{ Tour.Tour_name }}</h5>
+            <p class="card-text">ประเทศ: {{ Tour.Tour_Country }} </p>
+           
+            <!-- Use 'product' instead of 'Products' -->
+            <!-- <a class="btn btn-primary d-flex justify-content-center" (click)="addToCart(product)">ใส่รถเข็น {{ product.Product_Price }}.-</a>
+                 -->
+            
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>

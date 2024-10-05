@@ -7,7 +7,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const loginroute = require('./routes/login');
 const signUproute =require('./routes/signUp')
-
+const tourroute =require('./routes/tour')
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +17,7 @@ const port = 3000;
 
 app.use('/', loginroute);
 app.use('/',signUproute);
+app.use('/',tourroute);
 async function connectToDatabase() {
     try{
         await sql.connect(config);
@@ -42,16 +43,6 @@ app.post('/items',(req,res)=>{
     items.push(newItem);
     res.status(201).json(newItem);
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
