@@ -29,7 +29,6 @@ body{
     max-width: 100%;
     min-height: 480px;
     margin: 6rem auto;
-    padding-bottom: 2rem;
 }
 
 .container p{
@@ -62,11 +61,7 @@ body{
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
-    width: 100%; /* Ensure button takes full width of the container */
-    max-width: 100%; /* Prevent overflow */
-    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
 }
-
 
 .container button.hidden{
     background-color: transparent;
@@ -79,7 +74,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 20px 40px;
+    padding: 0 40px;
     height: 100%;
 }
 
@@ -98,12 +93,7 @@ body{
     position: absolute;
     top: 0;
     height: 100%;
-    width: 50%; /* Ensure each form container is half of the container width */
     transition: all 0.6s ease-in-out;
-    padding: 40px 20px; /* Add some padding for space around the inputs */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center the form vertically */
 }
 
 .sign-in{
