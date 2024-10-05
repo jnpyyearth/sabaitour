@@ -26,7 +26,9 @@ import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BackgroundComponent } from './background/background.component';
 
 
 
@@ -50,17 +52,20 @@ import { RegisterComponent } from './register/register.component';
     NavbarManagerComponent,
     SidebarManagerComponent,
     MyTourProgramComponent,
-    NavbarGuideComponent,
+    NavbarGuideComponent,  // NavbarGuideComponent is correctly declared here
     SidebarGuideComponent,
     HomeGuideComponent,
     AllTourComponent,
     GuideIntourComponent,
     GuideInfoComponent,
-    RegisterComponent,
+    BackgroundComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule // HttpClientModule goes in imports
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -22,6 +22,7 @@ import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 import { RegisterComponent } from './register/register.component';
+import { BackgroundComponent } from './background/background.component';
 
 
 
@@ -31,7 +32,7 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'about-us', component: AboutUsComponent},
     { path: 'log-out', component: LogOutComponent},
-    { path: 'log-in', component: LogInComponent},
+    { path: 'login', component: LogInComponent},
     {path: 'register', component: RegisterComponent},
     { path: 'about-us', component: AboutUsComponent},
     { path: 'nationaltour', component: NationaltourComponent},
@@ -50,6 +51,7 @@ const routes: Routes = [
     { path: 'navbar-guide', component: NavbarGuideComponent},
     { path: 'home-guide', component: HomeGuideComponent},
     { path: 'my-tour-program', component: MyTourProgramComponent},
+    {path: 'bg', component:BackgroundComponent},
     
   
 ];

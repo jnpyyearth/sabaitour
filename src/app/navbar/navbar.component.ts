@@ -12,9 +12,9 @@ export class NavbarComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn(); // ตรวจสอบว่าผู้ใช้เข้าสู่ระบบอยู่หรือไม่
-  }
+  // isLoggedIn(): boolean {
+  //   return this.authService.isLoggedIn(); // ตรวจสอบว่าผู้ใช้เข้าสู่ระบบอยู่หรือไม่
+  // }
 
   login() {
     this.router.navigate(['/log-in']); // ไปยังหน้า Login
