@@ -26,10 +26,8 @@ import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-
-
-
-
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,16 +47,19 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
     NavbarManagerComponent,
     SidebarManagerComponent,
     MyTourProgramComponent,
-    NavbarGuideComponent,
+    NavbarGuideComponent,  // NavbarGuideComponent is correctly declared here
     SidebarGuideComponent,
     HomeGuideComponent,
     AllTourComponent,
     GuideIntourComponent,
-    GuideInfoComponent,
+    GuideInfoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule // HttpClientModule goes in imports
   ],
   providers: [],
   bootstrap: [AppComponent]

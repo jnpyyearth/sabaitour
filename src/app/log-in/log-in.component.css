@@ -29,10 +29,6 @@ body{
     max-width: 100%;
     min-height: 480px;
     margin: 6rem auto;
-    
-    
-   
-    
 }
 
 .container p{
@@ -218,7 +214,7 @@ body{
 }
 
 input:focus {
-    outline: none; /* ลบขอบเริ่มต้น */
-    box-shadow: 0 0 5px #ffa800; /* แสงเรือง */
-    border: 2px solid #ffa800; /* ขอบ */
+    outline: none;
+    box-shadow: 0 0 5px #ffa800;
+    border: 2px solid #ffa800;
 }
