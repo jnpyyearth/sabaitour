@@ -12,13 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class LogInComponent implements OnInit {
   
-   constructor(private http: HttpClient, private router: Router, private authService: AuthService, private fb: FormBuilder) {
-    this.signUpForm = this.fb.group({
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    }, { validator: this.passwordMatchValidator });
-
-    }
+   constructor(private http: HttpClient, private router: Router, private authService: AuthService, private fb: FormBuilder) {}
 
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password')?.value;
@@ -81,7 +75,7 @@ export class LogInComponent implements OnInit {
       firstname: ['', [Validators.required, Validators.maxLength(50)]],
       lastname: ['', [Validators.required, Validators.maxLength(50)]],
       phone: ['', [Validators.required, Validators.maxLength(10)]],
-    },)
+    },{ validator: this.passwordMatchValidator });
 
   }
 
