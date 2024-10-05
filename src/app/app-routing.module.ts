@@ -30,7 +30,7 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'about-us', component: AboutUsComponent},
     { path: 'log-out', component: LogOutComponent},
-    { path: 'log-in', component: LogInComponent},
+    { path: 'login', component: LogInComponent},
     { path: 'about-us', component: AboutUsComponent},
     { path: 'nationaltour', component: NationaltourComponent},
     { path: 'japan-tour', component: JapanTourComponent},
