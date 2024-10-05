@@ -18,3 +18,8 @@
     background-position: center; /* Centers the image */
   }
   
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
