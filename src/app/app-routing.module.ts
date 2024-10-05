@@ -21,6 +21,7 @@ import { MyTourProgramComponent } from './Guide/my-tour-program/my-tour-program.
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     { path: 'about-us', component: AboutUsComponent},
     { path: 'log-out', component: LogOutComponent},
     { path: 'log-in', component: LogInComponent},
+    {path: 'register', component: RegisterComponent},
     { path: 'about-us', component: AboutUsComponent},
     { path: 'nationaltour', component: NationaltourComponent},
     { path: 'japan-tour', component: JapanTourComponent},

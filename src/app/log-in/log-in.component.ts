@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../Service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -8,21 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  ngOnInit(): void {
-    const container = document.getElementById('container') as HTMLElement | null;
-    const registerBtn = document.getElementById('register') as HTMLElement | null;
-    const loginBtn = document.getElementById('login') as HTMLElement | null;
-
-    if (registerBtn && container) {
-      registerBtn.addEventListener('click', () => {
-        container?.classList.add("active");
-      });
-    }
-
-    if (loginBtn && container) {
-      loginBtn.addEventListener('click', () => {
-        container?.classList.remove("active");
-      });
-    }
+  goBack(): void {
+    window.history.back(); // ฟังก์ชันนี้จะพาผู้ใช้กลับไปหน้าก่อนหน้านี้
   }
+  
+  username: string = '';
+  password: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  onSubmit() {
+    console.log("hello")
+    // ตรวจสอบ username และ password ที่นี่
+    this.authService.login(); // เรียกใช้ฟังก์ชัน Login
+    this.router.navigate(['/']); // กลับไปหน้า Home
+  }
+
+  
+
+
+  
 }

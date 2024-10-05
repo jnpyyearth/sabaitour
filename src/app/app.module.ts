@@ -26,6 +26,7 @@ import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -55,6 +56,7 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
     AllTourComponent,
     GuideIntourComponent,
     GuideInfoComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
