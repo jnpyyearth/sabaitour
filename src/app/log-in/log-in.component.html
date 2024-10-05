@@ -44,7 +44,6 @@
         <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()"> <!-- ใช้ formGroup -->
             <h1>Create Account</h1>
             
-            <span>or use your email for registration</span>
             <input type="text" formControlName="username" placeholder="Username" required>
             <input type="email" formControlName="email" placeholder="Email" required>
             <input type="text" formControlName="firstname" placeholder="First Name" required>

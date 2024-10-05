@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
 const loginroute = require('./routes/login');
-
+const signUproute =require('./routes/signUp')
 
 app.use(cors());
 app.use(express.json());
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 const port = 3000;
 
 app.use('/', loginroute);
-
+app.use('/',signUproute);
 async function connectToDatabase() {
     try{
         await sql.connect(config);

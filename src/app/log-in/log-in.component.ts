@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../Service/auth.service'; // Import the AuthService
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-log-in',
@@ -9,9 +11,12 @@ import { AuthService } from '../Service/auth.service'; // Import the AuthService
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
+  loginForm!: FormGroup;
+  signUpForm!: FormGroup;
 
-  username: string = '';
-  password: string = '';
+
+  // username: string = '';
+  // password: string = '';
   errorMessage: string = '';
   userRole: string | null = null;
 
@@ -19,7 +24,7 @@ export class LogInComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = "bi bi-eye-slash-fill";
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -45,22 +50,40 @@ export class LogInComponent implements OnInit {
         container?.classList.remove("active");
       });
     }
+    //Validate Form
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+    this.signUpForm = this.fb.group({
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+      firstname: ['', [Validators.required, Validators.maxLength(50)]],
+      lastname: ['', [Validators.required, Validators.maxLength(50)]],
+      phone: ['', [Validators.required, Validators.maxLength(10)]],
+    },)
+
   }
-  
+
   // Function to handle login
   onLogin(): void {
     console.log("hello login")
-    if (!this.username || !this.password) {
-      this.errorMessage = 'Username and password are required';
+    if (this.loginForm.invalid) {
+      console.log('form is in valid. ')
       return;
     }
 
-    const loginData = { username: this.username, password: this.password };
-
+    // create body for backend
+    const loginData = this.loginForm.value;
+    //ยิ่ง api
     this.http.post<{ token: string }>('http://localhost:3000/login', loginData)
       .subscribe({
         next: (response) => {
+          // check have res?
           console.log("hello response")
+          //have token?
           if (response.token) {
             // Save the token to localStorage and decode
             this.authService.login(response.token);
@@ -81,6 +104,7 @@ export class LogInComponent implements OnInit {
           }
         }
       });
+
   }
 
   // Navigate based on the user role
@@ -101,13 +125,46 @@ export class LogInComponent implements OnInit {
     } else {
       this.errorMessage = 'Unknown role. Cannot navigate.';
     }
-}
+  }
 
   // Function to toggle password visibility (optional)
   hideShowPass() {
     this.isText = !this.isText;
     this.isText ? this.eyeIcon = "bi bi-eye-fill" : this.eyeIcon = "bi bi-eye-slash-fill";
     this.isText ? this.type = "text" : this.type = "password";
+  }
+
+  onSignUp() {
+    console.log('signUp clicked')
+    if (this.signUpForm.invalid) {
+      console.log('invlide singUp Form')
+      return;
+    }
+
+    const signUpData = this.signUpForm.value
+
+
+    this.http.post('http://localhost:3000/signUp',signUpData)
+    .subscribe({
+      next:(response)=>{
+        Swal.fire({
+          title: "สมัคร สำเร็จ!",
+          text: "sign up successful",
+          icon: "success"
+        });
+        console.log('Sign up successful.',response);
+        this.signUpForm.reset();
+      },
+      error:(error)=>{
+        Swal.fire({
+          title: "สมัคร ไม่สำเร็จ",
+          text: "sign up failed",
+          icon: "error"
+        });
+        console.error('Sign upfailed',error);
+        console.log(signUpData)
+      }
+    })
   }
 
 }
