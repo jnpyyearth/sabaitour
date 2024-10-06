@@ -11,12 +11,24 @@ import Swal from 'sweetalert2';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
+  
+   constructor(private http: HttpClient, private router: Router, private authService: AuthService, private fb: FormBuilder) {}
+
+  passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
+  }
+
+  
+
   loginForm!: FormGroup;
   signUpForm!: FormGroup;
 
 
   // username: string = '';
   // password: string = '';
+  
   errorMessage: string = '';
   userRole: string | null = null;
 
@@ -24,7 +36,7 @@ export class LogInComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = "bi bi-eye-slash-fill";
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService, private fb: FormBuilder) { }
+  
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -63,7 +75,7 @@ export class LogInComponent implements OnInit {
       firstname: ['', [Validators.required, Validators.maxLength(50)]],
       lastname: ['', [Validators.required, Validators.maxLength(50)]],
       phone: ['', [Validators.required, Validators.maxLength(10)]],
-    },)
+    },{ validator: this.passwordMatchValidator });
 
   }
 

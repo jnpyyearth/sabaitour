@@ -1,3 +1,5 @@
+
+
 .col{
     width: 330px;
     height: 281px;
@@ -66,8 +68,8 @@
 
 
 .card-img-top{
-    width: 305px;
-    height: 217px;
+    width: 305px auto;
+    height: 217px ;
     filter: brightness(1);
 }
 
@@ -92,8 +94,8 @@
 }
 
 .card{
-    width: 306px;
-    height: 370px;
+    width: 306px auto;
+    height: 370px auto;
     border-radius: 25px;
     overflow: hidden;
     

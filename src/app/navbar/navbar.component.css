@@ -17,8 +17,8 @@ img{
 .navbar {
     position: sticky;
     top: 0;           /* Aligns the navbar to the top */
-    width: 100%;     /* Ensures the navbar spans the full width of the screen */
-    height: 90px;
+    width: 100% auto;     /* Ensures the navbar spans the full width of the screen */
+    height: 90px auto;
     z-index: 1000;
     backdrop-filter: blur(30px);
     background: transparent;
@@ -30,4 +30,3 @@ img{
   .a{
     font-weight: 700; /* Light */
   }
-
