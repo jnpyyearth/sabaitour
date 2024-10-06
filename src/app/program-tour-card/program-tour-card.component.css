@@ -1,0 +1,31 @@
+.header{
+    margin: 2rem;
+}
+
+.product1{
+    margin: 0.5rem;
+}
+
+.prodname{
+    margin-left: 2rem;
+}
+
+.prod{
+    display: flex;
+}
+
+.card{
+    margin: 1rem;
+  
+}
+
+.card-img-top{
+    width: 220px;
+    height: 220px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-body{
+    width:100%;
+}

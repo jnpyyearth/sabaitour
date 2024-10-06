@@ -19,9 +19,8 @@ import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.componen
 import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { MyTourProgramComponent } from './Guide/my-tour-program/my-tour-program.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
-import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
+import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-
 
 
 const routes: Routes = [
@@ -42,7 +41,7 @@ const routes: Routes = [
     { path: 'sale-report', component: SaleReportComponent},
     { path: 'sidebar-manager', component: SidebarManagerComponent},
     { path: 'all-tour', component: AllTourComponent},
-    { path: 'guide-intour', component: GuideIntourComponent},
+    { path: 'guide-regis', component: GuideRegistrationComponent},
     { path: 'guide-info', component: GuideInfoComponent},
     { path: 'sidebar-guide', component: SidebarGuideComponent},
     { path: 'navbar-guide', component: NavbarGuideComponent},
