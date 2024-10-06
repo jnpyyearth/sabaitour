@@ -1,8 +1,30 @@
 .container{
     padding-left: 200px;
+
+    
 }
 
 .header{
     padding-top: 2rem;
     text-align: center;
+}
+
+.tourinfo{
+    padding-top: 40px;
+    width: 600px;
+    height: 400px;
+}
+
+.card{
+    width: 800px;
+}
+
+.boxinput{
+    margin: 10px;
+}
+
+input,select{
+    border: 2px solid rgb(162, 161, 255);
+    border-radius: 10px;
+
 }
