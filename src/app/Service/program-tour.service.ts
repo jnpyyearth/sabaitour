@@ -14,4 +14,14 @@ export class ProgramTourService {
   getAllTours(): Observable<Tour[]> {
     return this.http.get<Tour[]>(`${apiUrl}/tour`);
   }
+
+  // ฟังก์ชันสำหรับดึงข้อมูล Guide
+  getAllGuides(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/allGuides`);
+  }
+
+  // ฟังก์ชันสำหรับเพิ่มข้อมูล ProgramTour
+  addProgramTour(programTour: any): Observable<any> {
+    return this.http.post(`${apiUrl}/programtour`, programTour);
+  }
 }
