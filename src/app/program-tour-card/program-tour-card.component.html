@@ -1,22 +1,23 @@
+<!-- show card tour -->
 <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let Tour of Tours | async">
-        <div class="card">
-          <img [src]="'assets/images/' + Tour.Tour_Picture" class="card-img-top" alt="Tour Image">
-          <div class="card-body">
-            <h5 class="card-title">ทัวร์:{{ Tour.Tour_name }}</h5>
-            <p class="card-text">ประเทศ: {{ Tour.Tour_Country }} </p>
-           
-            <button class="btn btn-primary" (click)="openModal(Tour)">แก้ไขข้อมูล</button>
-          </div>
-        </div>  
+  <div class="row">
+    <div class="col-md-4" *ngFor="let Tour of Tours | async ">
+      <div class="card">
+        <img [src]="'assets/images/' + Tour.Tour_Picture" class="card-img-top" alt="Tour Image">
+        <div class="card-body">
+          <h5 class="card-title">ทัวร์:{{ Tour.Tour_name }}</h5>
+          <p class="card-text">ประเทศ: {{ Tour.Tour_Country }} </p>
+
+          <button class="btn btn-primary" (click)="openModal(Tour)">เพิ่มข้อมูล</button>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
 
-  <!-- ทำpopจ้า -->
-<!-- Modal สำหรับกรอกข้อมูล ProgramTour -->
+<!-- ทำpopจ้า -->
+
 <div class="modal" tabindex="-1" role="dialog" *ngIf="isModalOpen">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -34,6 +35,7 @@
           <input class="form-control" [value]="selectedTour?.Tour_Country" readonly>
         </div>
 
+
         <!-- ข้อมูลที่ต้องกรอกใหม่เพื่อนำไปใส่ ProgramTour -->
         <div class="form-group">
           <label>Start Date</label>
@@ -47,20 +49,20 @@
           <label>Price per Day</label>
           <input class="form-control" [(ngModel)]="programTour.Price_per_day" type="number">
         </div>
-      
-        <!-- Dropdown สำหรับเลือก Guide -->
-        <div class="form-group">
-          <!-- <label>Select Guide</label>
-          <select class="form-control" [(ngModel)]="programTour.Guide_ID">
-            <option *ngFor="let guide of Guides" [value]="guide.Guide_ID">{{ guide.Guide_Name }}</option>
-          </select>
-        </div> -->
 
+        <!-- Dropdown สำหรับเลือก Guide -->
+        <div class="form-group"  >
+          <label>Select Guide</label>
+          <select class="form-control" [(ngModel)]="programTour.Guide_ID" *ngIf="Guides">
+            <option *ngFor="let guide of Guides | async" [value]="guide.Guide_ID">{{ guide.Guide_Name }}</option>
+          </select>
+        </div>
+        <!------------------------------------------------------------- -->
         <div class="form-group">
           <label>Total Seats</label>
           <input class="form-control" [(ngModel)]="programTour.total_seats" type="number">
         </div>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">ยกเลิก</button>
