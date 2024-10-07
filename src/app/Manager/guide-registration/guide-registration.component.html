@@ -1,0 +1,39 @@
+<app-navbar-manager/>
+<app-sidebar-manager/>
+
+
+<div class="container" id="container">
+    <div class="form-container sign-up">
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()"> <!-- ใช้ formGroup -->
+            <h1>Create Account</h1>
+            
+            <input type="text" formControlName="username" placeholder="Username" required>
+
+            <div class="boxinput">
+                <input type="text" formControlName="firstname" placeholder="First Name" required>
+                <input type="text" formControlName="lastname" placeholder="Last Name" required>
+            </div>
+            <input type="tel" formControlName="phone" placeholder="Phone Number" required>
+            <input type="email" formControlName="email" placeholder="Email" required>
+            <div class="boxinput">
+                <input type="password" formControlName="password" placeholder="Password" required>
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            
+            
+            <!-- Radio button for selecting inbound or outbound -->
+            <div class="radio-group">
+                <label >ประเภท มังคุเทศก์</label><br>
+
+                <label>
+                    <input type="radio" formControlName="guidetype" value="inbound"> Inbound(นำเที่ยวในประเทศ)
+                </label>
+                <label>
+                    <input type="radio" formControlName="guidetype" value="outbound"> Outbound(นำเที่ยวต่างประเทศ)
+                </label>
+            </div>
+
+            <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+        </form>
+    </div>
+</div>

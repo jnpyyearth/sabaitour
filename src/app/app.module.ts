@@ -24,15 +24,12 @@ import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.componen
 import { SidebarGuideComponent } from './Guide/sidebar-guide/sidebar-guide.component';
 import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
-import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
+
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BackgroundComponent } from './background/background.component';
-
-
-
-
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ProgramTourCardComponent } from './program-tour-card/program-tour-card.component';
+import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,9 +53,9 @@ import { BackgroundComponent } from './background/background.component';
     SidebarGuideComponent,
     HomeGuideComponent,
     AllTourComponent,
-    GuideIntourComponent,
     GuideInfoComponent,
-    BackgroundComponent,
+    ProgramTourCardComponent,
+    GuideRegistrationComponent
   ],
   imports: [
     BrowserModule,

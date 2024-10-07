@@ -1,111 +1,66 @@
 <app-navbar-manager/>
-<app-sidebar-manager/>
+<!-- <app-sidebar-manager/> -->
+<h2 class="mt-5" style="padding-left: 15rem;">รายการทัวร์ที่ยังไม้ได้จัด</h2><hr>
 
-<div class="container">
-    <div class="header">
-        <h2>Add Programtour</h2>
-    </div>
-    <div class="card">
-        
-    
-        <div class="row">
-    
-        <div class="col-2">
-            <h1>test</h1>
-        </div>
-    
-        <div class="col-10">
-            <div class="tourinfo">
-            <div class="row">
-                <div class="col">
-                    <div class="boxinput">
-                        <label for="text">Tourname</label><br>
-                        <select name="tourname" id="tour">
-                        <option value="">--Tour option--</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        </select>
-                    </div>
-    
-                </div>
-                <div class="col">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="boxinput">
-                        <label for="date">Start date</label><br>
-                        <input type="date" id="startdate" name="startdate" required>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="boxinput">
-                        <label for="date">End date</label><br>
-                        <input type="date" id="enddate" name="enddate" required>
-                    </div>
-    
-                </div>
-            </div>
-    
-            <div class="row">
-                <div class="col">
-                    <div class="boxinput">
-                            <label for="price">Price per date</label><br>
-                            <input type="number" id="price per date" name="price per day" required>
-                        </div>
-    
-                </div>
-                <div class="col">
-                    <div class="boxinput">
-                        <label for="price">Price per person</label><br>
-                        <input type="number" id="price per date" name="price per day" required>
-                    </div>
-    
-                </div>
-            </div>
-    
-            <div class="row">
-                <div class="col">
-                    <div class="boxinput">
-                        <label for="text">Hotel</label><br>
-                        <select name="Hotel" id="Hotel">
-                        <option value="">--Hotel option--</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        </select>
-                    </div>
-    
-                </div>
-                <div class="col">
-                    <div class="boxinput">
-                        <label for="text">Guide</label><br>
-                        <select name="Guide" id="Guide">
-                        <option value="">--Guide option--</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        <option value="1">??</option>
-                        </select>
-                    </div>
-    
-                </div>
-            </div>
-        
-       
-        
-            </div>
-        </div>
-    
-    </div>
-    </div>
-    
+<app-program-tour-card></app-program-tour-card>
+<!-- popup จ้า -->
+ <!-- Modal Structure -->
 
+<!-- <div class="container">
+    <h2>Program Tour Form</h2>
+    <form [formGroup]="programTourForm" (ngSubmit)="onSubmit()">
     
+      <div class="form-group">
+        <label for="tour">Tour ID</label>
+        <select id="tour" formControlName="Tour_ID" class="form-control">
+          <option *ngFor="let tour of tours" [value]="tour.Tour_ID">{{ tour.Tour_Name }}</option>
+        </select>
+      </div>
+  
+     
+      <div class="form-group">
+        <label for="hotel">Hotel ID</label>
+        <select id="hotel" formControlName="Hotel_ID" class="form-control">
+          <option *ngFor="let hotel of hotels" [value]="hotel.Hotel_ID">{{ hotel.Hotel_Name }}</option>
+        </select>
+      </div>
+  
+      
+      <div class="form-group">
+        <label for="guide">Guide ID</label>
+        <select id="guide" formControlName="Guide_ID" class="form-control">
+          <option *ngFor="let guide of guides" [value]="guide.Guide_ID">{{ guide.Guide_Name }}</option>
+        </select>
+      </div>
+  
+   
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" formControlName="StartDate" class="form-control" />
+      </div>
+  
+    
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" formControlName="EndDate" class="form-control" />
+      </div>
+  
+   
+      <div class="form-group">
+        <label for="priceDay">Price per Day</label>
+        <input type="number" id="priceDay" formControlName="Price_per_day" class="form-control" />
+      </div>
+  
+      
+      <div class="form-group">
+        <label for="pricePerson">Price per Person</label>
+        <input type="number" id="pricePerson" formControlName="Price_per_person" class="form-control" />
+      </div>
+  
+   
+      <button type="submit" class="btn btn-primary" [disabled]="programTourForm.invalid">Submit</button>
+    </form>
+  </div>
+  
 
-
-</div>
+   -->
