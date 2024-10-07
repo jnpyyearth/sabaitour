@@ -29,7 +29,9 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ProgramTourCardComponent } from './program-tour-card/program-tour-card.component';
-import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component'; 
+import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
+import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
+import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram-card.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,9 @@ import { GuideRegistrationComponent } from './Manager/guide-registration/guide-r
     AllTourComponent,
     GuideInfoComponent,
     ProgramTourCardComponent,
-    GuideRegistrationComponent
+    GuideRegistrationComponent,
+    EditProgramComponent,
+    EditprogramCardComponent
   ],
   imports: [
     BrowserModule,

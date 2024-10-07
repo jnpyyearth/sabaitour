@@ -49,9 +49,6 @@ export class AddTourComponent implements OnInit {
       // Form is valid, handle the form data
       console.log('Form Submitted:', this.programTourForm.value);
       
-      // You can send the form data to the backend here
-      // Example: this.http.post('API_URL', this.programTourForm.value).subscribe();
-
       // Reset form after submission
       this.programTourForm.reset();
     } else {
