@@ -1,0 +1,42 @@
+.header{
+    margin: 2rem;
+}
+
+.product1{
+    margin: 0.5rem;
+}
+
+.prodname{
+    margin-left: 2rem;
+}
+
+.prod{
+    display: flex;
+}
+
+.card{
+    margin: 1rem;
+  
+}
+
+.card-img-top{
+    width: 220px;
+    height: 220px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-body{
+    width:100%;
+}
+.modal {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }

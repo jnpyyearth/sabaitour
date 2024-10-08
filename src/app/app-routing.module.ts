@@ -19,9 +19,9 @@ import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.componen
 import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { MyTourProgramComponent } from './Guide/my-tour-program/my-tour-program.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
-import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
+import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-
+import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
 
 
 const routes: Routes = [
@@ -30,7 +30,7 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'about-us', component: AboutUsComponent},
     { path: 'log-out', component: LogOutComponent},
-    { path: 'log-in', component: LogInComponent},
+    { path: 'login', component: LogInComponent},
     { path: 'about-us', component: AboutUsComponent},
     { path: 'nationaltour', component: NationaltourComponent},
     { path: 'japan-tour', component: JapanTourComponent},
@@ -42,13 +42,13 @@ const routes: Routes = [
     { path: 'sale-report', component: SaleReportComponent},
     { path: 'sidebar-manager', component: SidebarManagerComponent},
     { path: 'all-tour', component: AllTourComponent},
-    { path: 'guide-intour', component: GuideIntourComponent},
+    { path: 'guide-regis', component: GuideRegistrationComponent},
     { path: 'guide-info', component: GuideInfoComponent},
     { path: 'sidebar-guide', component: SidebarGuideComponent},
     { path: 'navbar-guide', component: NavbarGuideComponent},
     { path: 'home-guide', component: HomeGuideComponent},
     { path: 'my-tour-program', component: MyTourProgramComponent},
-    
+    { path: 'edit-program', component: EditProgramComponent},
   
 ];
 

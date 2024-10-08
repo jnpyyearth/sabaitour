@@ -24,13 +24,14 @@ import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.componen
 import { SidebarGuideComponent } from './Guide/sidebar-guide/sidebar-guide.component';
 import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
-import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
+
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-
-
-
-
-
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ProgramTourCardComponent } from './program-tour-card/program-tour-card.component';
+import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
+import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
+import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram-card.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,17 +51,22 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
     NavbarManagerComponent,
     SidebarManagerComponent,
     MyTourProgramComponent,
-    NavbarGuideComponent,
+    NavbarGuideComponent,  // NavbarGuideComponent is correctly declared here
     SidebarGuideComponent,
     HomeGuideComponent,
     AllTourComponent,
-    GuideIntourComponent,
     GuideInfoComponent,
-
+    ProgramTourCardComponent,
+    GuideRegistrationComponent,
+    EditProgramComponent,
+    EditprogramCardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule // HttpClientModule goes in imports
   ],
   providers: [],
   bootstrap: [AppComponent]

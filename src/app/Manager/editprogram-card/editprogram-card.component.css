@@ -1,0 +1,52 @@
+.header{
+    margin: 2rem;
+}
+
+.product1{
+    margin: 0.5rem;
+}
+
+.prodname{
+    margin-left: 2rem;
+}
+
+.prod{
+    display: flex;
+}
+
+.card{
+    margin: 1rem;
+    overflow: hidden;
+    height: 500px;
+    width: 300px;
+    border-radius: 8px;
+}
+
+
+.card-img-top{
+    width: 305px;
+    height: 217px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img{
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.card-body{
+    width:100%;
+}
+
+.modal {
+    display: block;
+    justify-content: center;
+    align-items: centedr;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }

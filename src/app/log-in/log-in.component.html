@@ -1,24 +1,41 @@
-<div class="container" id="container">
+
+ <div class="container" id="container">
     <div class="form-container sign-up">
-        <form>
-            <h1>Create Account</h1>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()"> <!-- ใช้ formGroup -->
+            <h1 style="font-size: 24px">Create Account</h1>
             
-            <span>or use your email for registeration</span>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button>Sign Up</button>
+            <input type="text" formControlName="username" placeholder="Username"  required>
+          
+            <input type="email" formControlName="email" placeholder="Email" required>
             
+            <input type="text" formControlName="firstname" placeholder="First Name" required>
+            
+            <input type="text" formControlName="lastname" placeholder="Last Name" required>
+            
+            <input type="tel" formControlName="phone" placeholder="Phone Number" required>
+            
+            <input type="password" formControlName="password" placeholder="Password" required>
+            
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
+            
+            <div *ngIf="signUpForm.hasError('mismatch') && signUpForm.get('confirmPassword')?.touched">
+                <small style="color: red;">Passwords do not match.</small>
+              </div>
+
+
+            <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
         </form>
     </div>
+
     <div class="form-container sign-in">
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <h1>Sign In</h1>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button>Sign In</button>
+            <input type="text" formControlName="username" placeholder="Username" required>
+            <input type="password" formControlName="password" placeholder="Password" required>
+            <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
         </form>
     </div>
+
     <div class="toggle-container">
         <div class="toggle">
             <div class="toggle-panel toggle-left">
@@ -34,4 +51,3 @@
         </div>
     </div>
 </div>
-
