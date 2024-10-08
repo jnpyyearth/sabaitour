@@ -22,6 +22,7 @@ import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
+import { TourDetailComponent } from './tour-detail/tour-detail.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
     { path: 'home-guide', component: HomeGuideComponent},
     { path: 'my-tour-program', component: MyTourProgramComponent},
     { path: 'edit-program', component: EditProgramComponent},
+    { path: 'tour-detail/:id', component: TourDetailComponent},
   
 ];
 

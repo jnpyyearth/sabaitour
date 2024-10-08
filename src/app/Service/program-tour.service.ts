@@ -10,6 +10,11 @@ const apiUrl = 'http://localhost:3000';
 })
 export class ProgramTourService {
 
+  getProgramTourById(ProgramTour: number): Observable<any> {
+    console.log('hello by id',ProgramTour)
+    return this.http.get<ProgramTourForCard>(`${apiUrl}/getProgramTourById/${ProgramTour}`);
+  }
+
   constructor(private http: HttpClient) { }
   getAllTours(): Observable<Tour[]> {
     return this.http.get<Tour[]>(`${apiUrl}/tour`);
@@ -37,4 +42,14 @@ export class ProgramTourService {
   addProgramTour(programTour: any): Observable<any> {
     return this.http.post(`${apiUrl}/programtour`, programTour);
   }
+
+
+  updateProgramTour(ProgramTour:any):Observable<any[]>{
+    return this.http.put<any[]>(`${apiUrl}/updateProgramTour/${ProgramTour.ProgramTour_ID}`,ProgramTour)
+  }
+
+  cancelledProgramTour(ProgramTour:any):Observable<any[]>{
+    return this.http.put<any[]>(`${apiUrl}/cancelledProgramTour/${ProgramTour.ProgramTour_ID}`,ProgramTour)
+  }
+  
 }

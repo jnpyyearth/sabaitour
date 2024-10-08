@@ -31,7 +31,10 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ProgramTourCardComponent } from './program-tour-card/program-tour-card.component';
 import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
 import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
-import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram-card.component'; 
+import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram-card.component';
+import { HomeTourCardComponent } from './home/home-tour-card/home-tour-card.component';
+import { TourDetailComponent } from './tour-detail/tour-detail.component'; 
+import { ProgramTourService } from './Service/program-tour.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +62,9 @@ import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram
     ProgramTourCardComponent,
     GuideRegistrationComponent,
     EditProgramComponent,
-    EditprogramCardComponent
+    EditprogramCardComponent,
+    HomeTourCardComponent,
+    TourDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,9 @@ import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram
     ReactiveFormsModule,
     HttpClientModule // HttpClientModule goes in imports
   ],
-  providers: [],
+  providers: [
+    ProgramTourService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
