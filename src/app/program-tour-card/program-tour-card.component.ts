@@ -21,26 +21,50 @@ export class ProgramTourCardComponent implements OnInit {
     this.Tours = this.tourService.getAllTours();
 
   }
+  // openModal(tour: Tour): void {
+  //   this.selectedTour = { ...tour }; // Clone ข้อมูลที่ดึงมา
+  //   this.programTour = {}; //ข้อมูลสำหรับกรอก
+  //   this.Guides = null
+  //   console.log('Guides reset:', this.Guides);
+  //   this.isModalOpen = true;
+  //   // กรองไกด์ตาม Type_Status ของทัวร์ (inbound/outbound)
+  //   this.Guides = this.tourService.getAllGuides().pipe(
+  //     map(guides => guides.filter(guide => guide.Type_Name === this.selectedTour?.Type_Status))
+  //   );
+
+
+  //   console.log('Guides after fetching:', this.Guides);
+  // }
+
+  // closeModal(): void {
+  //   this.isModalOpen = false;
+  //   this.selectedTour = null;
+  //   this.programTour = null; // ล้างข้อมูล
+  // }
+
+
   openModal(tour: Tour): void {
     this.selectedTour = { ...tour }; // Clone ข้อมูลที่ดึงมา
-    this.programTour = {}; //ข้อมูลสำหรับกรอก
-    this.Guides = null
-    console.log('Guides reset:', this.Guides);
+    this.programTour = {}; // ข้อมูลสำหรับกรอก
+    this.Guides = null;
     this.isModalOpen = true;
+  
     // กรองไกด์ตาม Type_Status ของทัวร์ (inbound/outbound)
     this.Guides = this.tourService.getAllGuides().pipe(
       map(guides => guides.filter(guide => guide.Type_Name === this.selectedTour?.Type_Status))
     );
-
-
+  
     console.log('Guides after fetching:', this.Guides);
   }
-
+  
   closeModal(): void {
     this.isModalOpen = false;
     this.selectedTour = null;
     this.programTour = null; // ล้างข้อมูล
+  
+  
   }
+  
   saveProgramTour(): void {
 
     console.log('Save programtour clicked:');
