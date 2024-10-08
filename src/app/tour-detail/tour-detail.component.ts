@@ -33,4 +33,10 @@ export class TourDetailComponent implements OnInit{
       console.error('Error fetching tour details:', error); // จับ error ถ้ามี
     });
   }
+
+
+
+  openModal(tourDetails:any){
+
+  }
 }
