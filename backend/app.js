@@ -31,25 +31,6 @@ async function connectToDatabase() {
     }
 }
 connectToDatabase();
-//declare item array
-let items =[
-    {id: 1,name: 'Item1',description:'this is item 1'},
-    {id:2 , name: 'Item2',description:'this is tiem 2'},
-];// addtem
-app.post('/items',(req,res)=>{
-
-    const {name,description}=req.body;
-    const newItem ={
-        id:items.length +1,
-        name,
-        description
-    };
-    items.push(newItem);
-    res.status(201).json(newItem);
-});
-
-
-
 
 
 app.listen(port, () => {

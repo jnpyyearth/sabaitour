@@ -1,0 +1,14 @@
+<app-navbar/>
+<div *ngIf="tourDetails">
+    <img [src]="'assets/images/' + tourDetails.Tour_Picture" class="card-img-top" alt="Tour Image">
+    <h1>{{ tourDetails.Tour_name }}</h1>
+    <p>ประเทศ: {{ tourDetails.Tour_Country }}</p>
+    <p>เริ่มวันที่: {{ tourDetails.StartDate | date:'shortDate' }}</p>
+    <p>สิ้นสุดวันที่: {{ tourDetails.EndDate | date:'shortDate' }}</p>
+    <p>ระยะเวลา: {{ tourDetails.period }} วัน</p>
+    <p>ราคาต่อคน: {{ tourDetails.Price_per_person }} บาท</p>
+    <p>ที่พัก: {{ tourDetails.Hotel }} </p>
+    <p>จำนวนคนที่รองรับ: {{ tourDetails.total_seats }}คน</p>
+    <p>จำนวนคนจอง: {{ tourDetails.available_seats }}คน </p>
+
+</div>

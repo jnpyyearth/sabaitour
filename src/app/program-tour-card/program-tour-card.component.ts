@@ -87,6 +87,7 @@ export class ProgramTourCardComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('this is response', response)
+            this.ngOnInit();
           },
           error: (error) => {
 

@@ -33,6 +33,7 @@ export interface ProgramTour {
     status: string;
     total_seats: number;
     available_seats: number;
+    cancelled:number;
 }
 
 export interface ProgramTourForCard {
@@ -41,7 +42,12 @@ export interface ProgramTourForCard {
     Tour_Country: string;
     StartDate: Date;
     EndDate: Date;
+    Price_per_day:number;
     Price_per_person: number;
     Tour_Picture: string;
     period:number;
+    Guide_ID:number;
+    Type_Status:string;
+    total_seats:number;
+    cancelled:number;
   }

@@ -10,8 +10,9 @@
     margin-left: 2rem;
 }
 
-.prod{
-    display: flex;
+.btn{
+   margin-left: 2rem;
+   margin-top: 1rem;
 }
 
 .card{
@@ -50,3 +51,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
   }
+
+.swalWithBootstrapButtons{
+    margin-left: 1rem;
+}
