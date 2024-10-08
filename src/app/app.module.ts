@@ -30,6 +30,7 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
     AllTourComponent,
     GuideIntourComponent,
     GuideInfoComponent,
+
   ],
   imports: [
     BrowserModule,
