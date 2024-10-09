@@ -7,12 +7,27 @@
             
             <input type="text" formControlName="username" placeholder="Username" required>
             <input type="email" formControlName="email" placeholder="Email" required>
+
+            <div class="row">
+            <div class="col-6">
             <input type="text" formControlName="firstname" placeholder="First Name" required>
+            </div>
+            <div class="col-6">
             <input type="text" formControlName="lastname" placeholder="Last Name" required>
+            </div>
+            </div>
+
             <input type="tel" formControlName="phone" placeholder="Phone Number" required>
-            <input type="password" formControlName="password" placeholder="Password" required>
-            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
             
+            <div class="row">
+                <div class="col-6">
+            <input type="password" formControlName="password" placeholder="Password" required>
+            </div>
+            <div class="col-6">
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            </div>
+
             <!-- Radio button for selecting inbound or outbound -->
             <div class="radio-group">
                 <label >ประเภท มังคุเทศก์</label><br>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProgramTourService } from '../Service/program-tour.service'; // Import the service
-import { Tour, Guide, GuideInOutbound } from '../interfaces/tour'; // Import the interface
+import { ProgramTourService } from '../../Service/program-tour.service'; // Import the service
+import { Tour, Guide, GuideInOutbound } from '../../interfaces/tour'; // Import the interface
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
@@ -21,26 +21,50 @@ export class ProgramTourCardComponent implements OnInit {
     this.Tours = this.tourService.getAllTours();
 
   }
+  // openModal(tour: Tour): void {
+  //   this.selectedTour = { ...tour }; // Clone ข้อมูลที่ดึงมา
+  //   this.programTour = {}; //ข้อมูลสำหรับกรอก
+  //   this.Guides = null
+  //   console.log('Guides reset:', this.Guides);
+  //   this.isModalOpen = true;
+  //   // กรองไกด์ตาม Type_Status ของทัวร์ (inbound/outbound)
+  //   this.Guides = this.tourService.getAllGuides().pipe(
+  //     map(guides => guides.filter(guide => guide.Type_Name === this.selectedTour?.Type_Status))
+  //   );
+
+
+  //   console.log('Guides after fetching:', this.Guides);
+  // }
+
+  // closeModal(): void {
+  //   this.isModalOpen = false;
+  //   this.selectedTour = null;
+  //   this.programTour = null; // ล้างข้อมูล
+  // }
+
+
   openModal(tour: Tour): void {
     this.selectedTour = { ...tour }; // Clone ข้อมูลที่ดึงมา
-    this.programTour = {}; //ข้อมูลสำหรับกรอก
-    this.Guides = null
-    console.log('Guides reset:', this.Guides);
+    this.programTour = {}; // ข้อมูลสำหรับกรอก
+    this.Guides = null;
     this.isModalOpen = true;
+  
     // กรองไกด์ตาม Type_Status ของทัวร์ (inbound/outbound)
     this.Guides = this.tourService.getAllGuides().pipe(
       map(guides => guides.filter(guide => guide.Type_Name === this.selectedTour?.Type_Status))
     );
-
-
+  
     console.log('Guides after fetching:', this.Guides);
   }
-
+  
   closeModal(): void {
     this.isModalOpen = false;
     this.selectedTour = null;
     this.programTour = null; // ล้างข้อมูล
+  
+  
   }
+  
   saveProgramTour(): void {
 
     console.log('Save programtour clicked:');

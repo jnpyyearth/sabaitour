@@ -1,20 +1,3 @@
-.header{
-    margin: 2rem;
-}
-
-.product1{
-    margin: 0.5rem;
-}
-
-.prodname{
-    margin-left: 2rem;
-}
-
-.btn{
-   margin-left: 2rem;
-   margin-top: 1rem;
-}
-
 .card{
     margin: 1rem;
     overflow: hidden;
@@ -60,4 +43,14 @@
 
 .swalWithBootstrapButtons{
     margin-left: 1rem;
+}
+
+
+.btn{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-left: 5rem;
+    margin-top: 1rem;
+    border-radius: 8px;
 }

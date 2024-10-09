@@ -70,7 +70,7 @@ export class EditprogramCardComponent implements OnInit {
       ) {
         swalWithBootstrapButtons.fire({
           title: "Cancelled",
-          text: "Your imaginary file is safe :)",
+          text: "Your imaginary file is safe 🙂",
           icon: "error"
         });
       }
@@ -81,6 +81,8 @@ export class EditprogramCardComponent implements OnInit {
     this.isModalOpen = false;
 
   }
+
+
   saveProgramTour(): void {
     if(this.selectedProgramTour){
       const updatedProgramTour = {
@@ -111,4 +113,3 @@ export class EditprogramCardComponent implements OnInit {
     }
   }
 }
-

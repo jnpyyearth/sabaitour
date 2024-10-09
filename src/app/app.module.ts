@@ -28,7 +28,7 @@ import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { ProgramTourCardComponent } from './program-tour-card/program-tour-card.component';
+import { ProgramTourCardComponent } from './Manager/program-tour-card/program-tour-card.component';
 import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
 import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
 import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram-card.component';
@@ -39,6 +39,7 @@ import { NtCardComponent } from './nationaltour/nt-card/nt-card.component';
 import { InterTouCardComponent } from './international-tour/inter-tou-card/inter-tou-card.component';
 import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
 import { BookingComponent } from './booking/booking.component';
+import { GuideInfoCardComponent } from './Manager/guide-info-card/guide-info-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,8 @@ import { BookingComponent } from './booking/booking.component';
     NtCardComponent,
     InterTouCardComponent,
     InternationaltourComponent,
-    BookingComponent
+    BookingComponent,
+    GuideInfoCardComponent
   ],
   imports: [
     BrowserModule,
