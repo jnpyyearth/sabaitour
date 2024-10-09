@@ -21,7 +21,9 @@
     
 }
 
-
+.container{
+    grid-template-columns: repeat(auto-fill);
+}
 
 .carousel-inner{
     border-radius: 20px;
@@ -62,8 +64,9 @@ img{
 }
 
 .card-img-top{
-    width: 305px;
-    height: 217px;
+    width: 305px auto;
+    height: 217px ;
+    filter: brightness(1);
 }
 
 
