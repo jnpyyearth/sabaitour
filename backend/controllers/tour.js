@@ -18,7 +18,33 @@ module.exports.getAllProgramTourForCard = async (req, res) => {
     res.status(500).json({ message: 'Erorr feching  all programtour', error });
   }
 }
+module.exports.getAllProgramTourForCardInbound = async (req, res) => {
+  try {
+    const pool = await sql.connect(config);
 
+    const AllprogramtourForCard = await pool.request()
+      .query(`SELECT ProgramTour.ProgramTour_ID, Tour.Tour_name, Tour.Tour_Country, ProgramTour.StartDate, ProgramTour.EndDate, ProgramTour.Price_per_person, Tour.Tour_Picture,Price_per_day  
+      ,DATEDIFF(day,ProgramTour.StartDate,ProgramTour.EndDate) + 1 AS period,ProgramTour.Guide_ID,Tour.Type_Status,ProgramTour.total_seats, ProgramTour.cancelled
+      FROM ProgramTour INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID where Tour.Type_Status='inbound'`)
+    res.status(200).json(AllprogramtourForCard.recordset)
+  } catch (error) {
+    res.status(500).json({ message: 'Erorr feching  all programtour', error });
+  }
+}
+
+module.exports.getAllProgramTourForCardOutbound = async (req, res) => {
+  try {
+    const pool = await sql.connect(config);
+
+    const AllprogramtourForCard = await pool.request()
+      .query(`SELECT ProgramTour.ProgramTour_ID, Tour.Tour_name, Tour.Tour_Country, ProgramTour.StartDate, ProgramTour.EndDate, ProgramTour.Price_per_person, Tour.Tour_Picture,Price_per_day  
+      ,DATEDIFF(day,ProgramTour.StartDate,ProgramTour.EndDate) + 1 AS period,ProgramTour.Guide_ID,Tour.Type_Status,ProgramTour.total_seats, ProgramTour.cancelled
+      FROM ProgramTour INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID where Tour.Type_Status='outbound'`)
+    res.status(200).json(AllprogramtourForCard.recordset)
+  } catch (error) {
+    res.status(500).json({ message: 'Erorr feching  all programtour', error });
+  }
+}
 
 module.exports.getAllTour = async (req, res) => {
   try {
@@ -148,3 +174,4 @@ INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID where ProgramTour.ProgramT
     res.status(500).json({ error: 'Failed to update data' });
   }
 };
+
