@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProgramTourService } from '../Service/program-tour.service'; // Import the service
-import { Tour, Guide, GuideInOutbound } from '../interfaces/tour'; // Import the interface
+import { ProgramTourService } from '../../Service/program-tour.service'; // Import the service
+import { Tour, Guide, GuideInOutbound } from '../../interfaces/tour'; // Import the interface
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
