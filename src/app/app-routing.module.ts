@@ -23,10 +23,13 @@ import { GuideRegistrationComponent } from './Manager/guide-registration/guide-r
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
+import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    // { path: 'home', component: HomeComponent ,canActivate: [AuthGuard],data:{roles:['manager']}},
     { path: 'home', component: HomeComponent },
     { path: 'news', component: NewsComponent },
     { path: 'about-us', component: AboutUsComponent},
@@ -51,7 +54,7 @@ const routes: Routes = [
     { path: 'my-tour-program', component: MyTourProgramComponent},
     { path: 'edit-program', component: EditProgramComponent},
     { path: 'tour-detail/:id', component: TourDetailComponent},
-  
+    { path: 'internationaltour', component: InternationaltourComponent}, 
 ];
 
 @NgModule({

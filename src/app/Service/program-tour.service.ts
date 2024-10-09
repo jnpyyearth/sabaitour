@@ -51,5 +51,11 @@ export class ProgramTourService {
   cancelledProgramTour(ProgramTour:any):Observable<any[]>{
     return this.http.put<any[]>(`${apiUrl}/cancelledProgramTour/${ProgramTour.ProgramTour_ID}`,ProgramTour)
   }
-  
+  getOutboundProgramTour():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getOutboundProgram`)
+  }
+
+  getInboundProgramTour():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getInboundProgram`)
+  }
 }

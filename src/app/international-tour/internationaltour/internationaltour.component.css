@@ -1,0 +1,106 @@
+.col{
+    width: 330px;
+    height: 281px;
+    line-height: 2; /*ปรับความสูงอักษร*/
+}
+
+.row {
+    align-items: center;
+}
+
+.carousel {
+    width: 95%;
+    margin: 1rem auto;
+    padding-top: 20px;
+    
+}
+
+
+
+.carousel-inner{
+    border-radius: 20px;
+    height: 400px;
+    background-repeat: no-repeat; /* Prevents repeating */
+    background-size: cover; /* Adjusts the size to cover the whole screen */
+}
+
+.card-footer{
+    align-items: center;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #00A196;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.1s ease;
+    
+}
+
+.btn:hover{
+    background-color: #fff;
+    color: #00A196;
+    border: 2px solid #00A196;
+    box-shadow: 5px 5px 0px #00A196;
+}
+
+.btn:active{
+    background-color: #FFA900;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+
+
+  
+img{
+    filter: brightness(0.9);
+}
+
+.card-img-top{
+    width: 305px;
+    height: 217px;
+}
+
+
+
+
+.navbar-nav{
+    
+    background-origin: padding-box;
+    background-color: #21CCD0;
+    height: 35px;
+    border-radius: 12px;
+    margin: 1rem auto ;
+    width: 95%; /* Ensures the navbar takes up the full width */
+
+    
+    
+}
+
+#rowcard{
+    margin-bottom: 1.5rem;
+}
+
+.card{
+    width: 306px;
+    height: 370px;
+    border-radius: 25px;
+    overflow: hidden;
+    
+}
+
+.body{
+    background-color: #ffffff47;
+    border-radius: 20px;
+    box-shadow: 0px 0px 30px  rgba(227, 228, 237, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+}
+

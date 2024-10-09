@@ -35,6 +35,10 @@ import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram
 import { HomeTourCardComponent } from './home/home-tour-card/home-tour-card.component';
 import { TourDetailComponent } from './tour-detail/tour-detail.component'; 
 import { ProgramTourService } from './Service/program-tour.service';
+import { NtCardComponent } from './nationaltour/nt-card/nt-card.component';
+import { InterTouCardComponent } from './international-tour/inter-tou-card/inter-tou-card.component';
+import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
+import { BookingComponent } from './booking/booking.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +68,11 @@ import { ProgramTourService } from './Service/program-tour.service';
     EditProgramComponent,
     EditprogramCardComponent,
     HomeTourCardComponent,
-    TourDetailComponent
+    TourDetailComponent,
+    NtCardComponent,
+    InterTouCardComponent,
+    InternationaltourComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,63 @@
 <app-navbar/>
 <div *ngIf="tourDetails">
-    <img [src]="'assets/images/' + tourDetails.Tour_Picture" class="card-img-top" alt="Tour Image">
+    
     <h1>{{ tourDetails.Tour_name }}</h1>
-    <p>ประเทศ: {{ tourDetails.Tour_Country }}</p>
-    <p>เริ่มวันที่: {{ tourDetails.StartDate | date:'shortDate' }}</p>
-    <p>สิ้นสุดวันที่: {{ tourDetails.EndDate | date:'shortDate' }}</p>
-    <p>ระยะเวลา: {{ tourDetails.period }} วัน</p>
-    <p>ราคาต่อคน: {{ tourDetails.Price_per_person }} บาท</p>
-    <p>ที่พัก: {{ tourDetails.Hotel }} </p>
-    <p>จำนวนคนที่รองรับ: {{ tourDetails.total_seats }}คน</p>
-    <p>จำนวนคนจอง: {{ tourDetails.available_seats }}คน </p>
-    //<button class="btn btn-success" (click)="openModal(tourDetails)">จองเลย</button>
-
+    <div class="star-review ">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <div class="review"><h5>Hot</h5></div>
+    </div>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img [src]="'assets/images/' + tourDetails.Tour_Picture" class="card-img-top" alt="Tour Image">
+          </div>
+          <div class="detail col-md-6">
+            <p>ประเทศ: {{ tourDetails.Tour_Country }}</p>
+            <p>เริ่มวันที่: {{ tourDetails.StartDate | date:'shortDate' }}</p>
+            <p>สิ้นสุดวันที่: {{ tourDetails.EndDate | date:'shortDate' }}</p>
+            <p>ระยะเวลา: {{ tourDetails.period }} วัน</p>
+            <p>ราคาต่อคน: {{ tourDetails.Price_per_person }} บาท</p>
+            <p>ที่พัก: {{ tourDetails.Hotel }}</p>
+            <p class="total">จำนวนคนที่รองรับ: {{ tourDetails.total_seats }} คน</p>
+            <p class="teevang">จำนวนที่ว่าง: {{ tourDetails.available_seats }} คน</p>
+            
+            <div class="row">
+                <div class="col-md-5">
+            <button class="btn btn-success" (click)="openModal(tourDetails)">จองเลย</button>
+            </div>
+            <div class="col-md-3">
+            <button class="btn-back" routerLink="/home">Back</button>
+        </div>
+        </div>
+        </div>
+      </div>
 </div>
+
+<!--ปุ่มback เดวทำ-->
+
+<div *ngIf="isModalOpen" class="modal">
+  <div class="modal-content">
+    <h4>กรอกจำนวนคนจองทัวร์</h4>
+    <input type="number" [(ngModel)]="numberParticipant" min="1" placeholder="จำนวนคน">
+    <!-- <button (click)="createForms()">ยืนยัน</button> -->
+    <button (click)="closeModal()">ยกเลิก</button>
+    <button (click)="createForm()">ยืนยัน</button>
+  </div>
+</div>
+<!-- form for participants -->
+ <form *ngf ="showForms" (ngSumit)="submitForms()">
+  <div *ngFor ="let participant of Participants; let i =index">
+    <h5>ข้อมูลคนที่ {{i+1}}</h5>
+    <input type="text" [(ngModel)]="participant.name" placeholder="ชื่อ"  name ="name{{i}}">
+    <input type="number" [(ngModel)]="participant.age" placeholder="อายุ"  name ="age{{i}}">
+
+
+  </div>
+  <button type="submit">ส่งข้อมูลการจอง</button>
+ </form>
 
 

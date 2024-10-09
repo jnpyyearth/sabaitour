@@ -9,7 +9,11 @@ import { ProgramTourService } from '../Service/program-tour.service';
 export class TourDetailComponent implements OnInit{
   tourId: number | undefined;
   tourDetails: any;
-
+  selectedTour:any;
+  isModalOpen =false;
+  numberParticipant =1;
+  Participants: { name: string; age: string; }[] = [];
+  showForms =false;
   constructor(private route: ActivatedRoute, private tourService: ProgramTourService) {}
 
   
@@ -37,6 +41,26 @@ export class TourDetailComponent implements OnInit{
 
 
   openModal(tourDetails:any){
-
+    this.selectedTour ={...tourDetails}
+      this.isModalOpen =true;
+    }
+    closeModal(){
+      this.isModalOpen =false;
+    }
+  
+    createForm(){
+      this.Participants =[]
+      for(let i =0;i<this.numberParticipant;i++){
+        this.Participants.push({name:'',age:''});
+      }
+      this.showForms =true;
+      this.closeModal();
+    }
+    submitForms() {
+      console.log(this.Participants); {
+        
+      };  // ข้อมูลของแต่ละคนที่จอง
+      alert('ส่งข้อมูลเรียบร้อยแล้ว!');
+    }
   }
-}
+  
