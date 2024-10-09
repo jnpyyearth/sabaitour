@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-tour',
@@ -8,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddTourComponent implements OnInit {
   programTourForm!: FormGroup;
+  searchFormGroup!: FormGroup;
   
   // Mock Data for Dropdowns
   tours = [
@@ -31,6 +33,7 @@ export class AddTourComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    
     // Initialize the form group and set validators
     this.programTourForm = this.fb.group({
       Tour_ID: ['', Validators.required],
@@ -49,9 +52,6 @@ export class AddTourComponent implements OnInit {
       // Form is valid, handle the form data
       console.log('Form Submitted:', this.programTourForm.value);
       
-      // You can send the form data to the backend here
-      // Example: this.http.post('API_URL', this.programTourForm.value).subscribe();
-
       // Reset form after submission
       this.programTourForm.reset();
     } else {
@@ -59,4 +59,6 @@ export class AddTourComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }

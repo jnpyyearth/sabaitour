@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let pt of ProgramTour | async ">
+        <div class="card">
+          <img [src]="'assets/images/' + pt.Tour_Picture" class="card-img-top" alt="Tour Image">
+          <button class="btn" (click)="openModal(pt)">แก้ไขข้อมูล</button>
+          <div class="card-body">
+            <h5 class="card-title">ทัวร์:{{ pt.Tour_name }}</h5>
+            <p class="card-text">ประเทศ: {{ pt.Tour_Country }} </p>
+              
+          
+  
+            <!-- Show Start Date -->
+            <p class="card-text">เริ่มวันที่: {{ pt.StartDate | date:'shortDate' }}</p>
+            <!-- Show End Date -->
+            <p class="card-text">สิ้นสุดวันที่: {{ pt.EndDate | date:'shortDate' }}</p>
+   
+          
+
+          <!-- Show Period (calculated in SQL) -->
+          <p class="card-text">ระยะเวลา: {{ pt.period }} วัน</p>
+          <p class="card-text">ราคาต่อคน{{pt.Price_per_person}} บาท</p>
+            <!-- <button class="btn btn-primary" (click)="openModal(pt)">แก้ไขข้อมูล</button> -->
+          </div>
+        </div>
+      </div>
+    </div>

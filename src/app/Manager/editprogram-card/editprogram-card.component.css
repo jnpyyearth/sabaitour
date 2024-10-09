@@ -17,31 +17,10 @@
 .card{
     margin: 1rem;
     overflow: hidden;
+    height: 500px;
+    width: 300px auto;
+    border-radius: 8px;
 }
-
-.card-img-top{
-    width: 220px;
-    height: 220px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.card-body{
-    width:100%;
-}
-.modal {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-
 
 .btn{
     background-color: aqua;
@@ -65,5 +44,14 @@
     
 }
 
-
-
+.modal {
+    display: block;
+    justify-content: center;
+    align-items: centedr;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
