@@ -40,6 +40,9 @@ import { InterTouCardComponent } from './international-tour/inter-tou-card/inter
 import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
 import { BookingComponent } from './booking/booking.component';
 import { GuideInfoCardComponent } from './Manager/guide-info-card/guide-info-card.component';
+import { MyTourProgramCardComponent } from './Guide/my-tour-program-card/my-tour-program-card.component';
+import { MyInformationComponent } from './Guide/my-information/my-information.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +77,10 @@ import { GuideInfoCardComponent } from './Manager/guide-info-card/guide-info-car
     InterTouCardComponent,
     InternationaltourComponent,
     BookingComponent,
-    GuideInfoCardComponent
+    GuideInfoCardComponent,
+    MyTourProgramCardComponent,
+    MyInformationComponent,
+  
   ],
   imports: [
     BrowserModule,

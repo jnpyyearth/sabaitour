@@ -1,0 +1,90 @@
+.mt-5{
+    font-size: 50px;
+    font-weight: 200px;
+}
+
+
+#card1{
+    margin-top: 5px;
+    width: 1400px;
+    height: 90px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(0, 0, 0, 0.951); 
+
+}
+
+.card-body {
+    width: 100%; /* กำหนดให้ครอบคลุมความกว้างของบรรทัด */
+    overflow: hidden; /* ซ่อนข้อความที่เกินออกจากขอบกรอบ */
+    position: relative; /* กำหนดตำแหน่งแบบ relative เพื่อใช้ในการควบคุมตำแหน่งข้อความ */
+}
+
+#title1 {
+    display: inline-block;
+    white-space: nowrap; /* ทำให้ข้อความอยู่ในบรรทัดเดียว */
+    position: absolute; /* กำหนดให้ข้อความสามารถเลื่อนผ่านกรอบ */
+    animation: marquee 10s linear infinite; /* วิ่งตลอดเวลาและวนซ้ำ */
+    width: 100%; /* ขยายพื้นที่เพื่อให้มีที่วิ่ง */
+}
+
+@keyframes marquee {
+    0% {
+      transform: translateX(100%); /* เริ่มจากนอกขอบขวา */
+    }
+    100% {
+      transform: translateX(-100%); /* เลื่อนไปทางซ้ายจนออกนอกขอบซ้าย */
+    }
+}
+.card-text{
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+}
+
+.card-title{
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    margin-bottom: 2px;
+}
+
+
+.card {
+    border-radius: 10px; /* ขอบมน */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาที่ขอบ */
+    transition: 0.3s ease-in-out; /* เพิ่มการเปลี่ยนแปลงเวลา hover */
+    background-color: #ffffff; /* สีพื้นหลังของ card */
+    padding: 15px; /* เพิ่ม padding ภายใน card */
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อ hover */
+    transform: translateY(-5px); /* ขยับ card ขึ้นเล็กน้อยเมื่อ hover */
+}
+
+
+.card-img-top {
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    max-height: 200px; 
+    object-fit: cover; 
+}
+
+.card-title {
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: #333; 
+    margin-bottom: 10px; 
+}
+
+.card-text {
+    font-size: 1rem; 
+    color: #555; 
+    margin-bottom: 5px; 
+}
+
+.row{
+    margin-left: 2px;
+}
