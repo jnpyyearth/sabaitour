@@ -84,6 +84,8 @@ export class EditprogramCardComponent implements OnInit {
 
 
   saveProgramTour(): void {
+
+    
     if(this.selectedProgramTour){
       const updatedProgramTour = {
         ProgramTour_ID:this.selectedProgramTour.ProgramTour_ID,

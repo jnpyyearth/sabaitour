@@ -58,4 +58,8 @@ export class ProgramTourService {
   getInboundProgramTour():Observable<any[]>{
     return this.http.get<any[]>(`${apiUrl}/getInboundProgram`)
   }
+  
+  addbooking(booking:any):Observable<any[]>{
+    return this.http.post<any[]>(`${apiUrl}/addBooking`,booking)
+  }
 }

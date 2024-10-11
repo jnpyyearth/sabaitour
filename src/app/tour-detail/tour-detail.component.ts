@@ -1,22 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgramTourService } from '../Service/program-tour.service';
+import { FormsModule } from '@angular/forms'; // จำเป็นสำหรับ ngModel
+import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
+import { partition } from 'rxjs';
+import { AuthService } from '../Service/auth.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-tour-detail',
   templateUrl: './tour-detail.component.html',
   styleUrls: ['./tour-detail.component.css']  // Fixed: styleUrls instead of styleUrl
 })
-export class TourDetailComponent implements OnInit{
+export class TourDetailComponent implements OnInit {
   tourId: number | undefined;
   tourDetails: any;
-  selectedTour:any;
-  isModalOpen =false;
-  numberParticipant =1;
-  Participants: { name: string; age: string; }[] = [];
-  showForms =false;
-  constructor(private route: ActivatedRoute, private tourService: ProgramTourService) {}
+  selectedTour: any;
+  username: string | null = null;
+  isModalOpen = false;
+  numberParticipant = 1;
+  Participants: {
+    firstname: string;
+    lastname: string;
+    id_card: string;
+    DateOfBirth: Date;
+    email: string;
+    phone: string;
+    special_request: string;
 
-  
+  }[] = [];
+
+  showForms = false;
+  booking = {};
+  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService) { }
+
+
   ngOnInit(): void {
     // Get the tour ID from the route parameters
     this.route.paramMap.subscribe(params => {
@@ -27,6 +44,7 @@ export class TourDetailComponent implements OnInit{
         this.getTourDetails(this.tourId);
       }
     });
+    this.username = this.authService.getUsername()
   }
 
   getTourDetails(id: number) {
@@ -40,27 +58,58 @@ export class TourDetailComponent implements OnInit{
 
 
 
-  openModal(tourDetails:any){
-    this.selectedTour ={...tourDetails}
-      this.isModalOpen =true;
-    }
-    closeModal(){
-      this.isModalOpen =false;
-    }
-  
-    createForm(){
-      this.Participants =[]
-      for(let i =0;i<this.numberParticipant;i++){
-        this.Participants.push({name:'',age:''});
-      }
-      this.showForms =true;
-      this.closeModal();
-    }
-    submitForms() {
-      console.log(this.Participants); {
-        
-      };  // ข้อมูลของแต่ละคนที่จอง
-      alert('ส่งข้อมูลเรียบร้อยแล้ว!');
-    }
+  openModal() {
+
+    this.isModalOpen = true;
   }
-  
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  //สร้างformตามจำนวน
+  createForm(ProgramTour: any) {
+    this.selectedTour = { ...ProgramTour }
+    if(this.numberParticipant  > this.selectedTour.available_seats){
+      Swal.fire('จองไม่สำเร็จ', 'ขอภัยมีที่ว่างไม่่พอตามที่ท่านจอง', 'error');
+    }
+    this.Participants = []
+    for (let i = 0; i < this.numberParticipant; i++) {
+      this.Participants.push({ firstname: '', lastname: '', id_card: '', DateOfBirth: new Date(), email: '', phone: '', special_request: '' });
+    }
+    
+    console.log('hello createform')
+    this.showForms = true;
+    this.closeModal();
+  }
+
+  //ส่งform
+  submitForms() {
+    console.log("hello")
+    if (this.selectedTour && this.Participants) {
+      const bookingData = {
+        username: this.username,
+        ProgramTour_ID: this.selectedTour.ProgramTour_ID,
+        price_per_person: this.selectedTour.Price_per_person,
+        participants: this.Participants
+      };
+      console.log('hello submitForms', bookingData)
+      this.tourService.addbooking(bookingData).subscribe(
+        (response) => {
+          console.log("addbooking", response)
+          Swal.fire('จองสำเร็จ', 'ส่งข้อมูลการจองสำเร็จ', 'success');
+        },
+        (error) => {
+          console.log("Error add booking  tour:", error);
+
+        }
+      )
+    }
+
+
+
+ 
+  }
+
+
+}
+
