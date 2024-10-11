@@ -6,19 +6,28 @@
             <h1>Create Account</h1>
             
             <input type="text" formControlName="username" placeholder="Username" required>
-
-            <div class="boxinput">
-                <input type="text" formControlName="firstname" placeholder="First Name" required>
-                <input type="text" formControlName="lastname" placeholder="Last Name" required>
-            </div>
-            <input type="tel" formControlName="phone" placeholder="Phone Number" required>
             <input type="email" formControlName="email" placeholder="Email" required>
-            <div class="boxinput">
-                <input type="password" formControlName="password" placeholder="Password" required>
+
+            <div class="row">
+            <div class="col-6">
+            <input type="text" formControlName="firstname" placeholder="First Name" required>
+            </div>
+            <div class="col-6">
+            <input type="text" formControlName="lastname" placeholder="Last Name" required>
+            </div>
+            </div>
+
+            <input type="tel" formControlName="phone" placeholder="Phone Number" required>
+            
+            <div class="row">
+                <div class="col-6">
+            <input type="password" formControlName="password" placeholder="Password" required>
+            </div>
+            <div class="col-6">
             <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
             </div>
-            
-            
+            </div>
+
             <!-- Radio button for selecting inbound or outbound -->
             <div class="radio-group">
                 <label >ประเภท มังคุเทศก์</label><br>

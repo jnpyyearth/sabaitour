@@ -10,6 +10,7 @@ const signUproute =require('./routes/signUp')
 const tourroute =require('./routes/tour')
 const guideSroute=require('./routes/guideSignUp')
 const Guideroute =require('./routes/guide/guide')
+const bookingroute =require('./routes/booking')
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +23,7 @@ app.use('/',signUproute);
 app.use('/',tourroute);
 app.use('/',guideSroute)
 app.use('/',Guideroute)
+app.use('/',bookingroute)
 async function connectToDatabase() {
     try{
         await sql.connect(config);
@@ -31,25 +33,6 @@ async function connectToDatabase() {
     }
 }
 connectToDatabase();
-//declare item array
-let items =[
-    {id: 1,name: 'Item1',description:'this is item 1'},
-    {id:2 , name: 'Item2',description:'this is tiem 2'},
-];// addtem
-app.post('/items',(req,res)=>{
-
-    const {name,description}=req.body;
-    const newItem ={
-        id:items.length +1,
-        name,
-        description
-    };
-    items.push(newItem);
-    res.status(201).json(newItem);
-});
-
-
-
 
 
 app.listen(port, () => {

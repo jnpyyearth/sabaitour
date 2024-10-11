@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  
+    <div class="row">
+        <div class="col-md-4" *ngFor="let Guide of GuideOutbound | async ">
+          <div class="card">
+            <img [src]="'assets/images/' + Guide.Guide_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
+            <div class="box">
+              
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">ไกด์ทัวร์:{{ Guide.Guide_tour }}</h5>
+              <p class="card-text">ชื่อ: {{ Guide.Guide_country }} </p>
+              <p class="card-text">นามสกุล: {{ Guide.Guide_name }} </p>
+              <p class="card-text">อีเมล: {{ Guide.Guide_email }} </p>
+              <p class="card-text">เบอร์โทร: {{ Guide.Guide_phone }} </p>
+              <p class="card-text">ประเภทไกด์ทัวร์: {{ Guide.Guide_type }}</p>
+              <button class="btn btn-info" (click)="openEditModal(Guide)">แก้ไขข้อมูล</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+

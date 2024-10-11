@@ -1,72 +1,16 @@
 <app-navbar-manager/>
 <app-sidebar-manager/>
-<h2 class="mt-5" style="padding-left: 15rem;">รายการทัวร์ที่ยังไม้ได้จัด</h2><hr>
+<h2 class="mt-5" style="padding-left: 15rem;">รายการทัวร์ที่ยังไม้ได้จัด</h2>
 <div class="row">
     <div class="col-2">
 
     </div>
-    <div class="col-10">
-        <!-- <div class="bgbox">
-            <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">ค้นหาทัวร์</h5>
-                  <form
-                    [formGroup]="searchFormGroup"
-                    (ngSubmit)="searchSubmit()"
-                    class="needs-validation"
-                    novalidate
-                  >
-                    <div class="row g-3">
-                      <div class="col-sm-7">
-                        <label for="searchName">ชื่อทัวร์</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          formControlName="searchTour"
-                          placeholder="ชื่อทัวร์"
-                         
-                        />
-                      </div>
-                      <div class="col-sm">
-                        <label for="searchStartDate">วันที่จองไว้ (เริ่ม)</label>
-                        <input
-                          type="date"
-                          class="form-control"
-                          formControlName="searchStartDate"
-                          placeholder="วันที่จองไว้ (เริ่ม)"
-                          aria-label="วันที่จองไว้"
-                        />
-                      </div>
-                      <div class="col-sm">
-                        <label for="searchEndDate">วันที่จองไว้ (สิ้นสุด)</label>
-                        <input
-                          type="date"
-                          class="form-control"
-                          formControlName="searchEndDate"
-                          placeholder="วันที่จองไว้ (สิ้นสุด)"
-                          aria-label="วันที่จองไว้"
-                        />
-                      </div>
-                    </div>
-                    <button
-                      class="btn btn-secondary mt-2"
-                      type="submit"
-                      [disabled]="
-                        searchFormGroup.value['searchName'] != '' &&
-                        searchFormGroup.value['searchStartDate'] != '' &&
-                        searchFormGroup.value['searchEndDate'] != ''
-                      "
-                    >
-                      <i class="bi bi-search"></i> ค้นหา
-                    </button>
-                  </form>
-                </div>
-              </div>
-        </div> -->
 
+    <div class="col-10">
         <div class="bgbox">
             <app-program-tour-card></app-program-tour-card>
         </div>
+        
     </div>
 </div>
 

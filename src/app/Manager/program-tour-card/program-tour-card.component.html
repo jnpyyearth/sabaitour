@@ -4,12 +4,12 @@
   <div class="row">
     <div class="col-md-4" *ngFor="let Tour of Tours | async ">
       <div class="card">
-        <img [src]="'assets/images/' + Tour.Tour_Picture" class="card-img-top" alt="Tour Image">
+        <img [src]="'assets/images/' + Tour.Tour_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Tour Image">
         <div class="card-body">
           <h5 class="card-title">ทัวร์:{{ Tour.Tour_name }}</h5>
           <p class="card-text">ประเทศ: {{ Tour.Tour_Country }} </p>
 
-          <button class="btn btn-primary" (click)="openModal(Tour)">เพิ่มข้อมูล</button>
+          <button class="btn btn-success" (click)="openModal(Tour)">เพิ่มข้อมูล</button>
         </div>
       </div>
     </div>

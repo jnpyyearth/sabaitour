@@ -47,4 +47,9 @@ export class AuthService {
       return null;
     }
   }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token'); // Return true if there is a token
+  }
+
 }
