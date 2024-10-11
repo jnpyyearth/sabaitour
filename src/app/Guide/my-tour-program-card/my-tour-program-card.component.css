@@ -25,14 +25,21 @@
     border: 1px solid rgba(0, 0, 0, 0.951);
 }
 
+.card-title{
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+}
+
 
 .card-img-top{
     width: 305px;
     height: 260px;
-    margin-left: auto;
+    margin-left:10px ;
+    margin-top: 17.5px;
     margin-right: auto;
-    object-fit: cover;
     border-radius: 8px;
+    object-fit: cover;
+    border: 0.5px solid rgba(0, 0, 0, 0.951);
 }
 
 .img{

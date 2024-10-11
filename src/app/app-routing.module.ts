@@ -25,6 +25,7 @@ import { EditProgramComponent } from './Manager/edit-program/edit-program.compon
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
 import { AuthGuard } from './auth.guard';
+import { MyInformationComponent } from './Guide/my-information/my-information.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
     { path: 'my-tour-program', component: MyTourProgramComponent},
     { path: 'edit-program', component: EditProgramComponent},
     { path: 'tour-detail/:id', component: TourDetailComponent},
-    { path: 'internationaltour', component: InternationaltourComponent}, 
+    { path: 'internationaltour', component: InternationaltourComponent},
+    { path: 'my-information', component: MyInformationComponent},
 ];
 
 @NgModule({
