@@ -67,6 +67,16 @@ module.exports.addProgramTour = async (req, res) => {
     const pool = await sql.connect(config);
     const available_seats = total_seats;
 
+    const checkavaliable_guide =await pool.request()
+      .input('StartDate',sql.Date, StartDate)
+      .input('EndDate',sql.Date,EndDate)
+      .input('Guide_ID',sql.Int ,Guide_ID)
+      .query(`select * from ProgramTour  where Guide_ID =@Guide_ID and (StartDate between @StartDate and @EndDate  or EndDate between @StartDate and @EndDate)`);
+      
+      if(checkavaliable_guide.recordset.length >0 && checkavaliable_guide.recordset[0].cancelled ==0){
+        console.log('cancelled =',checkavaliable_guide.recordset[0].cancelled)
+        return res.status(200).json({available:false});
+      }
     const checkSameProgram = await pool.request()
       .input('Tour_ID', sql.Int, Tour_ID)
       .input('StartDate', sql.Date, StartDate)
@@ -75,7 +85,7 @@ module.exports.addProgramTour = async (req, res) => {
         SELECT COUNT(*) AS count FROM ProgramTour
         WHERE Tour_ID = @Tour_ID AND StartDate = @StartDate AND EndDate = @EndDate
       `);
-
+        
     // ถ้ามีโปรแกรมทัวร์ซ้ำ ให้ส่งสถานะ 400 พร้อมข้อความเตือนกลับไป
     if (checkSameProgram.recordset[0].count > 0) {
       return res.status(400).json({ message: 'โปรแกรมทัวร์นี้มีอยู่แล้วในช่วงเวลาที่กำหนด' });
@@ -116,13 +126,18 @@ module.exports.updateProgramTour = async (req, res) => {
       .input('Guide_ID', sql.Int, Guide_ID)
       .input('total_seats', sql.Int, total_seats)
       .input('ProgramTour_ID', sql.Int, ProgramTourId)
-      .query(`update ProgramTour set StartDate =@StartDate ,EndDate =@EndDate,
-      Price_per_day =@Price_per_day,Guide_ID =@Guide_ID,total_seats=@total_seats, available_seats =@total_seats
-      where ProgramTour_ID =@ProgramTour_ID`)
+      .execute('updateProgramtour')
+      
     res.json({ message: 'update programtour successfully', result })
   } catch (err) {
-    console.error('Error updating data', err)
+    if (err.message.includes('ไม่สามารถอัปเดตได้ ไกด์ถูกจองแล้วในช่วงเวลานี้')) {
+      console.log('Warning: The guide is already booked during this period.');
+      res.status(409).json({error: 'guide is already booked during this period'}) // แสดงข้อความเตือนใน Console
+    }else{
+        console.error('Error updating data', err)
     res.status(500).json({ error: 'Failed to update data' });
+    }
+  
   }
 }
 
@@ -175,3 +190,25 @@ INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID where ProgramTour.ProgramT
   }
 };
 
+
+module.exports.checksameguide = async (req, res) => {
+  const {  StartDate, EndDate,  Guide_ID } = req.body;
+
+  try {
+    const pool = await sql.connect(config);
+
+    const checkavaliable_guide =await pool.request()
+      .input('StartDate',sql.Date, StartDate)
+      .input('EndDate',sql.Date,EndDate)
+      .input('Guide_ID',sql.Int ,Guide_ID)
+      .query(`select * from ProgramTour  where Guide_ID =@Guide_ID and (StartDate between @StartDate and @EndDate  or EndDate between @StartDate and @EndDate)`);
+
+      if(checkavaliable_guide.recordset.length >0){
+        return res.status(200).json({available:false});
+      }
+      
+    }catch(error){
+
+    }
+  }
+      

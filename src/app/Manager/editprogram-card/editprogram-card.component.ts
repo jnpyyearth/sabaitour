@@ -14,6 +14,7 @@ export class EditprogramCardComponent implements OnInit {
   ProgramTour: Observable<ProgramTourForCard[]> | undefined;
   selectedProgramTour: ProgramTourForCard | null = null;
   Guides: Observable<GuideInOutbound[]> | null = null;
+  guideUnavailable:boolean =false;
   constructor(private tourService: ProgramTourService, private http: HttpClient) { }
   ngOnInit(): void {
     this.ProgramTour = this.tourService.getProgramTourCard().pipe(
@@ -41,12 +42,12 @@ export class EditprogramCardComponent implements OnInit {
       buttonsStyling: false
     });
     swalWithBootstrapButtons.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "จะยกเลิกทัวร์หรือไม่?",
+      text: "ทัวร์นี้สามารถกู้คืนได้ภายหลัง!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: "ดำเนินการต่อ ",
+      cancelButtonText: "ไม่ดำเนินการต่อ",
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -54,7 +55,7 @@ export class EditprogramCardComponent implements OnInit {
           (response) => {
             console.log('Tour cancelled:', response);
 
-            Swal.fire('Deleted!', 'Your tour has been cancelled.', 'success');
+            Swal.fire('ยกเลืกทัวร์สำเร็จ!', '', 'success');
             this.ngOnInit(); // Refresh the data
           },
           (error) => {
@@ -69,8 +70,8 @@ export class EditprogramCardComponent implements OnInit {
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire({
-          title: "Cancelled",
-          text: "Your imaginary file is safe 🙂",
+          title: "ยกเลิกทัวร์ไม่สำเร็จ",
+          text: "",
           icon: "error"
         });
       }
@@ -107,11 +108,14 @@ export class EditprogramCardComponent implements OnInit {
         this.isModalOpen = false; // ปิด modal หลังจากอัปเดตเสร็จ
         this.ngOnInit();
       },
-      (error)=>{
-        console.error('Error updating program tour:', error);
-        Swal.fire('Error', 'There was an error updating the Program Tour.', 'error');
-      }
+      (error) => {
+        console.error('Error response:', error);
+    
+            Swal.fire('ไม่สามารถแก้ไขได้', 'guide คนนี้ถูกมอบหมายทัวร์ในเวลานี้แล้ว', 'error');
+      
+    }
       )
     }
   }
+
 }

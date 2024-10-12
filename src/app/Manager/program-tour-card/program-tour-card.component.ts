@@ -18,31 +18,15 @@ export class ProgramTourCardComponent implements OnInit {
   isModalOpen: boolean = false;
   selectedTour: Tour | null = null;
   programTour: any = {};
+  guideId: any;
+  guideUnavailable: boolean = false;
   constructor(private tourService: ProgramTourService, private http: HttpClient) { }
   ngOnInit(): void {
     this.Tours = this.tourService.getAllTours();
+    this.guideUnavailable= false;
 
   }
-  // openModal(tour: Tour): void {
-  //   this.selectedTour = { ...tour }; // Clone ข้อมูลที่ดึงมา
-  //   this.programTour = {}; //ข้อมูลสำหรับกรอก
-  //   this.Guides = null
-  //   console.log('Guides reset:', this.Guides);
-  //   this.isModalOpen = true;
-  //   // กรองไกด์ตาม Type_Status ของทัวร์ (inbound/outbound)
-  //   this.Guides = this.tourService.getAllGuides().pipe(
-  //     map(guides => guides.filter(guide => guide.Type_Name === this.selectedTour?.Type_Status))
-  //   );
 
-
-  //   console.log('Guides after fetching:', this.Guides);
-  // }
-
-  // closeModal(): void {
-  //   this.isModalOpen = false;
-  //   this.selectedTour = null;
-  //   this.programTour = null; // ล้างข้อมูล
-  // }
 
 
   openModal(tour: Tour): void {
@@ -50,23 +34,24 @@ export class ProgramTourCardComponent implements OnInit {
     this.programTour = {}; // ข้อมูลสำหรับกรอก
     this.Guides = null;
     this.isModalOpen = true;
-  
+
     // กรองไกด์ตาม Type_Status ของทัวร์ (inbound/outbound)
     this.Guides = this.tourService.getAllGuides().pipe(
       map(guides => guides.filter(guide => guide.Type_Name === this.selectedTour?.Type_Status))
     );
-  
+
     console.log('Guides after fetching:', this.Guides);
   }
-  
+
   closeModal(): void {
     this.isModalOpen = false;
     this.selectedTour = null;
     this.programTour = null; // ล้างข้อมูล
-  
-  
+    this.ngOnInit(); 
+
+
   }
-  
+
   saveProgramTour(): void {
 
     console.log('Save programtour clicked:');
@@ -85,14 +70,27 @@ export class ProgramTourCardComponent implements OnInit {
         Guide_ID: this.programTour.Guide_ID
       };
       console.log('Data programtour:', newProgramTour);
-      this.http.post('http://localhost:3000/addProgramTour', newProgramTour)
+      this.http.post<any>('http://localhost:3000/addProgramTour', newProgramTour)
         .subscribe({
           next: (response) => {
-            console.log('this is response', response)
-            this.ngOnInit();
+            if (response.available == false) {
+              Swal.fire({
+                title: "ไม่สำเร็จ!",
+                text: "ไกด์คนนี้ถูกจองในช่วงเวลานี้แล้ว",
+                icon: "error"
+              });
+            }
+            else {
+              // ถ้าไกด์ว่าง, ดำเนินการต่อ
+              Swal.fire({
+                title: "เพิ่มโปรเเกรมทัวร์!",
+                text: "สำเร็จ!",
+                icon: "success"
+              });
+              this.ngOnInit(); // Refresh หน้า
+            }
           },
           error: (error) => {
-
             if (error.status === 400) {
               Swal.fire({
                 title: "ไม่สำเร็จ!",
@@ -102,10 +100,25 @@ export class ProgramTourCardComponent implements OnInit {
             }
             console.error('Error:', error);
           }
-
         })
     }
-    
-
+    this.isModalOpen = false;
   }
+ 
+CheckSameGuide(Guide_ID:number,StartDate:string,EndDate:string){
+  if (Guide_ID && StartDate && EndDate) {
+    const csguide = {
+      Guide_ID: Guide_ID,
+      StartDate: StartDate,
+      EndDate: EndDate
+    };
+
+    this.http.post<any>('http://localhost:3000/checkSameGuide', csguide).subscribe((response) => {
+      this.guideUnavailable = true; 
+    });
+  }else {
+    this.guideUnavailable =false;
+  }
+
+}
 }

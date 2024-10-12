@@ -11,24 +11,7 @@ export class AddTourComponent implements OnInit {
   programTourForm!: FormGroup;
   searchFormGroup!: FormGroup;
   
-  // Mock Data for Dropdowns
-  tours = [
-    { Tour_ID: 1, Tour_Name: 'City Tour' },
-    { Tour_ID: 2, Tour_Name: 'Mountain Hike' },
-    { Tour_ID: 3, Tour_Name: 'Beach Visit' }
-  ];
 
-  hotels = [
-    { Hotel_ID: 1, Hotel_Name: 'Seaside Hotel' },
-    { Hotel_ID: 2, Hotel_Name: 'Mountain Lodge' },
-    { Hotel_ID: 3, Hotel_Name: 'City Inn' }
-  ];
-
-  guides = [
-    { Guide_ID: 1, Guide_Name: 'John Doe' },
-    { Guide_ID: 2, Guide_Name: 'Jane Smith' },
-    { Guide_ID: 3, Guide_Name: 'Alex Johnson' }
-  ];
 
   constructor(private fb: FormBuilder) { }
 

@@ -11,4 +11,5 @@ router.put('/cancelledProgramTour/:id',tourCon.cancelledProgramTour)
 router.get('/getProgramTourById/:id',tourCon.getProgramTourById)
 router.get('/getInboundProgram',tourCon.getAllProgramTourForCardInbound)
 router.get('/getOutboundProgram',tourCon.getAllProgramTourForCardOutbound)
+router.post('/checkSameGuide',tourCon.checksameguide)
 module.exports =router;
