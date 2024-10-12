@@ -13,12 +13,15 @@ import Swal from 'sweetalert2';
 export class GuideInfoCardComponent {
   isModalOpen: boolean = false;
   GuideOutbound: Observable<any[]> | undefined;
-  selectedGuide: GuideInOutbound | null = null;
+  GuideInbound: Observable<any[]> | undefined;
+  selectedGuide: any = {};
   Guides: Observable<any[]> | null = null;
   constructor(private tourService: ProgramTourService, private http: HttpClient)  {}
 
   ngOnInit(): void {
     this.GuideOutbound = this.tourService.getOutboundGuides();
+    this.GuideInbound =this.tourService.getInboundGuides();
+    
   }
 
 
@@ -77,8 +80,34 @@ export class GuideInfoCardComponent {
     this.isModalOpen = false;
 
   }
-
-
+    updateprofile():void{
+      if(this.selectedGuide){
+        // make payload
+        const updateGuideProfile ={
+          Guide_ID:this.selectedGuide.Guide_ID,
+          firstname:this.selectedGuide.firstname,
+          lastname:this.selectedGuide.lastname,
+          phone:this.selectedGuide.phone,
+          email:this.selectedGuide.email,
+          Type_Name:this.selectedGuide.Type_Name,
+          User_ID:this.selectedGuide.User_ID
+        };
+        console.log(' this is update guide:',updateGuideProfile)
+        this.tourService.updateGuideProfile(updateGuideProfile).subscribe(
+          (response)=>{
+            console.log("update guide profile successfully",response)
+            Swal.fire('Success', 'Program Tour updated successfully!', 'success');
+            this.isModalOpen = false; // ปิด modal หลังจากอัปเดตเสร็จ
+        this.ngOnInit();
+          },(error)=>{
+            console.error('Error response:', error);
+    
+            Swal.fire('ไม่สามารถแก้ไขได้', 'guide คนนี้ถูกมอบหมายทัวร์ในเวลานี้แล้ว', 'error');
+      
+          }
+        )
+      }
+    }
 }
 
 

@@ -1,0 +1,22 @@
+.inbound-section {
+    background-color: #f0f8ff; /* Light blue background */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 100px; /* Space below for outbound section */
+  }
+  
+  .outbound-section {
+    background-color: #ffe4e1; /* Light coral background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Optional: Style for the card */
+  .card {
+    margin-bottom: 20px; /* Space between cards */
+  }
+  
+  /* Optional: Style for titles */
+  h2 {
+    margin-top: 0; /* Remove top margin for section titles */
+  }

@@ -47,7 +47,10 @@ export class ProgramTourService {
   updateProgramTour(ProgramTour:any):Observable<any[]>{
     return this.http.put<any[]>(`${apiUrl}/updateProgramTour/${ProgramTour.ProgramTour_ID}`,ProgramTour)
   }
-
+  updateGuideProfile(guideprofile:any):Observable<any[]>{
+    return this.http.put<any[]>(`${apiUrl}/updateGuideProfile`,guideprofile)
+  }
+  
   cancelledProgramTour(ProgramTour:any):Observable<any[]>{
     return this.http.put<any[]>(`${apiUrl}/cancelledProgramTour/${ProgramTour.ProgramTour_ID}`,ProgramTour)
   }
