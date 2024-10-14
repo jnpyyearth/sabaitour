@@ -18,17 +18,13 @@
 .card{
     margin: 1rem;
     overflow: hidden;
-    height: 500px;
+    height: 570px;
     width: 300px auto;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     border: 1px solid rgba(0, 0, 0, 0.951);
 }
 
-.btn{
-    background-color: aqua;
-    border-radius: 25px;
-}
 
 .card-img-top{
     width: 305px;

@@ -14,12 +14,17 @@ export class EditprogramCardComponent implements OnInit {
   ProgramTour: Observable<ProgramTourForCard[]> | undefined;
   selectedProgramTour: ProgramTourForCard | null = null;
   Guides: Observable<GuideInOutbound[]> | null = null;
+  ShowAllGuide:any
   guideUnavailable:boolean =false;
   constructor(private tourService: ProgramTourService, private http: HttpClient) { }
   ngOnInit(): void {
     this.ProgramTour = this.tourService.getProgramTourCard().pipe(
       map(ProgramTours=>ProgramTours.filter(ProgramTour=>ProgramTour.cancelled===0))
     )
+     // ดึงข้อมูลไกด์ทั้งหมด
+  this.tourService.getAllGuides().subscribe(guides => {
+    this.ShowAllGuide= guides; // เก็บข้อมูลไกด์ทั้งหมดในตัวแปร Guides
+  });
 
   }
   openEditModal(pt: ProgramTourForCard): void {

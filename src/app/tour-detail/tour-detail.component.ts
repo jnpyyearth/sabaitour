@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgramTourService } from '../Service/program-tour.service';
-import { FormsModule } from '@angular/forms'; // จำเป็นสำหรับ ngModel
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms'; // จำเป็นสำหรับ ngModel
 import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
 import { partition } from 'rxjs';
 import { AuthService } from '../Service/auth.service';
@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class TourDetailComponent implements OnInit {
   tourId: number | undefined;
   tourDetails: any;
+  reviewForm!: FormGroup;
   selectedTour: any;
   username: string | null = null;
   isModalOpen = false;
@@ -31,7 +32,7 @@ export class TourDetailComponent implements OnInit {
 
   showForms = false;
   booking = {};
-  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService,private fb: FormBuilder) { }
 
 
   ngOnInit(): void {
@@ -109,7 +110,9 @@ export class TourDetailComponent implements OnInit {
 
  
   }
-
+  submitReview(){
+    
+  }
 
 }
 

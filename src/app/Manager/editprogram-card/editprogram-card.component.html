@@ -13,6 +13,9 @@
         <div class="card-body">
           <h5 class="card-title">ทัวร์:{{ pt.Tour_name }}</h5>
           <p class="card-text">ประเทศ: {{ pt.Tour_Country }} </p>
+           <p class="card-text">ไกด์ที่รับผิดชอบ:<span *ngFor="let guide of ShowAllGuide">
+            <span *ngIf="guide.Guide_ID === pt.Guide_ID">{{guide.Guide_Name}}</span>
+           </span></p>
           <!-- Show Start Date -->
           <p class="card-text">เริ่มวันที่: {{ pt.StartDate | date:'shortDate' }}</p>
           <!-- Show End Date -->

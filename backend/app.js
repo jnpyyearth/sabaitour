@@ -11,6 +11,7 @@ const tourroute =require('./routes/tour')
 const guideSroute=require('./routes/guideSignUp')
 const Guideroute =require('./routes/guide/guide')
 const bookingroute =require('./routes/booking')
+const reviewroute = require ('./routes/review')
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use('/',tourroute);
 app.use('/',guideSroute)
 app.use('/',Guideroute)
 app.use('/',bookingroute)
+app.use('/',reviewroute)
 async function connectToDatabase() {
     try{
         await sql.connect(config);

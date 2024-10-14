@@ -203,3 +203,48 @@ module.exports.addbooking = async (req, res) => {
     });
   }
 };
+
+module.exports.canceling = async (req,res)=>{
+    const Booking_ID = req.params.id;
+    const bookdata =req.body
+    let transaction;
+    try{
+      const pool = await sql.connect(config);
+      transaction = new sql.Transaction(pool);
+      await transaction.begin();
+      const getUser_ID =await transaction.request()
+      .input('username',sql.VarChar,bookdata.username)
+      .query('select User_ID from Users where username =@username')
+       
+      if (getUser_ID.recordset.length === 0) {
+        return res.status(400).json({ message: 'User_ID not found' });
+    }
+      const User_ID =getUser_ID.recordset[0].User_ID
+        console.log('user_ID',User_ID)
+
+      const getCus_ID  =await transaction.request()
+      .input('User_ID',sql.Int,User_ID)
+      .query(`select Cus_ID from Customer where User_ID =@User_ID`)
+      if (getCus_ID.recordset.length === 0) {
+        return res.status(400).json({ message: 'Cus_ID not found' });
+    }
+      const Cus_ID =getCus_ID.recordset[0].Cus_ID
+      console.log('Cus_ID',Cus_ID)
+
+      const result = await transaction.request()
+      .input('Booking_ID',sql.Int,Booking_ID)
+      .input('Cus_ID',sql.Int,Cus_ID)
+      .execute(`updatecancelled`);
+
+      await transaction.commit();
+      console.log('Transaction commit!',result);
+    }catch(err){
+      console.log("error:", err);
+      if (transaction) {
+          await transaction.rollback(); // rollback ธุรกรรมเมื่อเกิดข้อผิดพลาด
+          console.log('Transaction rolled back due to error.');
+      }
+      res.status(500).json({ message: 'Error during cancellation', error: err });
+    }
+
+}
