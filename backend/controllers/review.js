@@ -7,6 +7,7 @@ module.exports.addreview = async (req, res) => {
     try {
         const { ProgramTour_ID, username,comment } = req.body
         const Review_Date =new Date();
+        const pool = await sql.connect(config)
         transaction = new sql.Transaction(pool);
         await transaction.begin();
         //get User_ID
@@ -44,6 +45,18 @@ module.exports.addreview = async (req, res) => {
             await transaction.rollback(); // rollback ธุรกรรมเมื่อเกิดข้อผิดพลาด
             console.log('Transaction rolled back due to error.');
         }
-        res.status(500).json({ message: 'Erorr  add review', error });
+        res.status(500).json({ message: 'Error adding review', error: error.message || error });
     }
 }
+module.exports.getreview = async (req,res)=>{
+    const {ProgramTour_ID} = req.body
+    try{
+            const pool =await sql.connect()
+            const result = await pool.request()
+            .input('ProgramTour_ID',sql.Int,ProgramTour_ID)
+            .query(`select * from Reviews where ProgramTour_ID = @ProgramTour_ID`)
+            res.status(200).json(result.recordset);
+    }catch (error){
+        res.status(500).json({ message: 'Error gettingreview', error: error.message || error });
+    }
+    }

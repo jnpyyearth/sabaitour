@@ -65,4 +65,7 @@ export class ProgramTourService {
   addbooking(booking:any):Observable<any[]>{
     return this.http.post<any[]>(`${apiUrl}/addBooking`,booking)
   }
+  addreview(review:any):Observable<any[]>{
+    return this.http.post<any[]>(`${apiUrl}/review`,review)
+  }
 }

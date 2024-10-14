@@ -17,6 +17,7 @@ export class TourDetailComponent implements OnInit {
   reviewForm!: FormGroup;
   selectedTour: any;
   username: string | null = null;
+  newreview:any;
   isModalOpen = false;
   numberParticipant = 1;
   Participants: {
@@ -111,7 +112,27 @@ export class TourDetailComponent implements OnInit {
  
   }
   submitReview(){
+    console.log('add review')
+    if(this.reviewForm.invalid){
+      console.log('invalide  review Form')
+      return;
+    }
+    const reviewData = {
+      ...this.reviewForm.value}
+    this.tourService.addreview(reviewData).subscribe(
+      (response)=>{
+        console.log("เพิ่มความเห็น",response)
+        Swal.fire('Success', 'Program Tour updated successfully!', 'success');
+        // ปิด modal หลังจากอัปเดตเสร็จ
+        this.ngOnInit();
+      },
+      (error) => {
+        console.error('Error response:', error);
     
+            Swal.fire('ไม่สามารถเพิ่มความเห็นได้', 'guide คนนี้ถูกมอบหมายทัวร์ในเวลานี้แล้ว', 'error');
+      
+    }
+    )
   }
 
 }
