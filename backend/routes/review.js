@@ -3,6 +3,6 @@ const router = express.Router();
 const reviewCon = require("../controllers/review");
 require('dotenv').config();
 
-// router.post('/review',reviewCon)
+router.post('/review',reviewCon)
 
 module.exports =router;

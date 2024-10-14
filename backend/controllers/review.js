@@ -5,13 +5,13 @@ const sql = require("mssql");
 module.exports.addreview = async (req, res) => {
     let transaction
     try {
-        const { ProgramTour_ID, username } = req.body
+        const { ProgramTour_ID, username,comment } = req.body
         const Review_Date =new Date();
         transaction = new sql.Transaction(pool);
         await transaction.begin();
         //get User_ID
         const getUser_ID = await transaction.request()
-            .input('username', sql.VarChar, bookdata.username)
+            .input('username', sql.VarChar,username)
             .query('select User_ID from Users where username =@username')
 
         if (getUser_ID.recordset.length === 0) {
@@ -34,14 +34,16 @@ module.exports.addreview = async (req, res) => {
         .input('Cus_ID',sql.Int,Cus_ID)
         .input('ProgramTour_ID',sql.Int,ProgramTour_ID)
         .input('Review_Date',sql.Date,Review_Date)
-        .query(`insert into `)
-        await transaction.commit
-        res.status(200).json(AllprogramtourForCard.recordset)
+        .input('comment',sql.VarChar,comment)
+        .query(`insert into Reviews (Cus_ID, ProgramTour_ID, Review_Date, comment) 
+            VALUES (@Cus_ID, @ProgramTour_ID, @Review_Date, @comment)`)
+        await transaction.commit()
+        res.status(200).json({ message: 'Review added successfully', review: reviewresult });
     } catch (error) {
         if (transaction) {
             await transaction.rollback(); // rollback ธุรกรรมเมื่อเกิดข้อผิดพลาด
             console.log('Transaction rolled back due to error.');
         }
-        res.status(500).json({ message: 'Erorr feching  all programtour', error });
+        res.status(500).json({ message: 'Erorr  add review', error });
     }
 }
