@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgramTourService } from '../Service/program-tour.service';
-import { FormBuilder, FormGroup, FormsModule } from '@angular/forms'; // จำเป็นสำหรับ ngModel
+import { FormsModule } from '@angular/forms'; // จำเป็นสำหรับ ngModel
 import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
 import { partition } from 'rxjs';
 import { AuthService } from '../Service/auth.service';
@@ -14,10 +14,8 @@ import Swal from 'sweetalert2';
 export class TourDetailComponent implements OnInit {
   tourId: number | undefined;
   tourDetails: any;
-  // reviewForm!: FormGroup;
   selectedTour: any;
   username: string | null = null;
-  newreview:any;
   isModalOpen = false;
   numberParticipant = 1;
   Participants: {
@@ -33,7 +31,7 @@ export class TourDetailComponent implements OnInit {
 
   showForms = false;
   booking = {};
-  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService,private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService) { }
 
 
   ngOnInit(): void {
@@ -111,29 +109,7 @@ export class TourDetailComponent implements OnInit {
 
  
   }
-  // submitReview(){
-  //   console.log('add review')
-  //   if(this.reviewForm.invalid){
-  //     console.log('invalide  review Form')
-  //     return;
-  //   }
-  //   const reviewData = {
-  //     ...this.reviewForm.value}
-  //   this.tourService.addreview(reviewData).subscribe(
-  //     (response)=>{
-  //       console.log("เพิ่มความเห็น",response)
-  //       Swal.fire('Success', 'Program Tour updated successfully!', 'success');
-  //       // ปิด modal หลังจากอัปเดตเสร็จ
-  //       this.ngOnInit();
-  //     },
-  //     (error) => {
-  //       console.error('Error response:', error);
-    
-  //           Swal.fire('ไม่สามารถเพิ่มความเห็นได้', 'guide คนนี้ถูกมอบหมายทัวร์ในเวลานี้แล้ว', 'error');
-      
-  //   }
-  //   )
-  // }
+
 
 }
 
