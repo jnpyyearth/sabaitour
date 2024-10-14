@@ -127,7 +127,11 @@ export class LogInComponent implements OnInit {
         console.log('Navigated to home-manager');
       });
     } else if (this.userRole === 'customer') {
-      this.router.navigate(['/home']).then(() => {
+      
+      this.router.navigate(['/home'], { state: { loggedIn: true } }).then(() => {
+        
+        // ซน
+        this.authService.setLoggedIn(true);
         console.log('Navigated to home');
       });
     } else if (this.userRole === 'guide') {

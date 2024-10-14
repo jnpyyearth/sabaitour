@@ -26,6 +26,8 @@ import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
 import { AuthGuard } from './auth.guard';
 import { MyInformationComponent } from './Guide/my-information/my-information.component';
+import { ContactusComponent } from './contact-us/contact-us.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,8 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'news', component: NewsComponent },
     { path: 'about-us', component: AboutUsComponent},
+    { path: 'contact-us', component: ContactusComponent},
+    {path: 'my-booking', component: MyBookingComponent},
     { path: 'log-out', component: LogOutComponent},
     { path: 'login', component: LogInComponent},
     { path: 'about-us', component: AboutUsComponent},
