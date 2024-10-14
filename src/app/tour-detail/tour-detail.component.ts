@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class TourDetailComponent implements OnInit {
   tourId: number | undefined;
   tourDetails: any;
-  reviewForm!: FormGroup;
+  // reviewForm!: FormGroup;
   selectedTour: any;
   username: string | null = null;
   newreview:any;
