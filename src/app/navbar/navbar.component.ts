@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../Service/auth.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -10,46 +9,23 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class NavbarComponent {
   title = 'sabaitour';
-  isLoggedIn: boolean = false;
-  showModal = false;
-  
-  ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-  }
 
-  constructor(private authService: AuthService, private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-  
-  // เข้าถึง loggedIn โดยใช้ ['loggedIn']
-  if (navigation?.extras?.state?.['loggedIn']) {
-    this.isLoggedIn = true; // ตั้งค่าสถานะการล็อกอินเป็น true
-  }
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  goToLogin() {
-    this.router.navigate(['/login']);
-  }
+  // isLoggedIn(): boolean {
+  //   return this.authService.isLoggedIn(); // ตรวจสอบว่าผู้ใช้เข้าสู่ระบบอยู่หรือไม่
+  // }
 
-  openModal() {
-    this.showModal = true;
-  }
-
-  closeModal() {
-    this.showModal = false;
+  login() {
+    this.router.navigate(['/log-in']); // ไปยังหน้า Login
   }
 
   logout() {
     this.authService.logout(); // เรียกใช้ฟังก์ชัน Logout
-    this.isLoggedIn = false;
     this.router.navigate(['/']); // กลับไปหน้า Home
   }
 
-  ChangeinfoForm!: FormGroup;
 
-
-  Changeinfo(){
-
-  }
 
 
 
