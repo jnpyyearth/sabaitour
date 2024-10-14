@@ -42,6 +42,8 @@ import { BookingComponent } from './booking/booking.component';
 import { GuideInfoCardComponent } from './Manager/guide-info-card/guide-info-card.component';
 import { MyTourProgramCardComponent } from './Guide/my-tour-program-card/my-tour-program-card.component';
 import { MyInformationComponent } from './Guide/my-information/my-information.component';
+import { ContactusComponent } from './contact-us/contact-us.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { MyInformationComponent } from './Guide/my-information/my-information.co
     GuideInfoCardComponent,
     MyTourProgramCardComponent,
     MyInformationComponent,
+    ContactusComponent,
+    MyBookingComponent,
   
   ],
   imports: [
