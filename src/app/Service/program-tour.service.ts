@@ -80,4 +80,8 @@ export class ProgramTourService {
   getmybooked(Cus_ID:number): Observable<any[]>{
     return this.http.get<any[]>(`${apiUrl}/getmybooked/${Cus_ID}`)
   }
+  getParticipants(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/getParticipants`);
+  }
+  
 }

@@ -245,18 +245,35 @@ module.exports.canceling = async (req, res) => {
 }
 module.exports.getAllProgramTourCheck = async (req, res) => {
   try {
+    console.log('hello check booked')
     const pool = await sql.connect(config);
     const Cus_ID = req.params.id
+    console.log('Customer ID:', Cus_ID);
     const AllprogramtourCheck = await pool.request()
       .input('Cus_ID', sql.Int, Cus_ID)
-      .query(`SELECT b.Booking_ID,   t.Tour_Country, t.Tour_name, t.Hotel, pt.StartDate,  pt.EndDate,  DATEDIFF(DAY, pt.StartDate, pt.EndDate) + 1 AS period, pt.Price_per_day, pt.Price_per_person, pt.Guide_ID,  b.Tourist_Amount, b.TotalPrice,  b.Booking_Date
+      .query(`SELECT b.Booking_ID,   t.Tour_Country, t.Tour_name,t.Tour_Picture, t.Hotel, pt.StartDate,  pt.EndDate,  DATEDIFF(DAY, pt.StartDate, pt.EndDate) + 1 AS period, pt.Price_per_day, pt.Price_per_person, pt.Guide_ID,  b.Tourist_Amount, b.TotalPrice,  b.Booking_Date
 FROM Booking b
 INNER JOIN ProgramTour pt ON b.ProgramTour_ID = pt.ProgramTour_ID
 INNER JOIN Guide g ON pt.Guide_ID = g.Guide_ID
 INNER JOIN Tour t ON pt.Tour_ID = t.Tour_ID
-WHERE b.Cus_ID = @Cus_ID`)
+WHERE b.Cus_ID = @Cus_ID and b.cancelled = 0`)
+
+    console.log('hello check booked', AllprogramtourCheck.recordset)
     res.status(200).json(AllprogramtourCheck.recordset)
   } catch (error) {
     res.status(500).json({ message: 'Erorr feching  all programtour', error });
+  }
+}
+
+module.exports.getAllฺBookingParticipants = async (req, res) => {
+  try {
+    console.log('hello  booked participant')
+    const pool = await sql.connect(config);
+    const getAllฺBookingParticipants = await pool.request()
+      .query(`select *,ROW_NUMBER() OVER (PARTITION BY b.Booking_ID ORDER BY b.Participant_ID) AS RowNum from Booking_Participants as b`)
+    console.log('hello check participants', getAllฺBookingParticipants.recordset)
+    res.status(200).json(getAllฺBookingParticipants.recordset)
+  } catch (error) {
+    res.status(500).json({ message: 'Erorr feching  all participants', error });
   }
 }
