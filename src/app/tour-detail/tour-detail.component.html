@@ -126,14 +126,33 @@
       </div>
   
     </div>
+    <div class="container mt-4">
 
-    <h3>Write a Review</h3>
-    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
-      <label for="comment">Your Review:</label>
-      <textarea formControlName="comment" id="comment" rows="4" cols="50" required></textarea><br>
-      <label for="tourName">Tour Name:</label>
-      <input type="text" formControlName="tourName" id="tourName" readonly><br>
-  
-      <button type="submit" [disabled]="reviewForm.invalid">Submit Review</button>
-    </form>
-  </div>
+      <h3>Submit a Review</h3>
+      <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+        <div class="form-group mt-3">
+          <label for="comment">Comment:</label>
+          <textarea id="comment" formControlName="comment" class="form-control" rows="4" required></textarea>
+          <div *ngIf="reviewForm.get('comment')?.invalid && reviewForm.get('comment')?.touched" class="text-danger">
+            Please enter at least 10 characters for your comment.
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="reviewForm.invalid">Submit Review</button>
+      </form>
+    </div>
+
+    <div class="container">
+      <div *ngIf="reviews.length > 0; else noReviews">
+        <h3>รีวิว</h3>
+        <div class="review-container" *ngFor="let review of reviews">
+          <p><strong>{{ review.username }}</strong></p> <!-- ชื่อผู้ใช้ -->
+          <p>{{ review.comment }}</p> <!-- คอมเมนต์ -->
+          <hr> <!-- เส้นคั่นระหว่างคอมเมนต์ -->
+        </div>
+      </div>
+      
+      <ng-template #noReviews>
+        <p>ยังไม่มีรีวิวสำหรับทัวร์นี้</p>
+      </ng-template>
+    </div>

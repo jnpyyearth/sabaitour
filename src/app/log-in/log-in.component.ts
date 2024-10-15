@@ -108,13 +108,17 @@ export class LogInComponent implements OnInit {
             this.errorMessage = 'Login failed. Invalid token.';
           }
         },
-        error: (error) => {
-          if (error.status === 401) {
-            this.errorMessage = 'Invalid username or password';
-          } else {
-            this.errorMessage = 'Server error';
-          }
-        }
+       
+    error: (error) => {
+      console.log('Error occurred:', error);  // เพิ่มพิมพ์รายละเอียดทั้งหมด
+      console.log('Error status:', error.status); // ตรวจสอบสถานะข้อผิดพลาด
+      if (error.status === 401) {
+        console.log('hello invalid in frontend');
+        this.errorMessage = 'Invalid username or password';
+      } else {
+        this.errorMessage = 'Server error';
+      }
+    }
       });
 
   }

@@ -7,7 +7,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-
+.is-invalid {
+    border-color: red;  /* ทำให้ input สีแดง */
+  }
+  
+  .error-message {
+    color: red;  /* ทำให้ข้อความสีแดง */
+    margin-top: 10px;
+  }
 
 
 body{

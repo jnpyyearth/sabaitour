@@ -54,7 +54,7 @@
 //     //insert booking and get  booking_ID
 //     console.log('Cus_ID:', Cus_ID);
 //     const bookingInsert = await pool.request()
-    
+
 //       .input('ProgramTour_ID', sql.Int, ProgramTour_ID)
 //       .input('Tourist_Amount', sql.Int, touristAmount)
 //       .input('TotalPrice', sql.Money, TotalPrice)
@@ -169,7 +169,7 @@ module.exports.addbooking = async (req, res) => {
               (@ProgramTour_ID, @Tourist_Amount, @TotalPrice, @Cus_ID, @BookingDate)select scope_identity() as Booking_ID`);
 
     const Booking_ID = bookingInsert.recordset[0].Booking_ID;
-        //save all participants to booking_participants
+    //save all participants to booking_participants
     for (const participant of participants) {
       await pool.request()
         .input('Booking_ID', sql.Int, Booking_ID)
@@ -185,11 +185,6 @@ module.exports.addbooking = async (req, res) => {
                 VALUES (@Booking_ID, @Cus_ID, @Tourist_Firstname, @Tourist_Lastname, @ID_Card, @DateOfBirth, @email, @phone, @Special_Request)`);
     }
 
-    // Update available seats
-    // await pool.request()
-    //   .input('available_seats', sql.Int, available_seats - touristAmount)
-    //   .input('ProgramTour_ID', sql.Int, ProgramTour_ID)
-    //   .query('UPDATE ProgramTour SET available_seats = @available_seats WHERE ProgramTour_ID = @ProgramTour_ID');
 
     await transaction.commit();
     return res.status(200).json({ message: 'Booking added successfully' });
@@ -204,47 +199,81 @@ module.exports.addbooking = async (req, res) => {
   }
 };
 
-module.exports.canceling = async (req,res)=>{
-    const Booking_ID = req.params.id;
-    const bookdata =req.body
-    let transaction;
-    try{
-      const pool = await sql.connect(config);
-      transaction = new sql.Transaction(pool);
-      await transaction.begin();
-      const getUser_ID =await transaction.request()
-      .input('username',sql.VarChar,bookdata.username)
+module.exports.canceling = async (req, res) => {
+  const Booking_ID = req.params.id;
+  const bookdata = req.body
+  let transaction;
+  try {
+    const pool = await sql.connect(config);
+    transaction = new sql.Transaction(pool);
+    await transaction.begin();
+    const getUser_ID = await transaction.request()
+      .input('username', sql.VarChar, bookdata.username)
       .query('select User_ID from Users where username =@username')
-       
-      if (getUser_ID.recordset.length === 0) {
-        return res.status(400).json({ message: 'User_ID not found' });
-    }
-      const User_ID =getUser_ID.recordset[0].User_ID
-        console.log('user_ID',User_ID)
 
-      const getCus_ID  =await transaction.request()
-      .input('User_ID',sql.Int,User_ID)
+    if (getUser_ID.recordset.length === 0) {
+      return res.status(400).json({ message: 'User_ID not found' });
+    }
+    const User_ID = getUser_ID.recordset[0].User_ID
+    console.log('user_ID', User_ID)
+
+    const getCus_ID = await transaction.request()
+      .input('User_ID', sql.Int, User_ID)
       .query(`select Cus_ID from Customer where User_ID =@User_ID`)
-      if (getCus_ID.recordset.length === 0) {
-        return res.status(400).json({ message: 'Cus_ID not found' });
+    if (getCus_ID.recordset.length === 0) {
+      return res.status(400).json({ message: 'Cus_ID not found' });
     }
-      const Cus_ID =getCus_ID.recordset[0].Cus_ID
-      console.log('Cus_ID',Cus_ID)
+    const Cus_ID = getCus_ID.recordset[0].Cus_ID
+    console.log('Cus_ID', Cus_ID)
 
-      const result = await transaction.request()
-      .input('Booking_ID',sql.Int,Booking_ID)
-      .input('Cus_ID',sql.Int,Cus_ID)
+    const result = await transaction.request()
+      .input('Booking_ID', sql.Int, Booking_ID)
+      .input('Cus_ID', sql.Int, Cus_ID)
       .execute(`updatecancelled`);
 
-      await transaction.commit();
-      console.log('Transaction commit!',result);
-    }catch(err){
-      console.log("error:", err);
-      if (transaction) {
-          await transaction.rollback(); // rollback ธุรกรรมเมื่อเกิดข้อผิดพลาด
-          console.log('Transaction rolled back due to error.');
-      }
-      res.status(500).json({ message: 'Error during cancellation', error: err });
+    await transaction.commit();
+    console.log('Transaction commit!', result);
+  } catch (err) {
+    console.log("error:", err);
+    if (transaction) {
+      await transaction.rollback(); // rollback ธุรกรรมเมื่อเกิดข้อผิดพลาด
+      console.log('Transaction rolled back due to error.');
     }
+    res.status(500).json({ message: 'Error during cancellation', error: err });
+  }
 
+}
+module.exports.getAllProgramTourCheck = async (req, res) => {
+  try {
+    console.log('hello check booked')
+    const pool = await sql.connect(config);
+    const Cus_ID = req.params.id
+    console.log('Customer ID:', Cus_ID);
+    const AllprogramtourCheck = await pool.request()
+      .input('Cus_ID', sql.Int, Cus_ID)
+      .query(`SELECT b.Booking_ID,   t.Tour_Country, t.Tour_name,t.Tour_Picture, t.Hotel, pt.StartDate,  pt.EndDate,  DATEDIFF(DAY, pt.StartDate, pt.EndDate) + 1 AS period, pt.Price_per_day, pt.Price_per_person, pt.Guide_ID,  b.Tourist_Amount, b.TotalPrice,  b.Booking_Date
+FROM Booking b
+INNER JOIN ProgramTour pt ON b.ProgramTour_ID = pt.ProgramTour_ID
+INNER JOIN Guide g ON pt.Guide_ID = g.Guide_ID
+INNER JOIN Tour t ON pt.Tour_ID = t.Tour_ID
+WHERE b.Cus_ID = @Cus_ID and b.cancelled = 0`)
+
+    console.log('hello check booked', AllprogramtourCheck.recordset)
+    res.status(200).json(AllprogramtourCheck.recordset)
+  } catch (error) {
+    res.status(500).json({ message: 'Erorr feching  all programtour', error });
+  }
+}
+
+module.exports.getAllฺBookingParticipants = async (req, res) => {
+  try {
+    console.log('hello  booked participant')
+    const pool = await sql.connect(config);
+    const getAllฺBookingParticipants = await pool.request()
+      .query(`select *,ROW_NUMBER() OVER (PARTITION BY b.Booking_ID ORDER BY b.Participant_ID) AS RowNum from Booking_Participants as b`)
+    console.log('hello check participants', getAllฺBookingParticipants.recordset)
+    res.status(200).json(getAllฺBookingParticipants.recordset)
+  } catch (error) {
+    res.status(500).json({ message: 'Erorr feching  all participants', error });
+  }
 }
