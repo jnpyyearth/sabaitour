@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../Service/auth.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -13,17 +13,31 @@ export class NavbarComponent {
   isLoggedIn: boolean = false;
   showModal = false;
   
-  ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-  }
+  // ngOnInit(): void {
+  //   this.isLoggedIn = this.authService.isLoggedIn();
+  // }
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,private fb: FormBuilder) {
     const navigation = this.router.getCurrentNavigation();
   
   // เข้าถึง loggedIn โดยใช้ ['loggedIn']
   if (navigation?.extras?.state?.['loggedIn']) {
     this.isLoggedIn = true; // ตั้งค่าสถานะการล็อกอินเป็น true
   }
+  }
+
+  
+
+  ngOnInit(): void {
+    this.ChangeinfoForm = this.fb.group({
+      newusername: ['', Validators.required],
+      newfirstname: ['', Validators.required],
+      newlastname: ['', Validators.required],
+      newphone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],  // ตัวอย่างตรวจสอบเบอร์โทร
+      newemail: ['', [Validators.required, Validators.email]],
+      newpassword: ['', [Validators.required, Validators.minLength(6)]],
+      newconfirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
   goToLogin() {

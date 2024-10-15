@@ -17,4 +17,9 @@ export class HomeTourCardComponent implements OnInit {
      this.homeTourCard =this.tourService.getProgramTourCard().pipe(map(ProgramTours=>ProgramTours.filter(ProgramTour=>ProgramTour.cancelled===0)))
  }
 
+
+ 
+
+
+
 }
