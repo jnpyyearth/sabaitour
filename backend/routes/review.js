@@ -4,7 +4,7 @@ const reviewCon = require("../controllers/review");
 require('dotenv').config();
 
 router.post('/review',reviewCon.addreview)
-router.get('/getreview',reviewCon.getreview)
-// router.post('/review',reviewCon)
+router.get('/getreview/:id',reviewCon.getreview)
+
 
 module.exports =router;

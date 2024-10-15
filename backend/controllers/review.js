@@ -48,15 +48,24 @@ module.exports.addreview = async (req, res) => {
         res.status(500).json({ message: 'Error adding review', error: error.message || error });
     }
 }
-module.exports.getreview = async (req,res)=>{
-    const {ProgramTour_ID} = req.body
-    try{
-            const pool =await sql.connect()
-            const result = await pool.request()
-            .input('ProgramTour_ID',sql.Int,ProgramTour_ID)
-            .query(`select * from Reviews where ProgramTour_ID = @ProgramTour_ID`)
-            res.status(200).json(result.recordset);
-    }catch (error){
-        res.status(500).json({ message: 'Error gettingreview', error: error.message || error });
+module.exports.getreview = async (req, res) => {
+    const  ProgramTour_ID  = req.params.id;
+    console.log('Received ProgramTour_ID:', ProgramTour_ID);
+    try {
+      const pool = await sql.connect(); 
+      const result = await pool.request()
+        .input('ProgramTour_ID', sql.Int, ProgramTour_ID) 
+        .query(`
+          SELECT Reviews.ProgramTour_ID, Reviews.comment, Users.username
+          FROM Reviews
+          INNER JOIN Customer ON Reviews.Cus_ID = Customer.Cus_ID
+          INNER JOIN Users ON Customer.User_ID = Users.User_ID
+          WHERE Reviews.ProgramTour_ID = @ProgramTour_ID;  
+        `);
+          console.log("programTour_ID",ProgramTour_ID)  
+      res.status(200).json(result.recordset); 
+    } catch (error) {
+      res.status(500).json({ message: 'Error getting review', error: error.message || error });
     }
-    }
+  };
+  

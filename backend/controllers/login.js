@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 module.exports.loginUser = async(req,res)=>{
     const { username, password } = req.body;
     const pool = await sql.connect(config);
-    
+    console.log('hello login api',username,password)
     try {
         // Query to check if user exists with the given username and password
         const result = await pool.request()
@@ -15,8 +15,8 @@ module.exports.loginUser = async(req,res)=>{
         .query('SELECT * FROM Users WHERE username = @username'); //query
 
         if (result.recordset.length === 0) {
-            // Username not found
-            return res.status(401).json({ message: 'Invalid username or password' });
+            console.log('hello incorrect username');
+            return res.status(401).json({ message: 'Invalid username or password' }); // ส่ง HTTP 401
         }
         if (result.recordset.length > 0) {
             const user = result.recordset[0];
@@ -40,7 +40,8 @@ module.exports.loginUser = async(req,res)=>{
                 });
             } else {
                 //password invalid
-                res.status(401).json({ message: 'Invalid username or password' });
+                console.log('hello invaild password')
+               return res.status(401).json({ message: 'Invalid username or password' });
             }
  
         } 
@@ -49,4 +50,30 @@ module.exports.loginUser = async(req,res)=>{
         res.status(500).json({ message: 'Server error' });
     }
 };
+module.exports.getCustomerInfo = async (req, res) => {
+    const { username } = req.body; // รับ username จาก request body
+    try {
+        const pool = await sql.connect(config);
+        const result = await pool.request()
+            .input('username', sql.VarChar, username)
+            .query(`
+                SELECT Users.User_ID, Customer.Cus_ID
+                FROM Users
+                INNER JOIN Customer ON Users.User_ID = Customer.User_ID
+                WHERE Users.username = @username
+            `);
+
+        if (result.recordset.length === 0) {
+            return res.status(400).json({ message: 'User or Customer not found' });
+        }
+
+        const { User_ID, Cus_ID } = result.recordset[0];
+        res.status(200).json({ User_ID, Cus_ID }); // ส่ง User_ID และ Cus_ID กลับไปยัง frontend
+
+    } catch (err) {
+        console.error('Error fetching user/customer info:', err);
+        res.status(500).json({ message: 'Server error', error: err });
+    }
+};
+
 

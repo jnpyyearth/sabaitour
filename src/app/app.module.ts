@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NewsComponent } from './news/news.component';
 import { AccountComponent } from './account/account.component';
-import { LogOutComponent } from './log-out/log-out.component';
+
 import { LogInComponent } from './log-in/log-in.component';
 import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
@@ -27,13 +27,13 @@ import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramTourCardComponent } from './Manager/program-tour-card/program-tour-card.component';
 import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
 import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
 import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram-card.component';
 import { HomeTourCardComponent } from './home/home-tour-card/home-tour-card.component';
-import { TourDetailComponent } from './tour-detail/tour-detail.component'; 
+import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { ProgramTourService } from './Service/program-tour.service';
 import { NtCardComponent } from './nationaltour/nt-card/nt-card.component';
 import { InterTouCardComponent } from './international-tour/inter-tou-card/inter-tou-card.component';
@@ -52,7 +52,7 @@ import { MyBookingComponent } from './my-booking/my-booking.component';
     AboutUsComponent,
     NewsComponent,
     AccountComponent,
-    LogOutComponent,
+
     LogInComponent,
     NationaltourComponent,
     JapanTourComponent,
@@ -84,7 +84,7 @@ import { MyBookingComponent } from './my-booking/my-booking.component';
     MyInformationComponent,
     ContactusComponent,
     MyBookingComponent,
-  
+
   ],
   imports: [
     BrowserModule,

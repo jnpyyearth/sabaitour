@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgramTourService } from '../Service/program-tour.service';
-import { FormsModule } from '@angular/forms'; // จำเป็นสำหรับ ngModel
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'; // จำเป็นสำหรับ ngModel
 import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
 import { partition } from 'rxjs';
 import { AuthService } from '../Service/auth.service';
@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class TourDetailComponent implements OnInit {
   tourId: number | undefined;
   tourDetails: any;
+  reviews: any[] = [];
   selectedTour: any;
   username: string | null = null;
   isModalOpen = false;
@@ -28,23 +29,30 @@ export class TourDetailComponent implements OnInit {
     special_request: string;
 
   }[] = [];
-
+  reviewForm!: FormGroup;
   showForms = false;
   booking = {};
-  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService,private fb: FormBuilder) { }
 
 
   ngOnInit(): void {
     // Get the tour ID from the route parameters
     this.route.paramMap.subscribe(params => {
       this.tourId = Number(params.get('id')); // 'id' should match the parameter name in the route configuration
-
+      
       // Fetch the tour details using the tour ID
       if (this.tourId) {
         this.getTourDetails(this.tourId);
+        this.getTourReviews(this.tourId);
+        console.log('this is tour id in ngoninit',this.tourId)
       }
     });
+    
     this.username = this.authService.getUsername()
+    this.reviewForm = this.fb.group({
+      comment: ['', [Validators.required, Validators.minLength(4)]]
+    });
+    
   }
 
   getTourDetails(id: number) {
@@ -56,8 +64,15 @@ export class TourDetailComponent implements OnInit {
     });
   }
 
-
-
+  getTourReviews(tourId: number) {
+    console.log('Fetching reviews for ProgramTour_ID:', tourId);
+    this.tourService.getReviewsForTour(tourId).subscribe(data => {
+      this.reviews = data; 
+      console.log('Hello Reviews:', data);  // เก็บรีวิวในตัวแปร reviews
+    }, error => {
+      console.error('Error fetching reviews:', error);
+    });
+  }
   openModal() {
 
     this.isModalOpen = true;
@@ -109,7 +124,30 @@ export class TourDetailComponent implements OnInit {
 
  
   }
+  submitReview() {
+    if (this.reviewForm.invalid) {
+      Swal.fire('Error', 'Please fill out the form correctly.', 'error');
+      return;
+    }
 
+    // สร้างข้อมูลสำหรับส่งรีวิวไป backend (เฉพาะ comment)
+    const reviewData = {
+      comment: this.reviewForm.value.comment,
+      username:this.username,
+      ProgramTour_ID:this.tourId
+    };
+
+    this.tourService.addreview(reviewData).subscribe(
+      (response) => {
+        Swal.fire('สำเร็จ', 'ความเห็นของคุณถูกส่งเรียบร้อยแล้ว', 'success');
+        this.reviewForm.reset();  // เคลียร์ฟอร์มหลังจากส่งเสร็จ
+      },
+      (error) => {
+        Swal.fire('ข้อผิดพลาด', 'ไม่สามารถส่งความเห็นได้', 'error');
+        console.error('Error submitting review:', error);
+      }
+    );
+  }
 
 }
 
