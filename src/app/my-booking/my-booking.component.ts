@@ -89,7 +89,7 @@ export class MyBookingComponent implements OnInit {
             if (this.TotalPrice) {
               let refund: number = 0;
               refund = this.TotalPrice - response.TotalPrice;
-              Swal.fire('ยกเลิกสำเร็จ', `คืนเงิน${refund}บาท`, 'success');
+              Swal.fire('ยกเลิกddddddddสำเร็จ', `คืนเงิน${refund}บาท`, 'success');
               this.isModalOpen = false;
               this.ngOnInit();
             }
@@ -100,10 +100,13 @@ export class MyBookingComponent implements OnInit {
               if (response.TotalPrice > 0) {
                let fee:number =0
                fee = response.TotalPrice
-                Swal.fire('เนื่องจากทันยังไม่ได้ชำระเงิน', `ท่านต้องชำระค่าทำเนียมการจอง${fee}บาท`, 'success');
-                Swal.fire('ยกเลิกสำเร็จ', `ชำระเงิน${fee}บาท`, 'success');
-                this.isModalOpen = false;
-                this.ngOnInit();
+               Swal.fire('เนื่องจากท่านยังไม่ได้ชำระเงิน', `ท่านต้องชำระค่าทำเนียมการจอง ${fee} บาท`, 'success').then(() => {
+                Swal.fire('ยกเลิกสำเร็จ', `ชำระเงิน ${fee} บาท`, 'success').then(() => {
+                  this.isModalOpen = false;
+                  this.ngOnInit();
+                });
+              
+              });
               }
               Swal.fire('ยกเลิกสำเร็จ', `ชำระเงิน${response.TotalPrice}บาท`, 'success');
 
