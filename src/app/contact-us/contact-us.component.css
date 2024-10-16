@@ -15,27 +15,28 @@
 }
 
 .card-body {
-    width: 100%; /* กำหนดให้ครอบคลุมความกว้างของบรรทัด */
-    overflow: hidden; /* ซ่อนข้อความที่เกินออกจากขอบกรอบ */
-    position: relative; /* กำหนดตำแหน่งแบบ relative เพื่อใช้ในการควบคุมตำแหน่งข้อความ */
+    width: 100%; 
+    overflow: hidden; 
+    position: relative; 
 }
 
 #title1 {
     display: inline-block;
-    white-space: nowrap; /* ทำให้ข้อความอยู่ในบรรทัดเดียว */
-    position: absolute; /* กำหนดให้ข้อความสามารถเลื่อนผ่านกรอบ */
-    animation: marquee 10s linear infinite; /* วิ่งตลอดเวลาและวนซ้ำ */
-    width: 100%; /* ขยายพื้นที่เพื่อให้มีที่วิ่ง */
+    white-space: nowrap; 
+    position: absolute; 
+    animation: marquee 10s linear infinite; 
+    width: 100%; 
 }
 
 @keyframes marquee {
     0% {
-      transform: translateX(100%); /* เริ่มจากนอกขอบขวา */
+      transform: translateX(100%); 
     }
     100% {
-      transform: translateX(-100%); /* เลื่อนไปทางซ้ายจนออกนอกขอบซ้าย */
+      transform: translateX(-100%); 
     }
 }
+
 .card-text{
     font-size: 20px;
     font-family: 'Poppins', sans-serif;
@@ -87,4 +88,8 @@
 
 .row{
     margin-left: 2px;
+}
+
+#cardcomment{
+    margin-top: 10px;
 }

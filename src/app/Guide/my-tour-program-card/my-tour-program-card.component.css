@@ -16,7 +16,7 @@
 }
 
 .card{
-    margin: 1rem;
+    
     overflow: hidden;
     height: 300px;
     width: 300px auto;
@@ -34,7 +34,7 @@
 .card-img-top{
     width: 305px;
     height: 260px;
-    margin-left:10px ;
+    margin-left:25px ;
     margin-top: 17.5px;
     margin-right: auto;
     border-radius: 8px;
@@ -44,7 +44,7 @@
 
 .img{
     object-fit: cover;
-    filter: brightness(0.5);
+    filter: brightness(0.8);
 }
 
 .card-body{

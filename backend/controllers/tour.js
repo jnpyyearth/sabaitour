@@ -14,6 +14,7 @@ module.exports.getAllProgramTourForCard = async (req, res) => {
       ,DATEDIFF(day,ProgramTour.StartDate,ProgramTour.EndDate) + 1 AS period,ProgramTour.Guide_ID,Tour.Type_Status,ProgramTour.total_seats, ProgramTour.cancelled
       FROM ProgramTour INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID`)
     res.status(200).json(AllprogramtourForCard.recordset)
+  
   } catch (error) {
     res.status(500).json({ message: 'Erorr feching  all programtour', error });
   }
