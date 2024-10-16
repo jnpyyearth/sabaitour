@@ -14,8 +14,10 @@ export class HomeTourCardComponent implements OnInit {
  selectedPT:ProgramTourForCard | null =null;
  constructor(private tourService: ProgramTourService, private http: HttpClient) { }
  ngOnInit(): void {
+  console.log('hello')
      this.homeTourCard =this.tourService.getProgramTourCard().pipe(map(ProgramTours=>ProgramTours.filter(ProgramTour=>ProgramTour.cancelled===0)))
- }
+     console.log('hedjfjgdfjllo')
+    }
 
 
  

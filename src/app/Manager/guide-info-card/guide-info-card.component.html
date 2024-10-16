@@ -25,7 +25,12 @@
  <div class="container mt-4">
   <!-- Inbound Guides Section -->
   <div class="inbound-section">
-    <h2>Inbound Guides</h2>
+    <div class="row">
+      <div class="card" id="card1">
+        <h2 class="card-title" id="title1">Inbound Guides</h2>
+      </div>
+    </div>
+    
     <div class="row">
       <div class="col-md-4" *ngFor="let Guide of GuideInbound | async">
         <div class="card">
@@ -46,7 +51,12 @@
 
   <!-- Outbound Guides Section -->
   <div class="outbound-section">
-    <h2>Outbound Guides</h2>
+    <div class="inbound-section">
+      <div class="row">
+        <div class="card" id="card1">
+          <h2 class="card-title" id="title1">Outbound Guides</h2>
+        </div>
+      </div>
     <div class="row">
       <div class="col-md-4" *ngFor="let Guide of GuideOutbound | async">
         <div class="card">
