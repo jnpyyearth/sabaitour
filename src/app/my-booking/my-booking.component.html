@@ -69,7 +69,55 @@
       </table>
     </div>
     <div class="row">
-      <button class="btn btn-danger ">ยกเลิก</button>
+      <button class="btn btn-danger " (click)="openModal(booked)">ยกเลิก</button>
     </div>
   </div>
 </div>
+
+
+<!-- modal -->
+<div class="modal " id="confirmCancelModal" tabindex="-1" aria-labelledby="confirmCancelModalLabel" aria-hidden="true" *ngIf="isModalOpen">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmCancelModalLabel">ยกเลิกการจอง</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="x()"></button>
+      </div>
+      <div class="modal-body">
+       <p>  คุณต้องการยกเลิกการจองนี้หรือไม่? </p>
+       <p><strong>เงื่อนไขการยกเลิก</strong></p>
+       <ul>
+        <li>หากยกเลิกการจองล่วงหน้าก่อน 2 สัปดาห์ จะมีการคืนเงินให้ลูกค้าในอัตรา 100% ของค่าบริการ</li>
+        <li>หากยกเลิกการจองล่วงหน้าก่อน 1 สัปดาห์ จะมีการคืนเงินให้ลูกค้าในอัตรา 50% ของค่าบริการ</li>
+        <li>หากยกเลิกการจองล่วงหน้าน้อยกว่า 1 สัปดาห์ จะไม่มีการคืนเงินค่าบริการ</li>
+       </ul>
+       <p>โปรดยืนยันการยกเลิกด้านนล่าง:</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="deniedCancel()">ยกเลิก</button>
+        <button type="button" class="btn btn-danger" (click)="confirmCancel()">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal แบบใช้ *ngIf
+<div *ngIf="isModalOpen" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">ยกเลิกการจอง</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        คุณต้องการยกเลิกการจองนี้หรือไม่?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">ยกเลิก</button>
+        <button type="button" class="btn btn-danger" (click)="confirmCancel()">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+

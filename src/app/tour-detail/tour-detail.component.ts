@@ -112,6 +112,8 @@ export class TourDetailComponent implements OnInit {
         (response) => {
           console.log("addbooking", response)
           Swal.fire('จองสำเร็จ', 'ส่งข้อมูลการจองสำเร็จ', 'success');
+          this.Participants =[];
+          this.ngOnInit();
         },
         (error) => {
           console.log("Error add booking  tour:", error);

@@ -230,9 +230,13 @@ module.exports.canceling = async (req, res) => {
       .input('Booking_ID', sql.Int, Booking_ID)
       .input('Cus_ID', sql.Int, Cus_ID)
       .execute(`updatecancelled`);
-
+    const getpaymentStatus = await transaction.request()
+    .input('Booking_ID',sql.Int,Booking_ID)
+    .input('Cus_ID',sql.Int,Cus_ID)
+    .query(`select Status,TotalPrice from Booking where Booking_ID =@Booking_ID and Cus_ID = @Cus_ID`)
     await transaction.commit();
-    console.log('Transaction commit!', result);
+    console.log('Transaction commit!',getpaymentStatus.recordset);
+    res.status(200).json(getpaymentStatus.recordset[0]);
   } catch (err) {
     console.log("error:", err);
     if (transaction) {
@@ -241,7 +245,6 @@ module.exports.canceling = async (req, res) => {
     }
     res.status(500).json({ message: 'Error during cancellation', error: err });
   }
-
 }
 module.exports.getAllProgramTourCheck = async (req, res) => {
   try {
@@ -258,7 +261,7 @@ INNER JOIN Guide g ON pt.Guide_ID = g.Guide_ID
 INNER JOIN Tour t ON pt.Tour_ID = t.Tour_ID
 WHERE b.Cus_ID = @Cus_ID and b.cancelled = 0`)
 
-    console.log('hello check booked', AllprogramtourCheck.recordset)
+    
     res.status(200).json(AllprogramtourCheck.recordset)
   } catch (error) {
     res.status(500).json({ message: 'Erorr feching  all programtour', error });
@@ -267,11 +270,11 @@ WHERE b.Cus_ID = @Cus_ID and b.cancelled = 0`)
 
 module.exports.getAllฺBookingParticipants = async (req, res) => {
   try {
-    console.log('hello  booked participant')
+    
     const pool = await sql.connect(config);
     const getAllฺBookingParticipants = await pool.request()
       .query(`select *,ROW_NUMBER() OVER (PARTITION BY b.Booking_ID ORDER BY b.Participant_ID) AS RowNum from Booking_Participants as b`)
-    console.log('hello check participants', getAllฺBookingParticipants.recordset)
+    
     res.status(200).json(getAllฺBookingParticipants.recordset)
   } catch (error) {
     res.status(500).json({ message: 'Erorr feching  all participants', error });

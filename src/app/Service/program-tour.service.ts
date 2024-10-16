@@ -84,4 +84,7 @@ export class ProgramTourService {
     return this.http.get<any[]>(`${apiUrl}/getParticipants`);
   }
   
+  bookcanceling(Booking:any):Observable<any[]>{
+    return this.http.put<any[]>(`${apiUrl}/bookedCancelling/${Booking.Booking_ID}`,Booking)
+  }
 }
