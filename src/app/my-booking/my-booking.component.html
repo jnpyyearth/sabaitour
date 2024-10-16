@@ -7,7 +7,7 @@
 </div>
 <div class="container">
   <div class="row" *ngFor="let booked of books ">
-    <!-- <pre>{{ booked | json }}</pre> -->
+ 
     <div class="col-md-6">
       <img [src]="'assets/images/'+booked.Tour_Picture" class="card-img-top" alt="Tour Image">
     </div>
@@ -56,7 +56,7 @@
 
         <tbody>
           <tr *ngFor="let Participant of booked.Participants; let i = index">
-            <!-- <pre>{{ booked.Participants | json }}</pre> -->
+          
             <td>{{i+1}}</td>
             <td>{{Participant.Tourist_Firstname}}  {{Participant.Tourist_Lastname}}</td>
             <td>{{Participant.ID_Card}}</td>
@@ -68,6 +68,7 @@
         </tbody>
       </table>
     </div>
+    
     <div class="row">
       <button class="btn btn-danger " (click)="openModal(booked)">ยกเลิก</button>
     </div>
@@ -101,23 +102,5 @@
   </div>
 </div>
 
-<!-- Modal แบบใช้ *ngIf
-<div *ngIf="isModalOpen" class="modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">ยกเลิกการจอง</h5>
-        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        คุณต้องการยกเลิกการจองนี้หรือไม่?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">ยกเลิก</button>
-        <button type="button" class="btn btn-danger" (click)="confirmCancel()">ยืนยัน</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->
+
 

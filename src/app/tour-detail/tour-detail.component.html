@@ -126,7 +126,9 @@
       </div>
   
     </div>
-    <div class="container mt-4">
+
+    <!-- review -->
+    <div class="container mt-4" id="boxreview">
 
       <h3>Submit a Review</h3>
       <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
@@ -142,10 +144,16 @@
       </form>
     </div>
 
-    <div class="container">
+
+    <!-- comment -->
+    <div class="container" id="headercomment">
+      <h3>รีวิว</h3>
+    </div>
+
+    <div class="container" id="boxcomment">
       <div *ngIf="reviews.length > 0; else noReviews">
-        <h3>รีวิว</h3>
-        <div class="review-container" *ngFor="let review of reviews">
+        <!-- <h3>รีวิว</h3> -->
+        <div class="review-container" *ngFor="let review of reviews" >
           <p><strong>{{ review.username }}</strong></p> <!-- ชื่อผู้ใช้ -->
           <p>{{ review.comment }}</p> <!-- คอมเมนต์ -->
           <hr> <!-- เส้นคั่นระหว่างคอมเมนต์ -->
