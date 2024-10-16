@@ -4,10 +4,30 @@
     box-shadow: 0px 0px 30px  rgba(227, 228, 237, 0.37);
     border: 2px solid rgba(255, 255, 255, 0.18);
     margin-top: 5px;
-    height: 500px;
+    height: 1250px auto;
+    margin-bottom: 40px;
 }
 
 h1{
     text-align: center;
-    padding-top: 5px;
+    padding-top: 20px;
+}
+
+.content{
+    display: flex;
+}
+
+/* p{  
+    padding-top: 1rem;
+} */
+img{
+    width: 300px;
+
+}
+
+.logo {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+     
 }

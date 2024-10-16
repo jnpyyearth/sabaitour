@@ -135,8 +135,7 @@ export class LogInComponent implements OnInit {
       this.router.navigate(['/home'], { state: { loggedIn: true } }).then(() => {
         
         // ซน
-        // this.authService.setLoggedIn(true);
-
+        this.authService.setLoggedIn(true);
         console.log('Navigated to home');
       });
     } else if (this.userRole === 'guide') {

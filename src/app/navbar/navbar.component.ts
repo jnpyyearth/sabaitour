@@ -38,6 +38,7 @@ export class NavbarComponent {
       newpassword: ['', [Validators.required, Validators.minLength(6)]],
       newconfirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   goToLogin() {
