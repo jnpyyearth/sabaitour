@@ -15,7 +15,7 @@ export class AuthService {
   //remove token
   logout(): void {
     localStorage.removeItem('token');
-
+    localStorage.removeItem('loggedIn');
     this.router.navigate(['/']);
   }
   //check if user authen
@@ -31,6 +31,7 @@ export class AuthService {
     }
     return null;
   }
+  
   getRole(){
     const token = localStorage.getItem('token')
     if (token) {
@@ -51,5 +52,21 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token'); // Return true if there is a token
   }
+
+
+  // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  private loggedIn: boolean = false;
+
+  setLoggedIn(status: boolean) {
+    localStorage.setItem('loggedIn', JSON.stringify(status));
+  }
+
+  isLoggedIn() {
+    return JSON.parse(localStorage.getItem('loggedIn') || 'false');
+  }
+
+
+  
 
 }

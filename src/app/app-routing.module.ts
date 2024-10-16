@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { LogOutComponent } from './log-out/log-out.component';
+
 import { LogInComponent } from './log-in/log-in.component';
 import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
@@ -26,6 +26,8 @@ import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
 import { AuthGuard } from './auth.guard';
 import { MyInformationComponent } from './Guide/my-information/my-information.component';
+import { ContactusComponent } from './contact-us/contact-us.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,9 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'news', component: NewsComponent },
     { path: 'about-us', component: AboutUsComponent},
-    { path: 'log-out', component: LogOutComponent},
+    { path: 'contact-us', component: ContactusComponent},
+    {path: 'my-booking', component: MyBookingComponent},
+   
     { path: 'login', component: LogInComponent},
     { path: 'about-us', component: AboutUsComponent},
     { path: 'nationaltour', component: NationaltourComponent},

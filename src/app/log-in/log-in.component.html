@@ -30,9 +30,13 @@
     <div class="form-container sign-in">
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <h1>Sign In</h1>
-            <input type="text" formControlName="username" placeholder="Username" required>
-            <input type="password" formControlName="password" placeholder="Password" required>
+            <input type="text" formControlName="username" placeholder="Username" required  [ngClass]="{'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched}">
+            <input type="password" formControlName="password" placeholder="Password" required  [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+              </div>
             <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
+           
         </form>
     </div>
 

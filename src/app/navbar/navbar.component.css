@@ -29,3 +29,124 @@ img{
   .a{
     font-weight: 700; /* Light */
   }
+
+
+  #accountMenu {
+    font-size: 1.5rem; /* ปรับขนาดของไอคอนในปุ่ม */
+    padding: 12px 24px; /* เพิ่มพื้นที่ในปุ่ม */
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+  }
+
+  .modal {
+    display: none /* ขาดเซมิโคลอนที่นี่ */
+
+  }
+  
+  .modal.show {
+    display: block; /* แสดงป๊อปอัพเมื่อ showModal เป็น true */
+    background-color: rgba(42, 42, 42, 0.15);
+  }
+  
+  .card{
+    margin: 0 auto;
+    margin-top: 5rem;
+    height: 440px;
+    width: 1000px;
+    border-radius: 20px;
+    background-color: #FEFCF3;
+  }
+
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .name{
+    margin-left: 20px;
+    margin-top: 20px;
+    
+  }
+  .close{
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+
+
+  .box{
+    margin: 0 auto;
+    width: 90%;
+    height: 280px;
+    border-radius: 10px;
+    position: relative;
+    background-image: radial-gradient(113% 91% at 17% -2%, #FFCC72 1%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #FF086AFF 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #0536EAFF 13%, #FF000000 100%),radial-gradient(142% 91% at 170% 173%, #FF7000FF 0%, #FF0000FF 100%);
+    box-shadow: 0px 2px 20px  rgba(34, 56, 255, 0.6);
+    backdrop-filter: blur(30px);
+    
+}
+
+.info{
+    padding-top: 2px;
+}
+
+.fullname{
+    display: flex;
+}
+
+.username,.email,.phone,.password,.f-name,.l-name{
+    height: 40px;
+    border: 2px solid black;
+    margin: 10px;
+    align-items: center;
+    background-color: #ffffff44;
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    
+}
+
+.f-name,.l-name{
+    width: 200px;
+}
+
+
+
+
+
+
+
+.newinfo{
+    margin: 0 auto;
+    width: 90%;
+    height: 280px;
+    border-radius: 10px;
+    position: relative;
+    backdrop-filter: blur(30px);
+    
+}
+
+.n-fullname,.Changebox{
+    display: flex;
+}
+
+
+.n-username,.n-email,.n-phone,.n-password,.n-f-name,.n-l-name{
+    height: 40px;
+    border: 2px solid rgb(0, 0, 0);
+    margin: 10px;
+    align-items: center;
+    background-color: #ffffff44;
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    width: 200px;
+    
+}
+
+.n-f-name,.n-l-name{
+    width: 200px;
+}
+
+
+.cnbtn{
+    padding-right: 40px;
+}
