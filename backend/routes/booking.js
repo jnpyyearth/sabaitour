@@ -5,4 +5,6 @@ require('dotenv').config();
 
 router.post('/addbooking',bookingCon.addbooking)
 router.put('/bookedCancelling/:id',bookingCon.canceling)
+router.get('/getmybooked/:id',bookingCon.getAllProgramTourCheck)
+router.get('/getParticipants',bookingCon.getAllฺBookingParticipants)
 module.exports =router;

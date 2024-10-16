@@ -1,87 +1,75 @@
-<app-navbar/>
+<app-navbar />
 
-<div >
+<div>
 
   <h1>My booking</h1>
-  
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <img [src]="'assets/images/error.gif'" class="card-img-top" alt="Tour Image">
-      </div>
-      <div class="detail col-md-6">
 
-        <h3>รายละเอียดทัวร์</h3><hr>
-        <div class="row">
-        
+</div>
+<div class="container">
+  <div class="row" *ngFor="let booked of books ">
+    <!-- <pre>{{ booked | json }}</pre> -->
+    <div class="col-md-6">
+      <img [src]="'assets/images/'+booked.Tour_Picture" class="card-img-top" alt="Tour Image">
+    </div>
+    <div class="detail col-md-6">
+
+      <h3>รายละเอียดทัวร์ {{booked.Tour_name}}</h3>
+      <hr>
+      <div class="row">
+
         <div class="col-6">
-          <p>ประเทศ: ????????</p>
-        <p>เริ่มวันที่:???????? </p>
-        <p>ระยะเวลา: ???????? วัน</p>
+          <p>ประเทศ: {{booked.Tour_Country}}</p>
+          <p>เริ่มวันที่:{{booked.StartDate | date:'shortDate'}} </p>
+          <p>ระยะเวลา: {{booked.period}} วัน</p>
         </div>
         <div class="col-6">
-          <p>ที่พัก: ????????</p>
-        <p>สิ้นสุดวันที่: ????????</p>
-        <p>ราคาต่อคน: ???????? บาท</p>
+          <p>ที่พัก: {{booked.Hotel}}</p>
+          <p>สิ้นสุดวันที่: {{booked.EndDate | date:'shortDate'}}</p>
+          <p>ราคาต่อคน: {{booked.Price_per_person}} บาท</p>
         </div>
-        
-        
-        <p >จำนวนสมาชิกที่ท่านจอง: ???????? คน</p>
-        <p >ราคารวม: ???????? คน</p>
+
+
+        <p>จำนวนสมาชิกที่ท่านจอง: {{booked.Tourist_Amount}} คน</p>
+        <p>ราคารวม: {{booked.TotalPrice}} บาท</p>
+        <p>วันที่จอง: {{booked.Booking_Date | date:'shortDate'}}</p>
         <hr>
-        </div>
-
-
-
-        
       </div>
+
+
+
+
     </div>
     <div class="row">
       <table class="table">
         <thead>
-            <tr >
-                <th>ลำดับ</th>
-                <th>รายชื่อ</th>
-                <th>เลขบัตรประชาชน</th>
-                <th>วันเกิด</th>
-                <th>อีเมล</th>
-                <th>เบอร์โทร</th>
-                <th>แก้ไข</th>
-            </tr>
+          <tr>
+            <th>ลำดับ</th>
+            <th>รายชื่อ</th>
+            <th>เลขบัตรประชาชน</th>
+            <th>อีเมล</th>
+            <th>เบอร์โทร</th>
+            <th>คำขอพิเศษ</th>
+            <th>แก้ไข</th>
+
+          </tr>
         </thead>
-        
+
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>name</td>
-                <td>Size</td>
-                <td>10</td>
-                <td>5</td>
-                <td>50</td>
-                <td><button class="btn btn-primary ">แก้ไข</button></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>name</td>
-                <td>Size</td>
-                <td>10</td>
-                <td>5</td>
-                <td>50</td>
-                <td><button class="btn btn-primary ">แก้ไข</button></td>
-            </tr>
-            
+          <tr *ngFor="let Participant of booked.Participants; let i = index">
+            <!-- <pre>{{ booked.Participants | json }}</pre> -->
+            <td>{{i+1}}</td>
+            <td>{{Participant.Tourist_Firstname}}  {{Participant.Tourist_Lastname}}</td>
+            <td>{{Participant.ID_Card}}</td>
+            <td>{{Participant.email}}</td>
+            <td>{{Participant.phone}}</td>
+            <td>{{Participant.Special_Request}}</td>
+            <td><button class="btn btn-primary ">แก้ไข</button></td>
+          </tr>
         </tbody>
-        
-    </table>
+      </table>
     </div>
     <div class="row">
       <button class="btn btn-danger ">ยกเลิก</button>
     </div>
-
-
-
-
   </div>
-
-  
+</div>

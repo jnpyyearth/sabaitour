@@ -65,4 +65,23 @@ export class ProgramTourService {
   addbooking(booking:any):Observable<any[]>{
     return this.http.post<any[]>(`${apiUrl}/addBooking`,booking)
   }
+  addreview(review:any):Observable<any[]>{
+    return this.http.post<any[]>(`${apiUrl}/review`,review)
+  }
+  getReviewsForTour(tourId: number): Observable<any[]> {
+    console.log('hello service tourId =',tourId)
+    return this.http.get<any[]>(`${apiUrl}/getreview/${tourId}`);
+   
+  }
+  getCustomerInfo(username: string): Observable<any> {
+    return this.http.post<any>(`${apiUrl}/getCus_ID`, { username });
+  }
+
+  getmybooked(Cus_ID:number): Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getmybooked/${Cus_ID}`)
+  }
+  getParticipants(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/getParticipants`);
+  }
+  
 }
