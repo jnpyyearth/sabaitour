@@ -15,8 +15,8 @@ img{
 }
 
 .navbar {
-    top: 0;           /* Aligns the navbar to the top */
-    width: 100% auto;     /* Ensures the navbar spans the full width of the screen */
+    top: 0;          
+    width: 100% auto;    
     height: 90px auto;
     z-index: 1000;
     backdrop-filter: blur(30px);
@@ -27,24 +27,24 @@ img{
   }
 
   .a{
-    font-weight: 700; /* Light */
+    font-weight: 700;
   }
 
 
   #accountMenu {
-    font-size: 1.5rem; /* ปรับขนาดของไอคอนในปุ่ม */
-    padding: 12px 24px; /* เพิ่มพื้นที่ในปุ่ม */
+    font-size: 1.5rem;
+    padding: 12px 24px; 
     background-color: rgba(255, 255, 255, 0);
     border: none;
   }
 
   .modal {
-    display: none /* ขาดเซมิโคลอนที่นี่ */
+    display: none 
 
   }
   
   .modal.show {
-    display: block; /* แสดงป๊อปอัพเมื่อ showModal เป็น true */
+    display: block; 
     background-color: rgba(42, 42, 42, 0.15);
   }
   

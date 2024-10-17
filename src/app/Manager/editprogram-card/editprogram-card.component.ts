@@ -109,7 +109,7 @@ export class EditprogramCardComponent implements OnInit {
 
       (response)=>{
         console.log("update succesful",response)
-        Swal.fire('Success', 'Program Tour updated successfully!', 'success');
+        Swal.fire('สำเร็จ', 'แก้ไขข้อมูลสำเร็จ!', 'success');
         this.isModalOpen = false; // ปิด modal หลังจากอัปเดตเสร็จ
         this.ngOnInit();
       },

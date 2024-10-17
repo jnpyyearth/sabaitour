@@ -4,6 +4,30 @@ const sql = require("mssql");
 
 
 
+module.exports.addOriginalTour = async (req, res) => {
+  try {
+    const { Tour_name, Tour_Country, Hotel, Type_Status } = req.body;
+       // ตรวจสอบว่ามีภาพที่อัปโหลดมาหรือไม่
+       const Tour_Picture = req.file ? 'uploads/' + req.file.filename : null;   
+       if (!Tour_Picture) {
+        return res.status(400).json({ message: 'Image upload is required' });
+      }
+    const pool = await sql.connect(config);
+    const addTourResult = await pool.request()
+      .input('Tour_name', sql.VarChar, Tour_name)
+      .input('Tour_Country', sql.VarChar, Tour_Country)
+      .input('Tour_Picture', sql.VarChar, Tour_Picture)
+      .input('Hotel', sql.VarChar, Hotel)
+      .input('Type_Status', sql.VarChar, Type_Status)
+      .query(` INSERT INTO Tour (Tour_name, Tour_Country, Tour_Picture, Hotel, Type_Status)
+       VALUES (@Tour_name, @Tour_Country, @Tour_Picture, @Hotel, @Type_Status); `);
+    res.status(201).json({message: 'Tour added successfully',});
+  } catch (error) {
+    console.error('Error adding tour:', error);
+    res.status(500).json({ message: 'Failed to add tour', error });
+  }
+};
+
 
 module.exports.getAllProgramTourForCard = async (req, res) => {
   try {
@@ -14,6 +38,7 @@ module.exports.getAllProgramTourForCard = async (req, res) => {
       ,DATEDIFF(day,ProgramTour.StartDate,ProgramTour.EndDate) + 1 AS period,ProgramTour.Guide_ID,Tour.Type_Status,ProgramTour.total_seats, ProgramTour.cancelled
       FROM ProgramTour INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID`)
     res.status(200).json(AllprogramtourForCard.recordset)
+  
   } catch (error) {
     res.status(500).json({ message: 'Erorr feching  all programtour', error });
   }
@@ -61,7 +86,17 @@ module.exports.getAllTour = async (req, res) => {
 
 
 module.exports.addProgramTour = async (req, res) => {
-  const { Tour_ID, StartDate, EndDate, Price_per_day, total_seats, Guide_ID } = req.body;
+  // const { Tour_ID, StartDate, EndDate, Price_per_day, total_seats, Guide_ID } = req.body;
+  const Tour_ID = parseInt(req.body.Tour_ID, 10);
+  const StartDate = req.body.StartDate;
+  const EndDate = req.body.EndDate;
+  const Price_per_day = parseFloat(req.body.Price_per_day);
+  const total_seats = parseInt(req.body.total_seats, 10);
+  const Guide_ID = parseInt(req.body.Guide_ID, 10);
+  const pdfPath = req.file ? 'uploads/' + req.file.filename : null;   
+  if (!pdfPath) {
+   return res.status(400).json({ message: 'pdf upload is required' });
+ }
 
   try {
     const pool = await sql.connect(config);
@@ -100,9 +135,10 @@ module.exports.addProgramTour = async (req, res) => {
       .input('total_seats', sql.Int, total_seats)
       .input('Guide_ID', sql.Int, Guide_ID)
       .input('available_seats', sql.Int, available_seats)
+      .input('pdf_Tour',sql.VarChar,pdfPath)
       .query(`
-          INSERT INTO ProgramTour (Tour_ID, StartDate, EndDate, Price_per_day, total_seats, Guide_ID,available_seats)
-          VALUES (@Tour_ID, @StartDate, @EndDate, @Price_per_day, @total_seats, @Guide_ID,@available_seats);
+          INSERT INTO ProgramTour (Tour_ID, StartDate, EndDate, Price_per_day, total_seats, Guide_ID,available_seats,pdf_Tour)
+          VALUES (@Tour_ID, @StartDate, @EndDate, @Price_per_day, @total_seats, @Guide_ID,@available_seats,@pdf_Tour);
         `);
 
     res.status(201).json({ message: 'ProgramTour added successfully', result: addresult.recordset });
@@ -171,11 +207,10 @@ module.exports.getProgramTourById = async (req, res) => {
        ProgramTour.total_seats, 
        ProgramTour.status, 
        ProgramTour.available_seats, 
-       ProgramTour.cancelled, 
+       ProgramTour.cancelled,ProgramTour.pdf_Tour,
        DATEDIFF(day,ProgramTour.StartDate,ProgramTour.EndDate) + 1 AS period,
        Tour.Tour_name, 
        Tour.Tour_Country, 
-       Tour.Tour_INFO, 
        Tour.Tour_Picture, 
        Tour.Hotel, 
        Tour.Type_Status

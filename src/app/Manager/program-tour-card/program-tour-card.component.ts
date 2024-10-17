@@ -20,13 +20,22 @@ export class ProgramTourCardComponent implements OnInit {
   programTour: any = {};
   guideId: any;
   guideUnavailable: boolean = false;
+  selectedFile: File | null = null; 
   constructor(private tourService: ProgramTourService, private http: HttpClient) { }
   ngOnInit(): void {
     this.Tours = this.tourService.getAllTours();
     this.guideUnavailable= false;
 
   }
-
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      this.selectedFile = file;
+    } else {
+      alert('กรุณาเลือกไฟล์ PDF.');
+      this.selectedFile = null;
+    }
+  }
 
 
   openModal(tour: Tour): void {
@@ -55,20 +64,28 @@ export class ProgramTourCardComponent implements OnInit {
   saveProgramTour(): void {
 
     console.log('Save programtour clicked:');
-    if (this.selectedTour && this.programTour) {
+    if (this.selectedTour && this.programTour && this.selectedFile) {
       Swal.fire({
         title: "เพิ่มโปรเเกรมทัวร์!",
         text: "สำเร็จ!",
         icon: "success"
       });
-      const newProgramTour = {
-        Tour_ID: this.selectedTour.Tour_ID, // ใช้ Tour_ID จากข้อมูลที่เลือก
-        StartDate: this.programTour.StartDate,
-        EndDate: this.programTour.EndDate,
-        Price_per_day: this.programTour.Price_per_day,
-        total_seats: this.programTour.total_seats,
-        Guide_ID: this.programTour.Guide_ID
-      };
+      // const newProgramTour = {
+      //   Tour_ID: this.selectedTour.Tour_ID, // ใช้ Tour_ID จากข้อมูลที่เลือก
+      //   StartDate: this.programTour.StartDate,
+      //   EndDate: this.programTour.EndDate,
+      //   Price_per_day: this.programTour.Price_per_day,
+      //   total_seats: this.programTour.total_seats,
+      //   Guide_ID: this.programTour.Guide_ID
+      // };
+      const newProgramTour = new FormData();
+      newProgramTour.append('pdf', this.selectedFile, this.selectedFile.name);
+      newProgramTour.append('Tour_ID', this.selectedTour.Tour_ID.toString());
+      newProgramTour.append('StartDate', this.programTour.StartDate);
+      newProgramTour.append('EndDate', this.programTour.EndDate);
+      newProgramTour.append('Price_per_day', this.programTour.Price_per_day.toString());
+      newProgramTour.append('total_seats', this.programTour.total_seats.toString());
+      newProgramTour.append('Guide_ID', this.programTour.Guide_ID.toString());
       console.log('Data programtour:', newProgramTour);
       this.http.post<any>('http://localhost:3000/addProgramTour', newProgramTour)
         .subscribe({

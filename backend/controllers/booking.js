@@ -187,7 +187,8 @@ module.exports.addbooking = async (req, res) => {
 
 
     await transaction.commit();
-    return res.status(200).json({ message: 'Booking added successfully' });
+    return res.status(200).json({ message: 'Booking added successfully',Booking_ID});
+
   } catch (error) {
     if (transaction) {
       await transaction.rollback();
@@ -254,7 +255,7 @@ module.exports.getAllProgramTourCheck = async (req, res) => {
     console.log('Customer ID:', Cus_ID);
     const AllprogramtourCheck = await pool.request()
       .input('Cus_ID', sql.Int, Cus_ID)
-      .query(`SELECT b.Booking_ID,   t.Tour_Country, t.Tour_name,t.Tour_Picture, t.Hotel, pt.StartDate,  pt.EndDate,  DATEDIFF(DAY, pt.StartDate, pt.EndDate) + 1 AS period, pt.Price_per_day, pt.Price_per_person, pt.Guide_ID,  b.Tourist_Amount, b.TotalPrice,  b.Booking_Date
+      .query(`SELECT b.Booking_ID,b.Status,t.Tour_Country, t.Tour_name,t.Tour_Picture, t.Hotel, pt.StartDate,  pt.EndDate,  DATEDIFF(DAY, pt.StartDate, pt.EndDate) + 1 AS period, pt.Price_per_day, pt.Price_per_person, pt.Guide_ID,  b.Tourist_Amount, b.TotalPrice,  b.Booking_Date
 FROM Booking b
 INNER JOIN ProgramTour pt ON b.ProgramTour_ID = pt.ProgramTour_ID
 INNER JOIN Guide g ON pt.Guide_ID = g.Guide_ID
@@ -280,3 +281,20 @@ module.exports.getAllฺBookingParticipants = async (req, res) => {
     res.status(500).json({ message: 'Erorr feching  all participants', error });
   }
 }
+
+
+module.exports.payment = async (req, res) => {
+  try {
+    const Booking_ID = req.params.id
+    const pool = await sql.connect(config);
+    const payment = await pool.request()
+    .input('Booking_ID',sql.Int,Booking_ID)
+      .query(`update Booking set Status ='paid' where Booking_ID =@Booking_ID`)
+    
+    res.status(200).json('hello payment successfully')
+  } catch (error) {
+    res.status(500).json({ message: 'Erorr feching  payment', error });
+  }
+}
+
+
