@@ -1,10 +1,11 @@
 const express =require("express");
 const router = express.Router();
 const tourCon = require("../controllers/tour");
+const upload = require('../middleware/upload')
 require('dotenv').config();
-
+router.post('/addTour',upload.single('image'),tourCon.addOriginalTour)
 router.get('/tour',tourCon.getAllTour)
-router.post('/addProgramTour',tourCon.addProgramTour)
+router.post('/addProgramTour',upload.single('pdf'),tourCon.addProgramTour)
 router.get('/AllProgramTourForCard',tourCon.getAllProgramTourForCard)
 router.put('/updateProgramTour/:id',tourCon.updateProgramTour)
 router.put('/cancelledProgramTour/:id',tourCon.cancelledProgramTour)

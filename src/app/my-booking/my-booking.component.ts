@@ -18,6 +18,7 @@ export class MyBookingComponent implements OnInit {
   isModalOpen: boolean = false;
   participants: any[] = [];
   TotalPrice: number | undefined;
+   BID_payment:number |undefined
   constructor(private authService: AuthService, private tourService: ProgramTourService, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -89,7 +90,7 @@ export class MyBookingComponent implements OnInit {
             if (this.TotalPrice) {
               let refund: number = 0;
               refund = this.TotalPrice - response.TotalPrice;
-              Swal.fire('ยกเลิกddddddddสำเร็จ', `คืนเงิน${refund}บาท`, 'success');
+              Swal.fire('ยกเลิกสำเร็จ', `คืนเงิน${refund}บาท`, 'success');
               this.isModalOpen = false;
               this.ngOnInit();
             }
@@ -101,15 +102,15 @@ export class MyBookingComponent implements OnInit {
                let fee:number =0
                fee = response.TotalPrice
                Swal.fire('เนื่องจากท่านยังไม่ได้ชำระเงิน', `ท่านต้องชำระค่าทำเนียมการจอง ${fee} บาท`, 'success').then(() => {
+                this.isModalOpen = false;
                 Swal.fire('ยกเลิกสำเร็จ', `ชำระเงิน ${fee} บาท`, 'success').then(() => {
-                  this.isModalOpen = false;
+                 
                   this.ngOnInit();
                 });
               
               });
               }
-              Swal.fire('ยกเลิกสำเร็จ', `ชำระเงิน${response.TotalPrice}บาท`, 'success');
-
+            
             }
 
           }
@@ -129,4 +130,40 @@ export class MyBookingComponent implements OnInit {
   x() {
     this.isModalOpen = false;
   }
+  
+  payment(booked: any) {
+    this.BID_payment = booked.Booking_ID;
+  
+    if (this.BID_payment!== undefined) {
+      
+      Swal.fire({
+        title: 'ท่านต้องการดำเนินการชำระเงินหรือไม่?',
+        text: '',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ดำเนินการ',
+        cancelButtonText: 'ไม่ดำเนินการ'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // หากผู้ใช้กด "ดำเนินการ" ให้เรียก API การชำระเงิน
+          this.tourService.updatepayment(this.BID_payment!).subscribe(
+            (response) => {
+              Swal.fire('สำเร็จ!', 'ชำระเงินเรียบร้อยแล้ว', 'success');
+              this.ngOnInit()
+            },
+            (error) => {
+              console.error('Error processing payment:', error);
+              Swal.fire('เกิดข้อผิดพลาด', 'ไม่สามารถดำเนินการชำระเงินได้', 'error');
+            }
+          );
+        } else {
+          // หากผู้ใช้กด "ไม่ดำเนินการ" ก็จะปิด SweetAlert โดยไม่ทำอะไรต่อ
+          Swal.fire('ยกเลิก', 'ท่านได้ยกเลิกการชำระเงิน', 'info');
+        }
+      });
+    }
+  }
+  
 }

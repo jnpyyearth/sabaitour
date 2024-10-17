@@ -6,6 +6,7 @@ import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProv
 import { partition } from 'rxjs';
 import { AuthService } from '../Service/auth.service';
 import Swal from 'sweetalert2';
+import { error } from 'node:console';
 @Component({
   selector: 'app-tour-detail',
   templateUrl: './tour-detail.component.html',
@@ -109,9 +110,37 @@ export class TourDetailComponent implements OnInit {
       };
       console.log('hello submitForms', bookingData)
       this.tourService.addbooking(bookingData).subscribe(
-        (response) => {
+        (response:any) => {
           console.log("addbooking", response)
           Swal.fire('จองสำเร็จ', 'ส่งข้อมูลการจองสำเร็จ', 'success');
+          const BookingID =response.Booking_ID;;
+          Swal.fire({
+            title: "ท่านต้องการขำระเงินตอนนี้หรือไม่?",
+            text: "ท่านสามารถชำระเงินได้ภายหลังก่อนวันเดินทาง",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "ดำเนินการ",
+             cancelButtonText: "ดำเนินการภายหลัง"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.tourService.updatepayment(BookingID).subscribe(
+                (response)=>{
+                  console.log("Payment processed:", Response);
+                  Swal.fire('สำเร็จ!', 'ชำระเงินเรียบร้อย.', 'success');
+                  this.Participants = [];
+                  this.ngOnInit(); // รีเฟรช
+                },(error) => {
+                  console.log("Error processing payment:", error);
+                  Swal.fire('เกิดข้อผิดพลาด', 'ไม่สามารถดำเนินการชำระเงินได้', 'error');
+                }
+              );
+            }else{
+              Swal.fire('การจองสำเร็จ', 'คุณสามารถชำระเงินภายหลังได้', 'info');
+            }
+          });
+      
           this.Participants =[];
           this.ngOnInit();
         },
@@ -121,8 +150,7 @@ export class TourDetailComponent implements OnInit {
         }
       )
     }
-
-
+   
 
  
   }

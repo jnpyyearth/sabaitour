@@ -3,7 +3,7 @@ export interface Tour {
     Tour_name: string;
     Tour_Country: string;
     Tour_Picture: string;
-    Tour_INFO: string;
+   
     Type_Status: string;
 }
 export interface Guide {
