@@ -92,12 +92,7 @@ margin-left: 2rem;
 
 
 
-.btn2{
-width: 200px;
-margin-left: 20px;
-background-color: #CC3D0B;
-border: none;
-}
+
 
 
 thead {
@@ -117,6 +112,7 @@ background-color: #ffffff;
 border-radius: 10px;
 overflow: hidden;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .table thead th {
@@ -168,15 +164,7 @@ font-size: 40px;
 margin-top: 10px;
 }
 
-.btn-primary {
-background-color: #007bff;
-border: none;
-}
 
-.btn-danger {
-background-color: #dc3545;
-border: none;
-}
 
 .card-text {
 font-size: 20px;
@@ -186,3 +174,18 @@ hr {
 border-top: 3px solid #000000;
 margin: 10px 0;
 }
+
+.row-button{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+
+#payment, #cancel {
+  width: 100px;
+  height: 40px;
+}
+
+

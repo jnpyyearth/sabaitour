@@ -57,3 +57,31 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+.row-header {
+  display: flex;
+  
+}
+
+/*----อันนี้ปุ่มเพื่อทัวร์ดิป----*/
+#newtour {
+  margin-top: 40px;
+  margin-left: 500px;
+  height: 60px;
+  width: 150px;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  background: linear-gradient(0deg, rgba(255,201,38,1) 0%, rgba(240,120,0,1) 100%);
+  color: aliceblue;
+  box-shadow: 0px 2px 2px 2px rgb(255, 255, 255);
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: Poppins ,sans-serif;
+  font-weight: bolder;
+} 
+
+#newtour:hover{
+  background: linear-gradient(0deg, rgba(255,201,38,1) 0%, rgba(240,120,0,1) 100%);
+  color:#0c0000
+}
