@@ -1,64 +1,7 @@
 <app-navbar-guide />
 <app-sidebar-guide />
-<!-- <div class="body">
-    <div class="row">
-        <div class="col-2">
 
-        </div>
-        <div class="col-10">
-            <div class="card">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="assets/images/" onerror="this.src='assets/images/error.gif'" class="card-img-top"
-                            alt="...">
-                    </div>
-                    <div class="col-9">
-                        <div class="info-header">
-                            <label>Kuyyyyyyyyyyyyyyyyyyyyyyyyyyyy</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row-info">
-
-                    <div class="row" id="guidename">
-                        <div class="col-6">
-                            <label>ชื่อ</label>
-                        </div>
-                        <div class="col-6">
-                            <label>นามสกุล</label>
-                        </div>
-                    </div>
-
-                    <div class="row" id="guideemail">
-                        <div class="col-6">
-                            <label>อีเมล</label>
-                        </div>
-                        <div class="col-6">
-                            <label>เบอร์โทร</label>
-                        </div>
-                    </div>
-
-                    <div class="row" id="guidetour">
-                        <label>ประเภทไกด์</label>
-                    </div>
-
-                    <div class="row" id="etc">
-                        <div class="col">
-                            <label>ข้อมูลอื่นๆ</label>
-                            <textarea class="form-control" rows="3" id="comment"></textarea>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary">แก้ไขข้อมูล</button>
-                    
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<div class="body py-4">
+<!-- <div class="body py-4">
     <div class="row">
         <div class="col-md-2">
 
@@ -97,6 +40,60 @@
                                 <div class="col">
                                     <label class="font-weight-bold">ประเภทไกด์</label>
                                     <p>ไกด์นำเที่ยวต่างประเทศ</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3" id="etc">
+                                <div class="col">
+                                    <label class="font-weight-bold">ข้อมูลอื่นๆ</label>
+                                    <textarea class="form-control" rows="3" id="comment" placeholder="เพิ่มข้อมูลอื่นๆ..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="body py-4" *ngIf="guide">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <div class="card shadow-lg">
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <img [src]="'http://localhost:3000/' + guide.User_Picture"
+                             class="card-img-top img-fluid rounded-start" alt="Guide Image"
+                             onerror="this.src='assets/images/error.gif'">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">ID No. :110{{ guide.Guide_ID }}</h5>
+                            <hr>
+                            <div class="row mb-3" id="guidename">
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold">ชื่อ</label>
+                                    <p>{{ guide.firstname }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold">นามสกุล</label>
+                                    <p>{{ guide.lastname }}</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3" id="guideemail">
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold">อีเมล</label>
+                                    <p>{{ guide.email }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold">เบอร์โทร</label>
+                                    <p>{{ guide.phone }}</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3" id="guidetour">
+                                <div class="col">
+                                    <label class="font-weight-bold">ประเภทไกด์</label>
+                                    <p>{{ guide.Type_Name ==='outbound'?'นำเที่ยวต่างประเทศ':'นำเที่ยวในประเทศ'}}</p>
                                 </div>
                             </div>
                             <div class="row mb-3" id="etc">

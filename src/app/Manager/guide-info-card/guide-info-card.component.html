@@ -34,7 +34,7 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let Guide of GuideInbound | async">
         <div class="card">
-          <img [src]="'assets/images/' + Guide.User_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
+          <img [src]="'http://localhost:3000/' + Guide.User_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
           <div class="card-body">
             <h5 class="card-title">ไกด์ทัวร์: {{ Guide.Guide_Name }}</h5>
             <p class="card-text">ชื่อ: {{ Guide.firstname }}</p>
@@ -60,7 +60,7 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let Guide of GuideOutbound | async">
         <div class="card">
-          <img [src]="'assets/images/' + Guide.User_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
+          <img [src]="'http://localhost:3000/' + Guide.User_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
           <div class="card-body">
             <h5 class="card-title">ไกด์ทัวร์: {{ Guide.Guide_Name }}</h5>
             <p class="card-text">ชื่อ: {{ Guide.firstname }}</p>

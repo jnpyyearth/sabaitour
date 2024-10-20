@@ -44,6 +44,11 @@
                         <input type="radio" formControlName="guidetype" value="outbound"> Outbound(นำเที่ยวต่างประเทศ)
                     </label>
                 </div>
+                <div class="image-upload">
+                    <label>ภาพโปรไฟล์</label>
+                    <input type="file" (change)="onFileSelected($event)">
+                  </div>
+        
     
                 <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
             </form>

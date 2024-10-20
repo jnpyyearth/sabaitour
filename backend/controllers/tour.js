@@ -224,7 +224,42 @@ INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID where ProgramTour.ProgramT
     res.status(500).json({ error: 'Failed to update data' });
   }
 };
-
+/////////////////////////////////////////
+module.exports.gettouristById = async (req,res)=>{
+  const programtourId = req.params.id;
+  console.log('programtourid',programtourId)
+  let transaction
+  try{
+    console.log('hello try ')
+    const pool =await sql.connect(config)
+    transaction = new sql.Transaction(pool);
+    await transaction.begin()
+    const Booking_IDresult =await transaction.request()
+    .input('ProgramTour_ID',sql.Int,programtourId)
+    .query(`select  Booking_ID from Booking where ProgramTour_ID = @ProgramTour_ID and cancelled =0`)
+    console.log('Booking_ID',Booking_IDresult)
+    const participantsresult =[];
+    for (let Booking_ID of Booking_IDresult.recordset){
+      console.log('hello begin loop')
+      const newBooking_ID =Booking_ID.Booking_ID;
+      console.log('hello newBooking_ID',newBooking_ID)
+      const result = await transaction.request()
+      .input('Booking_ID',sql.Int,newBooking_ID)
+      .query(`select * from Booking_Participants where Booking_ID = @Booking_ID `)
+      participantsresult.push({Booking_ID:Booking_ID,participantsresult:result.recordset})
+      console.log('hello loop result :',result.recordset)
+      console.log('hello loop participantsresult :',participantsresult.recordset)
+    }
+    await transaction.commit()
+    res.status(201).json({message:'all participants',participantsresult})
+  }catch (err){
+    if(transaction){
+      await transaction.rollback()
+      console.log('rollback')
+    }
+    res.status(500).json({message:'error',err:err})
+  }
+}
 
 module.exports.checksameguide = async (req, res) => {
   const {  StartDate, EndDate,  Guide_ID } = req.body;
@@ -256,6 +291,45 @@ module.exports.checksameguide = async (req, res) => {
       FROM ProgramTour INNER JOIN Tour ON ProgramTour.Tour_ID = Tour.Tour_ID`)
     res.status(200).json(AllprogramtourForCard.recordset)
   } catch (error) {
+    res.status(500).json({ message: 'Erorr feching  all programtour', error });
+  }
+}
+
+module.exports.getProgramTourForGuide = async (req, res) => {
+  let transaction
+  try {
+    const {username}=req.body
+    console.log('hello guide profile')
+    const pool = await sql.connect(config);
+    
+    transaction = new sql.Transaction(pool);
+    await transaction.begin();
+    const getUser_ID = await transaction.request()
+        .input('username', sql.VarChar, username)
+        .query('select User_ID from Users where username =@username')
+
+    if (getUser_ID.recordset.length === 0) {
+        return res.status(400).json({ message: 'User_ID not found' });
+    }
+    const User_ID = getUser_ID.recordset[0].User_ID
+    console.log('user_ID', User_ID)
+    //get guide_ID
+    const getGuide_ID = await transaction.request()
+        .input('User_ID', sql.Int, User_ID)
+        .query(`select Guide_ID from Guide where User_ID =@User_ID`)
+    if (getGuide_ID.recordset.length === 0) {
+        return res.status(400).json({ message: 'Guide_ID not found' });
+    }
+    const Guide_ID = getGuide_ID.recordset[0].Guide_ID
+    console.log('Guide_ID', Guide_ID)
+    const AllprogramtourForGuide= await transaction.request()
+      .input('Guide_ID',sql.Int,Guide_ID)
+      .query(`select * from   View_programtourForGuide where Guide_ID =@Guide_ID and cancelled =0`)
+    res.status(200).json(AllprogramtourForGuide.recordset)
+  } catch (error) {
+    if(transaction){
+      await transaction.rollback()
+    }
     res.status(500).json({ message: 'Erorr feching  all programtour', error });
   }
 }
