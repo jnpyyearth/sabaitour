@@ -33,7 +33,12 @@ export class TourDetailComponent implements OnInit {
   reviewForm!: FormGroup;
   showForms = false;
   booking = {};
-  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService,private fb: FormBuilder) { }
+  form: any;
+  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService,private fb: FormBuilder) { 
+    this.form = this.fb.group({
+      inputText: ['']
+    });
+  }
 
 
   ngOnInit(): void {
@@ -178,6 +183,14 @@ export class TourDetailComponent implements OnInit {
       }
     );
   }
+
+  //นับอักษร
+  charCount: number = 255;
+  updateCount(): void {
+    const comment = this.reviewForm.get('comment')?.value || '';
+    this.charCount = 255 - comment.length;
+  }
+  
 
 }
 
