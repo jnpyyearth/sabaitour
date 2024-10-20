@@ -28,6 +28,8 @@ import { AuthGuard } from './auth.guard';
 import { MyInformationComponent } from './Guide/my-information/my-information.component';
 import { ContactusComponent } from './contact-us/contact-us.component';
 import { MyBookingComponent } from './my-booking/my-booking.component';
+import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
+import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
 
 
 const routes: Routes = [
@@ -59,8 +61,10 @@ const routes: Routes = [
     { path: 'my-tour-program', component: MyTourProgramComponent},
     { path: 'edit-program', component: EditProgramComponent},
     { path: 'tour-detail/:id', component: TourDetailComponent},
+    { path: 'tourist-detail/:id', component: TouristDetailsComponent},
     { path: 'internationaltour', component: InternationaltourComponent},
     { path: 'my-information', component: MyInformationComponent},
+    { path: 'mg-regis', component: ManagerRegsitrationComponent},
 ];
 
 @NgModule({

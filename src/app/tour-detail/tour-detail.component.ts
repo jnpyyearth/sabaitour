@@ -138,6 +138,8 @@ export class TourDetailComponent implements OnInit {
               );
             }else{
               Swal.fire('การจองสำเร็จ', 'คุณสามารถชำระเงินภายหลังได้', 'info');
+              this.Participants = [];
+                  this.ngOnInit(); // รีเฟรช
             }
           });
       

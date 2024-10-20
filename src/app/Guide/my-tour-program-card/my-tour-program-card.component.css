@@ -18,7 +18,7 @@
 .card{
     
     overflow: hidden;
-    height: 300px;
+    height: auto;
     width: 300px auto;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);

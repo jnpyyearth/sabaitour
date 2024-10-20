@@ -7,9 +7,9 @@
             <h5 class="card-title">ทัวร์:{{ Tour.Tour_name }}</h5>
             <p class="card-text">ประเทศ: {{ Tour.Tour_Country }} </p>
           <!-- Show Start Date -->
-          <p class="card-text">เริ่มวันที่: {{ Tour.StartDate | date:'shortDate' }}</p>
+          <p class="card-text">เริ่มวันที่: {{ Tour.StartDate | date}}</p>
           <!-- Show End Date -->
-          <p class="card-text">สิ้นสุดวันที่: {{ Tour.EndDate | date:'shortDate' }}</p>
+          <p class="card-text">สิ้นสุดวันที่: {{ Tour.EndDate | date}}</p>
           <!-- Show Period (calculated in SQL) -->
           <p class="card-text">ระยะเวลา: {{ Tour.period }} วัน</p>
           <p class="card-text">ราคาต่อคน {{Tour.Price_per_person}} บาท</p>

@@ -127,7 +127,7 @@ export class LogInComponent implements OnInit {
   private navigateBaseOnRole(): void {
     console.log('Navigating to:', this.userRole);
     if (this.userRole === 'manager') {
-      this.router.navigate(['/home-manager']).then(() => {
+      this.router.navigate(['/add-tour']).then(() => {
         console.log('Navigated to home-manager');
       });
     } else if (this.userRole === 'customer') {
@@ -139,7 +139,7 @@ export class LogInComponent implements OnInit {
         console.log('Navigated to home');
       });
     } else if (this.userRole === 'guide') {
-      this.router.navigate(['/home-guide']).then(() => {
+      this.router.navigate(['/my-information']).then(() => {
         console.log('Navigated to home-guide');
       });
     } else {
