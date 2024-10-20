@@ -21,8 +21,8 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let allparticipants of tourist; let i = index">
-                  <ng-container *ngFor="let Participant of allparticipants.participantsresult; let i2 =index">
+                <ng-container *ngFor="let allparticipants of tourist;">
+                  <ng-container *ngFor="let Participant of allparticipants.participantsresult; let i =index">
                   <tr>
                     <td>{{calculateIndex(i) }}</td>
                   <td>{{ Participant.Tourist_Firstname }} {{ Participant.Tourist_Lastname }}</td>
