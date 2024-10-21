@@ -1,0 +1,69 @@
+.table{
+    border-collapse: collapse; 
+    table-layout: fixed;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+.table th, .table td {
+    padding: 15px; 
+    border: none; 
+    text-align: center; 
+    white-space: normal; 
+    word-wrap: break-word; 
+    background-color: rgba(255, 255, 255, 0.885);
+}
+
+.column-no{
+    width: 80px;
+}
+
+.column-name{
+    width: 260px;
+}
+
+.column-idcard{
+    width: 150px;
+}
+
+.column-email{
+    width: 200px;
+}
+
+.column-phone{
+    width: 120px;
+}
+
+.column-request{
+    width: 260px;
+}
+
+/* ................................................... */
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+ }
+
+.table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.table thead th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+thead {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+tbody{
+    border: 2px solid rgb(0, 0, 0);
+}
+
+/* ................................................... */
+

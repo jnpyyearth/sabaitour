@@ -13,4 +13,6 @@ router.get('/getProgramTourById/:id',tourCon.getProgramTourById)
 router.get('/getInboundProgram',tourCon.getAllProgramTourForCardInbound)
 router.get('/getOutboundProgram',tourCon.getAllProgramTourForCardOutbound)
 router.post('/checkSameGuide',tourCon.checksameguide)
+router.post('/getProgramTourForGuide',tourCon.getProgramTourForGuide)
+router.get('/getTouristById/:id',tourCon.gettouristById)
 module.exports =router;

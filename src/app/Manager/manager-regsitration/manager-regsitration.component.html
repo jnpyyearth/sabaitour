@@ -1,0 +1,55 @@
+<app-navbar-manager/>
+<app-sidebar-manager/>
+
+<div class="row">
+    <div class="col-2">
+    
+    </div>
+    <div class="col-10">
+        <div class="container" id="container">
+            <div class="form-container sign-up">
+                <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()"> <!-- ใช้ formGroup -->
+                    <h1>Create Account</h1>
+                    
+                    <input type="text" formControlName="username" placeholder="Username" required>
+                    <input type="email" formControlName="email" placeholder="Email" required>
+        
+                    <div class="row">
+                    <div class="col-6">
+                    <input type="text" formControlName="firstname" placeholder="First Name" required>
+                    </div>
+                    <div class="col-6">
+                    <input type="text" formControlName="lastname" placeholder="Last Name" required>
+                    </div>
+                    </div>
+        
+                    <input type="tel" formControlName="phone" placeholder="Phone Number" required>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                    <input type="password" formControlName="password" placeholder="Password" required>
+                    </div>
+                    <div class="col-6">
+                    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    </div>
+        
+                    <!-- Radio button for selecting inbound or outbound -->
+                
+                    <div class="image-upload">
+                        <label>ภาพโปรไฟล์</label>
+                        <input type="file" (change)="onFileSelected($event)">
+                      </div>
+                      <div class="image-upload">
+                        <label>access-key</label>
+                        <input type="text" formControlName="key" placeholder="manager only " required>
+                      </div>
+            
+        
+                    <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    </div>

@@ -13,11 +13,19 @@ export class ProgramTourService {
   addOriginalTour(formData: FormData): Observable<any> {
     return this.http.post(`${apiUrl}/addTour`, formData);
   }
+  
+  Guideprofile(username:string): Observable<any> {
+    return this.http.post(`${apiUrl}/guideProfile`, {username});
+  }
 
 
   getProgramTourById(ProgramTour: number): Observable<any> {
     console.log('hello by id',ProgramTour)
     return this.http.get<ProgramTourForCard>(`${apiUrl}/getProgramTourById/${ProgramTour}`);
+  }
+  getTouristById(ProgramTour: number): Observable<any> {
+    console.log('hello by id',ProgramTour)
+    return this.http.get<any>(`${apiUrl}/getTouristById/${ProgramTour}`);
   }
 
   constructor(private http: HttpClient) { }
@@ -93,5 +101,8 @@ export class ProgramTourService {
   
   bookcanceling(Booking:any):Observable<any[]>{
     return this.http.put<any[]>(`${apiUrl}/bookedCancelling/${Booking.Booking_ID}`,Booking)
+  }
+  getMyProgramForGuide(username:string):Observable<any[]>{
+    return this.http.post<any[]>(`${apiUrl}/getProgramTourForGuide`, {username})
   }
 }
