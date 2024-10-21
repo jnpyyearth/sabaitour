@@ -21,10 +21,10 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let allparticipants of tourist; let i = index">
-                  <ng-container *ngFor="let Participant of allparticipants.participantsresult">
+                <ng-container *ngFor="let allparticipants of tourist;">
+                  <ng-container *ngFor="let Participant of allparticipants.participantsresult; let i =index">
                   <tr>
-                    <td>{{ i + 1 }}</td>
+                    <td>{{calculateIndex(i) }}</td>
                   <td>{{ Participant.Tourist_Firstname }} {{ Participant.Tourist_Lastname }}</td>
                   <td>{{ Participant.ID_Card }}</td>
                   <td>{{ Participant.email }}</td>

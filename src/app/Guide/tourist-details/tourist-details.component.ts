@@ -33,4 +33,9 @@ export class TouristDetailsComponent implements OnInit{
         }
       })
   }
+  counter = 0;
+
+calculateIndex(index: number): number {
+  return ++this.counter;
+}
 }

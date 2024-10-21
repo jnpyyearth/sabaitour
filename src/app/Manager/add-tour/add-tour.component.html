@@ -2,9 +2,7 @@
 <app-sidebar-manager/>
 <!-- ////////////////////////for add tour//////////////////////////////// -->
 <div class="container">
-    <!-- ปุ่มสำหรับเปิด Modal -->
-    <button class="btn btn-primary" (click)="openAddTourModal()">เพิ่มทัวร์</button>
-  
+
     <!-- Modal สำหรับเพิ่มทัวร์ -->
     <div class="modal" tabindex="-1"  *ngIf="isModalOpen">
       <div class="modal-dialog">
@@ -59,7 +57,12 @@
   
 
 <!-- /////////////////////////////////////////// -->
-<h2 class="mt-5" style="padding-left: 15rem;">รายการทัวร์ที่ยังไม้ได้จัด</h2>
+
+<div class="row-header">
+  <h2 class="mt-5" style="padding-left: 15rem;">รายการทัวร์ที่ยังไม่ได้จัด</h2>
+      <!-- ปุ่มสำหรับเปิด Modal -->
+      <button id="newtour" class="btn " (click)="openAddTourModal()">เพิ่มทัวร์</button>
+</div>
 <div class="row">
     <div class="col-2">
 

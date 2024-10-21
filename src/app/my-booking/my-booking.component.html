@@ -44,9 +44,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ booked.Tour_name }}    {{booked.Status}}</h5>
 
-          <a *ngIf="booked.Status ==='pending'"   class="btn btn-primary" (click)="payment(booked)">
-            ชำระเงิน
-          </a>
+          
           <hr>
           <div class="card-text">
             <strong>ประเทศ:</strong> {{ booked.Tour_Country }} <br>
@@ -109,9 +107,22 @@
               </tbody>
             </table>
           </div>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-danger btn-sm mt-2" (click)="openModal(booked)">ยกเลิก</button>
+
+        <div class="row-button">
+          
+          <div class="b-payment" *ngIf="booked.Status ==='pending'">
+            <button id="payment" *ngIf="booked.Status ==='pending'"   class="btn btn-primary" (click)="payment(booked)">
+              ชำระเงิน
+            </button>
           </div>
+       
+        
+          <div class="b-cancel ">
+            <button id="cancel" class="btn btn-danger" (click)="openModal(booked)">ยกเลิก</button>
+        </div>
+      </div>
+      
+
         </div>
       </div>
 
