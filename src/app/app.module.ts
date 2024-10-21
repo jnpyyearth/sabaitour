@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NewsComponent } from './news/news.component';
 import { AccountComponent } from './account/account.component';
-import { LogOutComponent } from './log-out/log-out.component';
+
 import { LogInComponent } from './log-in/log-in.component';
 import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
@@ -24,11 +24,28 @@ import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.componen
 import { SidebarGuideComponent } from './Guide/sidebar-guide/sidebar-guide.component';
 import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
-import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
+
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-
-
-
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProgramTourCardComponent } from './Manager/program-tour-card/program-tour-card.component';
+import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
+import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
+import { EditprogramCardComponent } from './Manager/editprogram-card/editprogram-card.component';
+import { HomeTourCardComponent } from './home/home-tour-card/home-tour-card.component';
+import { TourDetailComponent } from './tour-detail/tour-detail.component';
+import { ProgramTourService } from './Service/program-tour.service';
+import { NtCardComponent } from './nationaltour/nt-card/nt-card.component';
+import { InterTouCardComponent } from './international-tour/inter-tou-card/inter-tou-card.component';
+import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
+import { BookingComponent } from './booking/booking.component';
+import { GuideInfoCardComponent } from './Manager/guide-info-card/guide-info-card.component';
+import { MyTourProgramCardComponent } from './Guide/my-tour-program-card/my-tour-program-card.component';
+import { MyInformationComponent } from './Guide/my-information/my-information.component';
+import { ContactusComponent } from './contact-us/contact-us.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
+import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
+import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +54,7 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
     AboutUsComponent,
     NewsComponent,
     AccountComponent,
-    LogOutComponent,
+
     LogInComponent,
     NationaltourComponent,
     JapanTourComponent,
@@ -49,18 +66,40 @@ import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
     NavbarManagerComponent,
     SidebarManagerComponent,
     MyTourProgramComponent,
-    NavbarGuideComponent,
+    NavbarGuideComponent,  // NavbarGuideComponent is correctly declared here
     SidebarGuideComponent,
     HomeGuideComponent,
     AllTourComponent,
-    GuideIntourComponent,
     GuideInfoComponent,
+    ProgramTourCardComponent,
+    GuideRegistrationComponent,
+    EditProgramComponent,
+    EditprogramCardComponent,
+    HomeTourCardComponent,
+    TourDetailComponent,
+    NtCardComponent,
+    InterTouCardComponent,
+    InternationaltourComponent,
+    BookingComponent,
+    GuideInfoCardComponent,
+    MyTourProgramCardComponent,
+    MyInformationComponent,
+    ContactusComponent,
+    MyBookingComponent,
+    ManagerRegsitrationComponent,
+    TouristDetailsComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule // HttpClientModule goes in imports
   ],
-  providers: [],
+  providers: [
+    ProgramTourService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

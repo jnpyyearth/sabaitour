@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+
+.container{
+    background-color: #e2e2e2;
+    margin-top: 5rem;
+    width: 500px;
+    max-width: 100%;
+    height: 580px;
+    margin: 6rem auto;
+    border-radius: 20px;
+}
+
+.container button{
+    background-color: #ffa800;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.info{
+    text-align: center;
+}
+
+.more p:hover{
+    color: #ffa800;
+}
+
+.header{
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+input:focus {
+    outline: none; 
+    box-shadow: 0 0 5px #ffa800; 
+    border: 2px solid #ffa800; 
+}
+
+
+.button-74 {
+    background-color: #ffffff;
+    border: hidden;
+    border-radius: 30px;
+    box-shadow: #ffa800 4px 4px 0 0;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-74:hover {
+    background-color: #fff;
+  }
+  
+  .button-74:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+  
+  @media (min-width: 768px) {
+    .button-74 {
+      min-width: 120px;
+      padding: 0 25px;
+    }
+  }
+
+

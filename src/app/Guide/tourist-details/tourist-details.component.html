@@ -1,0 +1,42 @@
+<app-navbar-guide/>
+<app-sidebar-guide/>
+<h2 class="mt-5" style="padding-left: 15rem;">ข้อมูลลูกทัวร์</h2>
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-10">
+      <!-- <pre>{{tourist | json}}</pre> -->
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ลำดับ</th>
+                  <th>รายชื่อ</th>
+                  <th>เลขบัตรประชาชน</th>
+                  <th>อีเมล</th>
+                  <th>เบอร์โทร</th>
+                  <th>คำขอพิเศษ</th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let allparticipants of tourist;">
+                  <ng-container *ngFor="let Participant of allparticipants.participantsresult; let i =index">
+                  <tr>
+                    <td>{{calculateIndex(i) }}</td>
+                  <td>{{ Participant.Tourist_Firstname }} {{ Participant.Tourist_Lastname }}</td>
+                  <td>{{ Participant.ID_Card }}</td>
+                  <td>{{ Participant.email }}</td>
+                  <td>{{ Participant.phone }}</td>
+                  <td>{{ Participant.Special_Request }}</td>
+                </tr>  
+                </ng-container>
+              </ng-container>
+              
+              </tbody>
+            </table>
+          </div>
+        
+    </div>
+</div>

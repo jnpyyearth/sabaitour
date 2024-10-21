@@ -1,0 +1,97 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let pt of ProgramTour | async ">
+      <div class="card">
+        <img [src]="'http://localhost:3000/' + pt.Tour_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Tour Image">
+        <div class="box">
+          <button class="btn btn-info" (click)="openEditModal(pt)">แก้ไขข้อมูล</button>
+          <button class="btn btn-danger" (click)="openCancelModal(pt)">ยกเลิกทัวร์</button>
+        </div>
+
+
+
+        <div class="card-body">
+          <h5 class="card-title">ทัวร์:{{ pt.Tour_name }}</h5>
+          <p class="card-text">ประเทศ: {{ pt.Tour_Country }} </p>
+           <p class="card-text">ไกด์ที่รับผิดชอบ:<span *ngFor="let guide of ShowAllGuide">
+            <span *ngIf="guide.Guide_ID === pt.Guide_ID">{{guide.Guide_Name}}</span>
+           </span></p>
+          <!-- Show Start Date -->
+          <p class="card-text">เริ่มวันที่: {{ pt.StartDate | date:'shortDate' }}</p>
+          <!-- Show End Date -->
+          <p class="card-text">สิ้นสุดวันที่: {{ pt.EndDate | date:'shortDate' }}</p>
+          <!-- Show Period (calculated in SQL) -->
+          <p class="card-text">ระยะเวลา: {{ pt.period }} วัน</p>
+          <p class="card-text">ราคาต่อคน {{pt.Price_per_person}} บาท</p>
+        
+
+
+          <!-- <button class="btn btn-primary" (click)="openModal(pt)">แก้ไขข้อมูล</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- popup -->
+
+
+  <div class="modal" tabindex="-1" role="dialog" *ngIf="isModalOpen">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">แก้ไขทัวร์ [ {{selectedProgramTour?.Tour_name}}]</h5>
+        </div>
+        <div class="modal-body">
+          <!-- ข้อมูลที่ดึงมาจากตาราง Tour (ห้ามแก้ไข) -->
+          <div class="form-group">
+            <label>Tour Name</label>
+            <input class="form-control" [value]="selectedProgramTour?.Tour_name" readonly>
+          </div>
+          <div class="form-group">
+            <label>Tour Country</label>
+            <input class="form-control" [value]="selectedProgramTour?.Tour_Country" readonly>
+          </div>
+
+
+          <!-- ข้อมูลที่ต้องกรอกใหม่เพื่อนำไปใส่ ProgramTour -->
+           <div *ngIf ="selectedProgramTour">
+          <div class="form-group">
+            <label>Start Date</label>
+            <input class="form-control" [(ngModel)]="selectedProgramTour.StartDate" type="date">
+          </div>
+          <div class="form-group">
+            <label>End Date</label>
+            <input class="form-control" [(ngModel)]="selectedProgramTour.EndDate" type="date">
+          </div>
+          <div class="form-group">
+            <label>Price per Day</label>
+            <input class="form-control" [(ngModel)]="selectedProgramTour.Price_per_day" type="number">
+          </div>
+
+          <!-- Dropdown สำหรับเลือก Guide -->
+          <div class="form-group">
+            <label>Select Guide</label>
+            <select class="form-control" [(ngModel)]="selectedProgramTour.Guide_ID" *ngIf="Guides"  >
+              <option *ngFor="let guide of Guides | async" [value]="guide.Guide_ID">{{ guide.Guide_Name }}</option>
+            </select>
+            <div *ngIf="guideUnavailable" class="text-danger">
+              ไกด์คนนี้ถูกจองแล้วในระยะเวลานี้
+            </div>
+          </div>
+          <!------------------------------------------------------------- -->
+          <div class="form-group">
+            <label>Total Seats</label>
+            <input class="form-control" [(ngModel)]="selectedProgramTour.total_seats" type="number">
+          </div>
+        </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">ยกเลิก</button>
+          <button type="button" class="btn btn-primary" (click)="saveProgramTour()">บันทึก</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,100 @@
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let Tour of Tours | async ">
+      <div class="card">
+        <img [src]="'http://localhost:3000/' + Tour.Tour_Picture" onerror="this.src='assets/images/error.gif'"
+          class="card-img-top" alt="Tour Image">
+        <div class="card-body">
+          <h5 class="card-title">ทัวร์:{{ Tour.Tour_name }}</h5>
+          <p class="card-text">ประเทศ: {{ Tour.Tour_Country }} </p>
+
+          <button class="btn btn-success" (click)="openModal(Tour)">จัดโปรเเกรมทัวร์</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- ทำpopจ้า -->
+
+<div class="modal" tabindex="-1" role="dialog" *ngIf="isModalOpen">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">เพิ่มข้อมูล ProgramTour</h5>
+      </div>
+      <div class="modal-body">
+        <!-- ข้อมูลที่ดึงมาจากตาราง Tour (ห้ามแก้ไข) -->
+        <div class="form-group">
+          <label>Tour Name</label>
+          <input class="form-control" [value]="selectedTour?.Tour_name" readonly>
+        </div>
+        <div class="form-group">
+          <label>Tour Country</label>
+          <input class="form-control" [value]="selectedTour?.Tour_Country" readonly>
+        </div>
+
+
+        <!-- ข้อมูลที่ต้องกรอกใหม่เพื่อนำไปใส่ ProgramTour -->
+        <div class="form-group">
+          <label>Start Date</label>
+          <input class="form-control" [(ngModel)]="programTour.StartDate" type="date" #startDate="ngModel" required
+            [ngClass]="{'is-invalid':startDate.invalid && startDate.touched}">
+          <div *ngIf="startDate.invalid && startDate.touched" class="invalid-feedback"> StartDate is required</div>
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input class="form-control" [(ngModel)]="programTour.EndDate" type="date" #endDate="ngModel" required 
+          [ngClass]="{'is-invalid':endDate.invalid && endDate.touched}">
+          <div *ngIf="endDate.invalid && endDate.touched" class="invalid-feedback">EndDate is required</div>
+        </div>
+        <div class="form-group">
+          <label>Price per Day</label>
+          <input class="form-control" [(ngModel)]="programTour.Price_per_day" type="number" #PriceperDay="ngModel" required [ngClass]="{'is-invalid': PriceperDay.invalid && PriceperDay.touched}">
+          <div *ngIf="PriceperDay.invalid && PriceperDay.touched" class="invalid-feedback"> price per day is required</div>
+        </div>
+
+        <!-- Dropdown สำหรับเลือก Guide -->
+        <div class="form-group">
+          <label>Select Guide</label>
+          <select class="form-control" [(ngModel)]="programTour.Guide_ID"   required #guideId ="ngModel" [ngClass]="{'is-invalid':guideId.invalid && guideId.touched}"    (change)="CheckSameGuide(programTour.Guide_ID, programTour.StartDate, programTour.EndDate)">
+            <option *ngFor="let guide of Guides | async" [value]="guide.Guide_ID">{{ guide.Guide_Name }}</option>
+          </select>
+          <div *ngIf="guideId.invalid && guideId.touched" class="invalid-feedback"> guide is required</div>
+          <div *ngIf="guideUnavailable" class="text-danger"> guide คนนี้ถูกจองเเล้วในระยะเวลานี้ </div>
+        </div>
+        <!------------------------------------------------------------- -->
+        <div class="form-group">
+          <label>Total Seats</label>
+          <input class="form-control" [(ngModel)]="programTour.total_seats" type="number" #totalSeats ="ngModel" [ngClass]="{'is-invalid': totalSeats.invalid && totalSeats.touched}" required>
+           <div *ngIf="totalSeats.invalid &&totalSeats.touched" class="invalid-feedback"> total seats is required</div> 
+      </div>
+      <div class="form-group">
+        <label for="pdfFile">Upload กำหนดการ</label>
+        <input type="file" id="pdfFile" (change)="onFileSelected($event)" class="form-control" accept=".pdf">
+        <small class="form-text text-muted">Only PDF files are allowed.</small>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">ยกเลิก</button>
+        <button type="button" class="btn btn-primary" (click)="saveProgramTour()"  [disabled]="startDate.invalid || endDate.invalid || PriceperDay.invalid || guideId.invalid || totalSeats.invalid">บันทึก</button>
+      </div>
+    </div>
+  </div>
+</div>

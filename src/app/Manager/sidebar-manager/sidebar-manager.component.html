@@ -5,59 +5,58 @@
   style="background-color: #F7A601; width: 280px; height: 730px; border-radius: 0 30px 30px 0; position: fixed; top: 0; left: 60px; ">
   <ul class="nav nav-pills flex-column mb-auto">
 
-    <li class="nav-item-1">
-      <a  class="nav-link text-white" id="home" routerLink="/home-manager">
-        Home 
-      </a>
-    </li>
+   
 
     <li class="nav-item-1">
-      <a class="nav-link text-white" id="all" routerLink="/all-tour">
-        All-TOUR
+      <a class="nav-link text-white" id="all" routerLink="/add-tour">
+        ADD PROGRAM TOUR
       </a>
     </li>
 
     <li class="nav-item-1" id="tour">
-        <a class="nav-link text-white" routerLink="/add-tour">
-            Tour-management
+        <a class="nav-link text-white" routerLink="/edit-program">
+            EDIT PROGRAM TOUR
         </a>
     </li>
 
     <li class="nav-item-1" id="add-guide">
-        <a  class="nav-link text-white"routerLink="/guide-intour">
-           Add GUIDE IN TOUR
+        <a  class="nav-link text-white"routerLink="/guide-regis">
+           GUIDE REGISTRATION
         </a>
     </li>
 
     <li class="nav-item-1" id="guide" >
       <a class="nav-link text-white"routerLink="/guide-info">
-         GUIDE INFORMATION
+          GUIDE INFORMATION
       </a>
     </li>
 
     <li class="nav-item-1" id="sale" routerLink="/sale-report">
       <a class="nav-link text-white">
-          SALE-REPORT
+          REPORT
       </a>
+    </li>
+    <li class="nav-item-1" id="sale" routerLink="/mg-regis">
+      <a class="nav-link text-white">
+         MANAGER REGISTRATION
+      </a>
+    </li>
+    <li class="nav-item-1" id="Logout">
+      <a class="nav-link" (click)="logout()" href="/">&nbsp;Logout</a>
     </li>
 
   </ul>
 
 </div>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 95px; height: 730px; background-color: #1B5327; 
-             position: fixed; top: 0; left:-2rem; border-radius: 30px;">
+             position: fixed; top: 0; left:-2rem; border-radius: 30px;" id = "green">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <!-- <span class="fs-4">Menu</span> -->
   </a>
 
 
   <ul class="nav nav-pills flex-column mb-auto">
-    <li class="nav-item">
-      <a href="#" class="nav-link text-white" routerLink="/home-manager">
-        <i class="fas fa-home"></i>
-        <!-- Home -->
-      </a>
-    </li>
+  
 
     <li class="nav-item">
       <a href="#" class="nav-link text-white"  routerLink="/all-tour">
@@ -93,6 +92,23 @@
         <!-- Sale-report -->
       </a>
     </li>
+
+    <li class="nav-item" id="regis-manager">
+      <a href="#" class="nav-link text-white">
+        <i class="bi bi-person-fill-add"></i>
+        <!-- Logout -->
+      </a>
+    </li>
+
+
+    <li class="nav-item" id="logout">
+      <a href="#" class="nav-link text-white">
+        <i class="bi bi-box-arrow-left"></i>
+        <!-- Logout -->
+      </a>
+    </li>
+    
+
   </ul>
 
 </div>

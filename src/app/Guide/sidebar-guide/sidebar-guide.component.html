@@ -4,35 +4,35 @@
 <div class="bg-sideorange"
   style="background-color: #F7A601; width: 280px; height: 730px; border-radius: 0 30px 30px 0; position: fixed; top: 0; left: 60px; ">
   <ul class="nav nav-pills flex-column mb-auto">
+    
+    <li class="nav-item-1" id="my-info">
+      <a routerLink="/my-information" class="nav-link text-white">
+         MY INFORMATION
+      </a>
+  </li>
+    
+    <li class="nav-item-1" id="my-tour">
+        <a routerLink="/my-tour-program" class="nav-link text-white">
+            MY TOUR PROGRAM
+        </a>
+    </li>
+
     <li class="nav-item-1">
       <a href="#" class="nav-link text-white" id="home">
         Home 
       </a>
     </li>
 
-    <li class="nav-item-1">
-      <a href="#" class="nav-link text-white" id="all">
-        All-TOUR
-      </a>
+    <li class="nav-item-1" id="Logout">
+      <a class="nav-link" (click)="logout()" href="/">&nbsp;Logout</a>
     </li>
-
-    <li class="nav-item-1" id="tour">
-        <a href="#" class="nav-link text-white">
-            MY TOUR PROGRAM
-        </a>
-    </li>
-
-    <li class="nav-item-1" id="add-guide">
-        <a href="#" class="nav-link text-white">
-           MY INFORMATION
-        </a>
-    </li>
+   
 
   </ul>
 
 </div>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 95px; height: 730px; background-color: #1B5327; 
-             position: fixed; top: 0; left:-2rem; border-radius: 30px;">
+             position: fixed; top: 0; left:-2rem; border-radius: 30px;" id = "green">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <!-- <span class="fs-4">Menu</span> -->
   </a>
@@ -41,15 +41,9 @@
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <a href="#" class="nav-link text-white">
-        <i class="fas fa-home"></i>
+        <!-- <i class="fas fa-home"></i> -->
+        <i class="bi bi-person-lines-fill"></i>
         <!-- Home -->
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a href="#" class="nav-link text-white">
-        <i class="bi bi-suitcase-lg-fill"></i>
-        <!-- All Tour -->
       </a>
     </li>
 
@@ -62,10 +56,18 @@
 
     <li class="nav-item">
       <a href="#" class="nav-link text-white">
-        <i class="bi bi-person-lines-fill"></i>
+        <i class="bi bi-house-fill"></i>
         <!-- Add-GuideinTour -->
       </a>
     </li>
+
+    <li class="nav-item" id="logout">
+      <a href="#" class="nav-link text-white">
+        <i class="bi bi-box-arrow-left"></i>
+        <!-- Logout -->
+      </a>
+    </li>
+
   </ul>
 
 </div>

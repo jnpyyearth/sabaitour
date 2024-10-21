@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { LogOutComponent } from './log-out/log-out.component';
+
 import { LogInComponent } from './log-in/log-in.component';
 import { NationaltourComponent } from './nationaltour/nationaltour.component';
 import { JapanTourComponent } from './international-tour/japan-tour/japan-tour.component';
@@ -19,18 +19,29 @@ import { NavbarGuideComponent } from './Guide/navbar-guide/navbar-guide.componen
 import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { MyTourProgramComponent } from './Guide/my-tour-program/my-tour-program.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
-import { GuideIntourComponent } from './Manager/guide-intour/guide-intour.component';
+import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-
+import { EditProgramComponent } from './Manager/edit-program/edit-program.component';
+import { TourDetailComponent } from './tour-detail/tour-detail.component';
+import { InternationaltourComponent } from './international-tour/internationaltour/internationaltour.component';
+import { AuthGuard } from './auth.guard';
+import { MyInformationComponent } from './Guide/my-information/my-information.component';
+import { ContactusComponent } from './contact-us/contact-us.component';
+import { MyBookingComponent } from './my-booking/my-booking.component';
+import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
+import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    // { path: 'home', component: HomeComponent ,canActivate: [AuthGuard],data:{roles:['manager']}},
     { path: 'home', component: HomeComponent },
     { path: 'news', component: NewsComponent },
     { path: 'about-us', component: AboutUsComponent},
-    { path: 'log-out', component: LogOutComponent},
-    { path: 'log-in', component: LogInComponent},
+    { path: 'contact-us', component: ContactusComponent},
+    {path: 'my-booking', component: MyBookingComponent},
+   
+    { path: 'login', component: LogInComponent},
     { path: 'about-us', component: AboutUsComponent},
     { path: 'nationaltour', component: NationaltourComponent},
     { path: 'japan-tour', component: JapanTourComponent},
@@ -42,14 +53,18 @@ const routes: Routes = [
     { path: 'sale-report', component: SaleReportComponent},
     { path: 'sidebar-manager', component: SidebarManagerComponent},
     { path: 'all-tour', component: AllTourComponent},
-    { path: 'guide-intour', component: GuideIntourComponent},
+    { path: 'guide-regis', component: GuideRegistrationComponent},
     { path: 'guide-info', component: GuideInfoComponent},
     { path: 'sidebar-guide', component: SidebarGuideComponent},
     { path: 'navbar-guide', component: NavbarGuideComponent},
     { path: 'home-guide', component: HomeGuideComponent},
     { path: 'my-tour-program', component: MyTourProgramComponent},
-    
-  
+    { path: 'edit-program', component: EditProgramComponent},
+    { path: 'tour-detail/:id', component: TourDetailComponent},
+    { path: 'tourist-detail/:id', component: TouristDetailsComponent},
+    { path: 'internationaltour', component: InternationaltourComponent},
+    { path: 'my-information', component: MyInformationComponent},
+    { path: 'mg-regis', component: ManagerRegsitrationComponent},
 ];
 
 @NgModule({

@@ -19,10 +19,119 @@
             </ul>
         </div>
 
-        <ul class="navbar-nav"> <!-- ส่วนนี้จะอยู่ขวาสุด -->
+        <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/log-in"><i class="bi bi-door-open"></i> Log-in</a>
+
+                <button *ngIf="!isLoggedIn" class="btn btn-primary" (click)="goToLogin()">Login</button>
+
+
+                    <div *ngIf="isLoggedIn" class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="accountMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                        </button>
+
+                        <ul class="dropdown-menu" aria-labelledby="accountMenu">
+                        <li><a class="dropdown-item" (click)="openModal()">Profile</a></li>
+                        <li><a class="dropdown-item" routerLink="/my-booking">My Booking</a></li>
+                        <li><a class="nav-link" (click)="logout()" href="/">&nbsp;Logout</a></li>
+                        </ul>
+                    </div>
+
+
             </li>
         </ul>
+        <!-- <a class="nav-link bi bi-box-arrow-right" (click)="logout()" href="/" style="font-size: 20px; text-decoration: none;">&nbsp;Logout</a> -->
     </div>
 </nav>
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ป๊อปอัพ -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" [ngStyle]="{'display': showModal ? 'block' : 'none'}">
+        <div class="card">
+            <div class="header">
+                <div class="name">
+                    <h2>Profile-Name</h2>
+                </div>
+                
+            </div>
+            <hr>
+            <div class="bodycard">
+                <div class="row">
+                    <div class="col" style="border-right: 1px solid #000;">
+                        <div class="box">
+                            <div class="info">
+                                <div class="username">
+                                    <p>Username : ???????</p>
+                                </div>
+                                <div class="fullname">
+                                    <div class="f-name">
+                                        <p>Firstname : ???????</p>
+                                    </div>
+                                    <div class="l-name">
+                                        <p>Lastname : ???????</p>
+                                    </div>
+                                </div>
+                                <div class="email">
+                                    <p>Email : ???????</p>
+                                </div>
+                                <div class="phone">
+                                    <p>Phone : ???????</p>
+                                </div>
+                                <div class="password">
+                                    <p>Password : ???????</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="new">
+                            <div class="newinfo">
+                                <form [formGroup]="ChangeinfoForm" (ngSubmit)="Changeinfo()"> 
+                                    <h1 style="font-size: 24px">Change Info</h1>
+                                    
+                                    <input type="text" class="n-username"  formControlName="newusername" placeholder="newUsername"  required>
+                                  
+                                    
+                                    
+                                    <div class="fullname">
+                                        <input type="text" class="n-f-name" formControlName="newfirstname" placeholder="newFirst Name" required>
+                                    
+                                        <input type="text" class="n-l-name" formControlName="newlastname" placeholder="newLast Name" required>
+                                    </div>
+                                    
+                                    <div class="Changebox">
+                                        <input type="tel" class="n-phone" formControlName="newphone" placeholder="newPhone Number" required>
+                                    
+                                        <input type="email" class="n-email" formControlName="newemail" placeholder="newEmail" required>
+                                    </div>
+                                    
+
+
+                                    <div class="Changebox">
+                                        <input type="password" class="n-password" formControlName="newpassword" placeholder="newPassword" required>
+                                    
+                                        <input type="password" class="n-password" formControlName="newconfirmPassword" placeholder="newConfirm Password" required>
+                                    </div>
+                                    
+                                </form>
+                        </div>
+                        <div class="row">
+                            <div class="cnbtn">
+                                <div class="col-12 d-flex justify-content-end" >
+                                    <button type="button" class="btn btn-secondary me-2" (click)="closeModal()">ยกเลิก</button>
+                                    <button type="submit" class="btn btn-secondary me-2" [disabled]="ChangeinfoForm.invalid">ยืนยัน</button>
+                                  </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+</div>
+

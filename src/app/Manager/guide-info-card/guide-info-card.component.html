@@ -1,0 +1,118 @@
+<!-- <div class="container mt-4">
+  
+    <div class="row">
+        <div class="col-md-4" *ngFor="let Guide of GuideOutbound | async ">
+          <div class="card">
+            <img [src]="'assets/images/' + Guide.Guide_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
+            <div class="box">
+              
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">ไกด์ทัวร์:{{ Guide.Guide_tour }}</h5>
+              <p class="card-text">ชื่อ: {{ Guide.Guide_country }} </p>
+              <p class="card-text">นามสกุล: {{ Guide.Guide_name }} </p>
+              <p class="card-text">อีเมล: {{ Guide.Guide_email }} </p>
+              <p class="card-text">เบอร์โทร: {{ Guide.Guide_phone }} </p>
+              <p class="card-text">ประเภทไกด์ทัวร์: {{ Guide.Guide_type }}</p>
+              <button class="btn btn-info" (click)="openEditModal(Guide)">แก้ไขข้อมูล</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+ -->
+      
+ <div class="container mt-4">
+  <!-- Inbound Guides Section -->
+  <div class="inbound-section">
+    <div class="row">
+      <div class="card" id="card1">
+        <h2 class="card-title" id="title1">Inbound Guides</h2>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-4" *ngFor="let Guide of GuideInbound | async">
+        <div class="card">
+          <img [src]="'http://localhost:3000/' + Guide.User_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
+          <div class="card-body">
+            <h5 class="card-title">ไกด์ทัวร์: {{ Guide.Guide_Name }}</h5>
+            <p class="card-text">ชื่อ: {{ Guide.firstname }}</p>
+            <p class="card-text">นามสกุล: {{ Guide.lastname }}</p>
+            <p class="card-text">อีเมล: {{ Guide.email }}</p>
+            <p class="card-text">เบอร์โทร: {{ Guide.phone }}</p>
+            <p class="card-text">ประเภทไกด์ทัวร์: {{ Guide.Type_Name }}</p>
+            <button class="btn btn-info" (click)="openEditModal(Guide)">แก้ไขข้อมูล</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outbound Guides Section -->
+  <div class="outbound-section">
+    <div class="inbound-section">
+      <div class="row">
+        <div class="card" id="card1">
+          <h2 class="card-title" id="title1">Outbound Guides</h2>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let Guide of GuideOutbound | async">
+        <div class="card">
+          <img [src]="'http://localhost:3000/' + Guide.User_Picture" onerror="this.src='assets/images/error.gif'" class="card-img-top" alt="Guide Image">
+          <div class="card-body">
+            <h5 class="card-title">ไกด์ทัวร์: {{ Guide.Guide_Name }}</h5>
+            <p class="card-text">ชื่อ: {{ Guide.firstname }}</p>
+            <p class="card-text">นามสกุล: {{ Guide.lastname }}</p>
+            <p class="card-text">อีเมล: {{ Guide.email }}</p>
+            <p class="card-text">เบอร์โทร: {{ Guide.phone }}</p>
+            <p class="card-text">ประเภทไกด์ทัวร์: {{ Guide.Type_Name }}</p>
+            <button class="btn btn-info" (click)="openEditModal(Guide)">แก้ไขข้อมูล</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal" tabindex="-1" role="dialog" *ngIf="isModalOpen">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">แก้ไขข้อมูล [ {{ selectedGuide?.Guide_Name }}]</h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>ชื่อ</label>
+          <input class="form-control" [(ngModel)]="selectedGuide.firstname" type="text" />
+        </div>
+        <div class="form-group">
+          <label>นามสกุล</label>
+          <input class="form-control" [(ngModel)]="selectedGuide.lastname" type="text" />
+        </div>
+        <div class="form-group">
+          <label>เบอร์โทร</label>
+          <input class="form-control" [(ngModel)]="selectedGuide.phone" type="text" />
+        </div>
+        <div class="form-group">
+          <label>อีเมล</label>
+          <input class="form-control" [(ngModel)]="selectedGuide.email" type="email" />
+        </div>
+        <div class="form-group">
+          <label>ประเภทไกด์:</label>
+          <select class="form-control" [(ngModel)]="selectedGuide.Type_Name"  >
+            <option value="inbound">Inbound</option>
+            <option value="outbound">Outbound</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">ยกเลิก</button>
+        <button type="button" class="btn btn-primary" (click)="updateprofile()">บันทึก</button>
+      </div>
+    </div>
+  </div>
+</div>

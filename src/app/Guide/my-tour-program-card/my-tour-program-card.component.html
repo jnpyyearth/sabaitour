@@ -1,0 +1,100 @@
+<!-- <div class="contrainer ">
+    
+        <div class="card">
+            <div class="row">
+                <div class="col-4">
+                    <img [src]="'http://localhost:3000/' " onerror="this.src='assets/images/error.gif'" class="card-img-top"
+                        alt="Tour Image">
+                </div>
+
+                <div class="col-8">
+                    <h5 class="card-title">รายการทัวร์ที่รับผิดชอบ</h5>
+                    <p class="card-text">ทัวร์ต่างประเทศ</p>
+                    <p class="card-text">วันที่ไป</p>
+                    <p class="card-text">วันที่กลับ</p>
+                    <p calss="card-text">ชื่อของไกด์</p>
+                </div>
+            </div>
+    
+    </div> -->
+
+
+    <!-- <div class="body py-4" *ngIf="myProgramTour">
+        <div class="row" *ngFor = "let programtour of myProgramTour" >
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <div class="card shadow-lg">
+                    <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <img [src]="'http://localhost:3000/' + programtour.User_Picture"
+                                 class="card-img-top img-fluid rounded-start" alt="Guide Image"
+                                 onerror="this.src='assets/images/error.gif'">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">ID No. :110{{ programtour.Guide_ID }}</h5>
+                                <hr>
+                                <div class="row mb-3" id="guidename">
+                                    <div class="col-md-6">
+                                        <label class="font-weight-bold">ชื่อ</label>
+                                        <p>{{ .firstname }}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="font-weight-bold">นามสกุล</label>
+                                        <p>{{ guide.lastname }}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3" id="guideemail">
+                                    <div class="col-md-6">
+                                        <label class="font-weight-bold">อีเมล</label>
+                                        <p>{{ guide.email }}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="font-weight-bold">เบอร์โทร</label>
+                                        <p>{{ guide.phone }}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3" id="guidetour">
+                                    <div class="col">
+                                        <label class="font-weight-bold">ประเภทไกด์</label>
+                                        <p>{{ guide.Type_Name ==='outbound'?'นำเที่ยวต่างประเทศ':'นำเที่ยวในประเทศ'}}</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3" id="etc">
+                                    <div class="col">
+                                        <label class="font-weight-bold">ข้อมูลอื่นๆ</label>
+                                        <textarea class="form-control" rows="3" id="comment" placeholder="เพิ่มข้อมูลอื่นๆ..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     -->
+
+
+
+     <div class="row" *ngIf="myProgramTour">
+        
+        <div class="col-md-6" *ngFor="let tour of myProgramTour">
+          <div class="card mb-4 shadow-sm">
+            <img [src]="'http://localhost:3000/' + tour.Tour_Picture" class="card-img-top" alt="{{tour.Tour_name}}">
+            <div class="card-body">
+              <h5 class="card-title">{{ tour.Tour_name }}</h5>
+              <p class="card-text">{{ tour.Tour_Country }}</p>
+              <p class="card-text">เริ่ม: {{ tour.StartDate | date }}</p>
+              <p class="card-text">จบ: {{ tour.EndDate | date }}</p>
+              <p class="card-text">ราคา: {{ tour.Price_per_person  }} บาท </p>
+              <p class="card-text">ที่นั่งทั้งหมด: {{ tour.total_seats }}</p>
+              <p class="card-text">ที่นั่งว่าง: {{ tour.available_seats }}</p>
+              <p class="card-text">ลูกทัวร์: {{ tour.Total_tourist }}</p>
+              <a [href]="'http://localhost:3000/' + tour.pdf_Tour" target="_blank" class="btn btn-primary">ดูไฟล์ PDF</a>
+              <button class="btn btn-success" button [routerLink]="['/tourist-detail',tour.ProgramTour_ID]">ดูข้อมูลลูกทัวร์</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
