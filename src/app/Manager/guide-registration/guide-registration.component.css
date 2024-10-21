@@ -21,6 +21,7 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 .form-container h1{
@@ -58,9 +59,7 @@ input[type="password"] {
     align-items: flex-start;
 }
 
-label {
-    margin: 5px 0;
-}
+
 
 button {
     padding: 10px;

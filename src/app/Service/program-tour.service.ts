@@ -105,4 +105,37 @@ export class ProgramTourService {
   getMyProgramForGuide(username:string):Observable<any[]>{
     return this.http.post<any[]>(`${apiUrl}/getProgramTourForGuide`, {username})
   }
+  getReportOverview():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getOverviewReport`)
+  }
+  getPopularTour():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getPopularTour`)
+  }
+  getmostincome():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/mostincomeTour`)
+  }
+  getTotalRevenue():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/totalRevenue`)
+  }
+  getmanager():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getmanager`)
+  }
+  getguide():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getguide`)
+  }
+  getinboundguide():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getinboundguide`)
+  }
+  getoutboundguide():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getoutboundguide`)
+  }
+  getallpar():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getallpar`)
+  }
+  getpaidpar():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getpaidpar`)
+  }
+  getpendingpar():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getpendingpar`)
+  }
 }

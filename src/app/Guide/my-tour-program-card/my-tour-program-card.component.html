@@ -19,7 +19,7 @@
     </div> -->
 
 
-    <!-- <div class="body py-4" *ngIf="myProgramTour">
+<!-- <div class="body py-4" *ngIf="myProgramTour">
         <div class="row" *ngFor = "let programtour of myProgramTour" >
             <div class="col-md-2"></div>
             <div class="col-md-10">
@@ -72,29 +72,39 @@
                 </div>
             </div>
         </div>
-    </div>
-     -->
+    </div>-->
 
 
 
-     <div class="row" *ngIf="myProgramTour">
-        
-        <div class="col-md-6" *ngFor="let tour of myProgramTour">
-          <div class="card mb-4 shadow-sm">
+<div class="row" *ngIf="myProgramTour">
+
+    <div class="col-md-6" *ngFor="let tour of myProgramTour">
+        <div class="card mb-4 shadow-sm">
             <img [src]="'http://localhost:3000/' + tour.Tour_Picture" class="card-img-top" alt="{{tour.Tour_name}}">
             <div class="card-body">
-              <h5 class="card-title">{{ tour.Tour_name }}</h5>
-              <p class="card-text">{{ tour.Tour_Country }}</p>
-              <p class="card-text">เริ่ม: {{ tour.StartDate | date }}</p>
-              <p class="card-text">จบ: {{ tour.EndDate | date }}</p>
-              <p class="card-text">ราคา: {{ tour.Price_per_person  }} บาท </p>
-              <p class="card-text">ที่นั่งทั้งหมด: {{ tour.total_seats }}</p>
-              <p class="card-text">ที่นั่งว่าง: {{ tour.available_seats }}</p>
-              <p class="card-text">ลูกทัวร์: {{ tour.Total_tourist }}</p>
-              <a [href]="'http://localhost:3000/' + tour.pdf_Tour" target="_blank" class="btn btn-primary">ดูไฟล์ PDF</a>
-              <button class="btn btn-success" button [routerLink]="['/tourist-detail',tour.ProgramTour_ID]">ดูข้อมูลลูกทัวร์</button>
+                <div class="row">
+                    <h5 class="card-title">{{ tour.Tour_name }}</h5>
+                    <hr>
+                    <p class="card-text underline">{{ tour.Tour_Country }}</p>
+                    <p class="card-text "><u>วันที่เริ่มเดินทาง:</u> {{ tour.StartDate | date }}</p>
+                    <p class="card-text "><u>วันเดินทางกลับ:</u> {{ tour.EndDate | date }}</p>
+                    <p class="card-text "><u>ราคา:</u> {{ tour.Price_per_person }} บาท </p>
+
+                    <div class="col-6">
+                        <p class="card-text "><u>ที่นั่งทั้งหมด:</u> {{ tour.total_seats }}</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="card-text "><u>ที่นั่งว่าง:</u> {{ tour.available_seats }}</p>
+                    </div>
+                    <p class="card-text "><u>ลูกทัวร์:</u> {{ tour.Total_tourist }}</p>
+                    <hr>
+                </div>
+
+                <a [href]="'http://localhost:3000/' + tour.pdf_Tour" target="_blank" class="btn btn-primary">ดูไฟล์
+                    PDF</a>
+                <button class="btn btn-success" button
+                    [routerLink]="['/tourist-detail',tour.ProgramTour_ID]">ดูข้อมูลลูกทัวร์</button>
             </div>
-          </div>
         </div>
-      </div>
-      
+    </div>
+</div>
