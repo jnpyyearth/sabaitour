@@ -1,3 +1,207 @@
 <app-navbar-manager/>
 <app-sidebar-manager/>
-<p>sale-report works!</p>
+<p>Report</p>
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+        <div class="row">
+            <div class="card" id="card1">
+              <h2 class="card-title" id="title1">ข้อมูลทั่วไป</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-3">
+                <div class="card" id="card1">
+                    <h2 class="card-title" id="title1">ผู้จัดการ</h2>
+                  </div>
+            </div>
+            <div class="col-5"></div>
+          </div>
+        <div class="row mb-5">
+            
+              
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">จำนวนผู้จัดการทั้งหมด</h5>
+      
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ manager?.count}} คน</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-3">
+                <div class="card" id="card1">
+                    <h2 class="card-title" id="title1">ไกด์</h2>
+                  </div>
+            </div>
+            <div class="col-5"></div>
+          </div>
+        <div class="row mb-5">
+            
+              
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">จำนวนไกด์ทั้งหมด</h5>
+      
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ guide?.count}} คน</p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">จำนวนไกด์ในประเทศ</h5>
+      
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ inguide?.count}} คน</p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">จำนวนไกด์ต่างประเทศ</h5>
+      
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ outguide?.count}} คน</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-3">
+                <div class="card" id="card1">
+                    <h2 class="card-title" id="title1">ลูกค้า</h2>
+                  </div>
+            </div>
+            <div class="col-5"></div>
+          </div>
+        <div class="row mb-5">
+            
+              
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">จำนวนลูกค้ามั้งหมด</h5>
+      
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ allpar?.count}} คน</p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">คนที่ยังไม่ชำระเงิน</h5>
+      
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ pendingpar?.count}} คน</p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">คนที่ชำระเงินเเล้ว</h5>
+      
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ paidpar?.count}} คน</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+           
+       
+       
+       
+    
+        <div class="row">
+            <div class="card" id="card2">
+              <h2 class="card-title" id="title2">ภาพรวมโปรเเกรมทัวร์</h2>
+            </div>
+          </div>
+        <div class="row mb-3">
+            
+            <div class="col-4">
+                <div class="card1">
+                    <div class="card-body">
+                        <h5 class="card-title">ทัวร์ยอดนิยม ID: {{ popularTour?.ProgramTour_ID }}</h5>
+                        <p class="card-text">ชื่อทัวร์: {{ popularTour?.Tour_name }} ประเทศ: {{ popularTour?.Tour_Country }}</p>
+                
+                        <p class="card-text">อัตราคนจอง: </p>
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ popularTour?.seats_rate  | number: '1.0-2'}}%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card1">
+                    <div class="card-body">
+                        <h5 class="card-title">ทัวร์ทำรายได้สูงสุด  ID: {{ mostincome?.ProgramTour_ID }}  </h5>
+                        <p class="card-text">ชื่อทัวร์: {{ mostincome?.Tour_name }} ประเทศ: {{ mostincome?.Tour_Country }}</p>
+                       
+                        <p class="card-text">รายได้: </p>
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ mostincome?.revenue  |currency :'THB'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card1">
+                    <div class="card-body">
+                        <h5 class="card-title1">รายได้รวม</h5>
+                        <p style="font-size: 2rem; color: green; font-weight: bold;"> {{ Totalrevenue?.revenue  |currency :'THB'}}</p>
+                    </div>
+                </div>
+        </div>
+        <!-- card here  -->
+        <div class="input-group mb-3 mt-5">
+            <label class="input-group-text" for="inputGroupSelect01">เรียงตามรายได้:</label>
+            <select id="sortOrder" class="form-select" [(ngModel)]="selectedSortOrder" (change)="onSortOrderChange()">
+                <option value="ascending">ยอดขายน้อยที่สุด</option>
+                <option value="descending">ยอดขายมากที่สุด</option>
+            </select>
+          </div>
+
+    <table class="table">
+        
+        <thead>
+            <tr>
+                <!-- <pre>{{ reports | json }}</pre> -->
+                <th>ลำดับ</th>
+                <th>รหัสโปรแกรมทัวร์</th>
+                <th>ชื่อทัวร์</th>
+                <th>ประเทศ</th>
+                <th>จำนวนที่รองรับ</th>
+                <th>จำนวนคนจอง</th>
+                <th>รายได้</th>
+                <th>อัตราที่ว่าง</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let report of reports; let i = index" >
+                <td>{{ i + 1 }}</td>
+                <td>{{ report.ProgramTour_ID }}</td>
+                <td>{{ report.Tour_name }}</td>
+                <td>{{ report.Tour_Country }}</td>
+                <td>{{ report.total_seats }}</td>
+                <td>{{ report.Total_tourist }}</td>
+                <td>{{ report.Price_per_person * report.Total_tourist |currency :'THB' }}</td>
+                <td>{{ report.vacant_seats_rate | number: '1.0-2' }}%</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

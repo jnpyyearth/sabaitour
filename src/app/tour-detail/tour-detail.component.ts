@@ -180,6 +180,11 @@ export class TourDetailComponent implements OnInit {
       }
     );
   }
-
+  //นับอักษร
+  charCount: number = 255;
+  updateCount(): void {
+    const comment = this.reviewForm.get('comment')?.value || '';
+    this.charCount = 255 - comment.length;
+  }
 }
 

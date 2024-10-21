@@ -13,6 +13,7 @@ const guideSroute=require('./routes/guideSignUp')
 const Guideroute =require('./routes/guide/guide')
 const bookingroute =require('./routes/booking')
 const reviewroute = require ('./routes/review')
+const reportroute = require ('./routes/report')
 const multer = require('multer')
 // const upload = require('./middleware/upload')
 app.use(cors());
@@ -29,7 +30,7 @@ app.use('/',guideSroute)
 app.use('/',Guideroute)
 app.use('/',bookingroute)
 app.use('/',reviewroute)
-
+app.use('/',reportroute)
 const storage = multer.diskStorage({
   destination: 'uploads/',
   filename: (req, file, cb) => {

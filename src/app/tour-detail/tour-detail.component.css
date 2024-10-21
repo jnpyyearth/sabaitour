@@ -283,6 +283,7 @@ margin-left: 2rem;
 
 textarea {
   resize: vertical;
+  
 }
 
 button[type="submit"] {
@@ -304,7 +305,7 @@ button[type="submit"]:hover {
   margin-bottom: 1rem;
   background-color: aliceblue;
   width: 1100px ; 
-  height: 300px; 
+  height: 320px; 
   border-radius: 20px;
   box-shadow: 0px 0px 30px  rgba(227, 228, 237, 0.37);
   border: 2px solid rgba(255, 255, 255, 0.18);
@@ -339,4 +340,19 @@ button[type="submit"]:hover {
   border: 2px solid rgba(255, 255, 255, 0.18);
   /* padding: 20px; */
   overflow: auto;
+}
+
+
+/* ซน */
+.undercomment{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#charCount{
+  margin-left: auto; 
+  font-size: 14px;
+  color: gray;
+  margin-bottom: -8px;
 }
