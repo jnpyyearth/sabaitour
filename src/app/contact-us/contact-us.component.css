@@ -3,10 +3,19 @@
     font-weight: 200px;
 }
 
+#cardcontact{
+    margin-top: 10px;
+    height: 90px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(0, 0, 0, 0.951);
+    text-align: center;
+    width: 300px;
+    margin-left: 500px;
+}
 
 #card1{
     margin-top: 5px;
-    width: 1400px;
     height: 90px;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
@@ -69,7 +78,7 @@
 .card-img-top {
     border-top-left-radius: 10px; 
     border-top-right-radius: 10px; 
-    max-height: 200px; 
+    max-height: 300px; 
     object-fit: cover; 
 }
 
