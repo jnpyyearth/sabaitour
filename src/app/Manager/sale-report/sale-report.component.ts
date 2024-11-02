@@ -3,12 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramTourService } from '../../Service/program-tour.service';
 import { Observable } from 'rxjs';
 import { response } from 'express';
+import { GoogleChartInterface } from 'ng2-google-charts';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-sale-report',
   templateUrl: './sale-report.component.html',
   styleUrl: './sale-report.component.css'
 })
+
+
+
 export class SaleReportComponent implements OnInit{
   reports:any[]=[];
   popularTour:any;
@@ -22,6 +27,30 @@ export class SaleReportComponent implements OnInit{
   paidpar:any
   pendingpar:any
   selectedSortOrder: string = 'ascending';
+
+  countprograminbound: any;
+  countprogramoutbound: any;
+
+  // ซน1
+  // กำหนดค่าเริ่มต้นสำหรับ PieChart
+  // public pieChart: GoogleChartInterface = {
+  //   chartType: 'PieChart',
+  //   dataTable: [
+  //     ['Task', 'Programs'],
+  //     ['ในประเทศ', 4], 
+  //     ['ต่างประเทศ', 6] 
+  //   ],
+  //   options: {
+  //     title: 'Tour Programs',
+  //     width: 400,
+  //     height: 300
+  //   }
+  // };
+
+  // ซน2
+
+
+
   constructor(private tourService: ProgramTourService, private http: HttpClient) { }
  ngOnInit(): void {
      this.tourService.getReportOverview().subscribe(
@@ -137,7 +166,56 @@ export class SaleReportComponent implements OnInit{
           console.log('error',error)
       }
     )
- }
+
+
+    // ซน 1
+    this.tourService.getcountprograminbound().subscribe(
+      (response:any)=>{
+        this.countprograminbound = response.countinbound; 
+        console.log('hello count program inbound',this.countprograminbound)
+      },(error)=>{
+          console.log('error',error)
+      }
+
+     )
+
+    this.tourService.getcountprogramoutbound().subscribe(
+      (response:any)=>{
+        this.countprogramoutbound = response.countoutbound; 
+        console.log('hello count program outbound',this.countprogramoutbound)
+      },(error)=>{
+          console.log('error',error)
+      }
+     )
+     
+
+    // ซน 2 
+    
+  
+
+
+}
+
+
+
+     
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
  counter =0;
  count(index:number):number{
   return ++this.counter;
@@ -151,3 +229,5 @@ onSortOrderChange(): void {
   } 
 }
 }
+
+

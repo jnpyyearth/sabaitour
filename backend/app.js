@@ -66,3 +66,20 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
 
+// ซน
+
+app.get('/api/tours', (req, res) => {
+  const sql = "SELECT COUNT(*) AS domesticTours FROM tours WHERE type='domestic', COUNT(*) AS internationalTours FROM tours WHERE type='international';";
+  db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+  });
+});
+
+app.get('/api/income', (req, res) => {
+  const sql = "SELECT SUM(income) AS domesticIncome FROM tours WHERE type='domestic', SUM(income) AS internationalIncome FROM tours WHERE type='international';";
+  db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+  });
+});

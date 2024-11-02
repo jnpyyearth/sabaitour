@@ -18,3 +18,9 @@
     text-align: center;
   }
   
+
+  canvas {
+    width: 100% !important; /* ทำให้ canvas ยืดตามความกว้าง */
+    height: 400px; /* ตั้งค่าความสูงคงที่ */
+  }
+  
