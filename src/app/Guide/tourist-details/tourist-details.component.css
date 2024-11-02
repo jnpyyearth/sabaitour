@@ -1,69 +1,44 @@
-.table{
-    border-collapse: collapse; 
-    table-layout: fixed;
+thead {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: aliceblue;
+    }
+    
+    tbody{
+    margin-top: 20px;
+    border: 2px solid rgb(0, 0, 0);
+
+    }
+    
+    .table {
+    margin-top: 20px;
+    background-color: #ffffff;
+
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
-}
-
-
-.table th, .table td {
-    padding: 15px; 
-    border: none; 
-    text-align: center; 
-    white-space: normal; 
-    word-wrap: break-word; 
-    background-color: rgba(255, 255, 255, 0.885);
-}
-
-.column-no{
-    width: 80px;
-}
-
-.column-name{
-    width: 260px;
-}
-
-.column-idcard{
-    width: 150px;
-}
-
-.column-email{
-    width: 200px;
-}
-
-.column-phone{
-    width: 120px;
-}
-
-.column-request{
-    width: 260px;
-}
-
-/* ................................................... */
-
-.table tbody tr:hover {
-    background-color: #f1f1f1;
- }
-
-.table tbody tr {
-    transition: background-color 0.3s;
-}
-
-.table thead th {
+    }
+    
+    .table thead th {
     background-color: #007bff;
     color: #fff;
     padding: 10px;
     text-align: center;
-}
-
-thead {
-    border: 2px solid rgb(0, 0, 0);
-}
-
-tbody{
-    border: 2px solid rgb(0, 0, 0);
-}
-
-/* ................................................... */
+    }
+    
+    .table tbody tr {
+    transition: background-color 0.3s;
+    }
+    
+    .table tbody tr:hover {
+    background-color: #f1f1f1;
+    }
+    
+    .table td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    color: #555;
+    
+    }
+    
 

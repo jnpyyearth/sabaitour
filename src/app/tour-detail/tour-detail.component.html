@@ -131,27 +131,27 @@
     <!-- review -->
     <div class="container mt-4" id="boxreview">
 
-      <h3>Submit a Review</h3>
-      <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
-        <div class="form-group mt-3">
-          <label for="comment">Comment:</label>
-          
+    <h3>Submit a Review</h3>
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+      <div class="form-group mt-3">
+        <label for="comment">Comment:</label>
+        
 
-          
-          <textarea id="comment" formControlName="comment"  class="form-control" rows="4" maxlength="255" (input)="updateCount()"  required></textarea>
-          
-          <div class="undercomment">
-            <div *ngIf="reviewForm.get('comment')?.invalid && reviewForm.get('comment')?.touched" class="text-danger">
-              Please enter at least 10 characters for your comment.
-            </div>
-
-            <p id="charCount"> {{ charCount }} /255</p>
+        
+        <textarea id="comment" formControlName="comment"  class="form-control" rows="4" maxlength="255" (input)="updateCount()"  required></textarea>
+        
+        <div class="undercomment">
+          <div *ngIf="reviewForm.get('comment')?.invalid && reviewForm.get('comment')?.touched" class="text-danger">
+            Please enter at least 10 characters for your comment.
           </div>
-          
+
+          <p id="charCount"> {{ charCount }} /255</p>
         </div>
-        <button type="submit" class="btn btn-primary mt-3" [disabled]="reviewForm.invalid">Submit Review</button>
-      </form>
-    </div>
+        
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="reviewForm.invalid">Submit Review</button>
+    </form>
+  </div>
 
 </div>
 

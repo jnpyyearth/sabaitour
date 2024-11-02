@@ -55,12 +55,15 @@ img{
     width: 1000px;
     border-radius: 20px;
     background-color: #FEFCF3;
+    overflow: hidden;
   }
 
 
   .header{
     display: flex;
     justify-content: space-between;
+    background-color: #FFCC72;
+    margin-bottom: 20px;
   }
   .name{
     margin-left: 20px;
@@ -138,12 +141,12 @@ img{
     background-color: #ffffff44;
     backdrop-filter: blur(30px);
     border-radius: 10px;
-    width: 200px;
+    width: 50%;
     
 }
 
 .n-f-name,.n-l-name{
-    width: 200px;
+    width: 50%;
 }
 
 

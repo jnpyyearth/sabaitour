@@ -15,8 +15,7 @@
   .card {
     margin-bottom: 20px; /* Space between cards */
   }
-  
-  /* Optional: Style for titles */
-  h2 {
-    margin-top: 0; /* Remove top margin for section titles */
-  }
+
+.bgbox{
+  margin-top: 80px;
+}

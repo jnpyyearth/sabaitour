@@ -65,6 +65,7 @@
 
 .bg-sideorange {
   transition: background-color 0.3s;
+  z-index: 1000;
 }
 
 .bg-sideorange .nav-item-1 .nav-link{
@@ -88,15 +89,12 @@
   margin-top: -0.6rem;
 }
 
-#add-guide{
-  margin-top: -0.6rem;
-}
 
 #guide {
   margin-top: -0.6rem;
 }
 
-#tour {
+#my-tour {
   margin-top: -0.6rem;
 }
 
@@ -104,6 +102,17 @@
   margin-top: 1rem;
 }
 
+#logout {
+  margin-top: 10px;
+}
+
+#Logout {
+  margin-top: -0.1rem;
+}
+
+#home{
+  margin-top: 13px;
+}
 
 
 
@@ -123,4 +132,8 @@
 .bg-sideorange .nav-item-1 .nav-link{
   position: relative;
   transition: all 0.3s ease;
+}
+
+#green {
+  z-index: 1000;
 }

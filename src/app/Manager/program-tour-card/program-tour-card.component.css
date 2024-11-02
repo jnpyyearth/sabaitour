@@ -2,7 +2,6 @@
     margin: 2rem;
 }
 
-
 .card{
     margin: 1rem;
     overflow: hidden;
@@ -11,7 +10,14 @@
     border-radius: 8px; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     border: 1px solid rgba(0, 0, 0, 0.951);
-
+    transition: 
+        scale 0.25s ease-in,
+        opacity 0.25s ease-in,
+        filter 0.25s ease-in;
+    &:hover{
+        scale: 1.05;
+    }
+    ;
 }
 
 .card-img-top{

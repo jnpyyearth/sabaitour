@@ -23,12 +23,12 @@
                 <ng-container *ngFor="let allparticipants of tourist;">
                   <ng-container *ngFor="let Participant of allparticipants.participantsresult; let i =index">
                   <tr>
-                    <td >{{calculateIndex(i) }}</td>
-                    <td >{{ Participant.Tourist_Firstname }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ Participant.Tourist_Lastname }}</td>
-                    <td >{{ Participant.ID_Card }}</td>
-                    <td >{{ Participant.email }}</td>
-                    <td >{{ Participant.phone }}</td>
-                    <td >{{ Participant.Special_Request }}</td>
+                    <td>{{calculateIndex(i) }}</td>
+                  <td>{{ Participant.Tourist_Firstname }} {{ Participant.Tourist_Lastname }}</td>
+                  <td>{{ Participant.ID_Card }}</td>
+                  <td>{{ Participant.email }}</td>
+                  <td>{{ Participant.phone }}</td>
+                  <td class="Special_Request">{{ Participant.Special_Request }}</td>
                 </tr>  
                 </ng-container>
               </ng-container>
