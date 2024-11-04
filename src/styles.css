@@ -11,7 +11,7 @@
     font-variation-settings: "wdth" 100;
   }
 
-  body{
+   body{
     background-image: url(../public/assets/images/travel.jpg);
     background-repeat: no-repeat; /* Prevents repeating */
     background-size: cover; /* Adjusts the size to cover the whole screen */

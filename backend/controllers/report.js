@@ -130,3 +130,37 @@ module.exports.getpendingpar = async (req, res) => {
         res.status(500).json({ message: 'error', error })
     }
 }
+
+
+// ซน
+
+module.exports.getcountinbound = async (req, res) => {
+    try {
+        const pool = await sql.connect(config);
+        const result = await pool.request()
+            .query(`SELECT t.Type_Status, COUNT(*) AS TotalBookings FROM     dbo.Booking AS b INNER JOIN
+                    dbo.ProgramTour AS pt ON b.ProgramTour_ID = pt.ProgramTour_ID INNER JOIN
+                    dbo.Tour AS t ON pt.Tour_ID = t.Tour_ID
+                    WHERE  (t.Type_Status = 'inbound') GROUP BY t.Type_Status`)
+                    const countinbound = result.recordset[0]  
+        res.status(201).json({ message: 'inbound' ,countinbound})
+    } catch (error) {
+        res.status(500).json({ message: 'erorr', error })
+    }
+}
+
+
+module.exports.getcountoutbound = async (req, res) => {
+    try {
+        const pool = await sql.connect(config);
+        const result = await pool.request()
+            .query(`SELECT t.Type_Status, COUNT(*) AS TotalBookings FROM     dbo.Booking AS b INNER JOIN
+                    dbo.ProgramTour AS pt ON b.ProgramTour_ID = pt.ProgramTour_ID INNER JOIN
+                    dbo.Tour AS t ON pt.Tour_ID = t.Tour_ID
+                    WHERE  (t.Type_Status = 'outbound') GROUP BY t.Type_Status`)
+                    const countoutbound = result.recordset[0] 
+        res.status(201).json({ message: 'outbound' ,countoutbound})
+    } catch (error) {
+        res.status(500).json({ message: 'erorr', error })
+    }
+}

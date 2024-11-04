@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,8 @@ import { HomeGuideComponent } from './Guide/home-guide/home-guide.component';
 import { AllTourComponent } from './Manager/all-tour/all-tour.component';
 
 import { GuideInfoComponent } from './Manager/guide-info/guide-info.component';
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HttpClientModule } from '@angular/common/http'; 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramTourCardComponent } from './Manager/program-tour-card/program-tour-card.component';
 import { GuideRegistrationComponent } from './Manager/guide-registration/guide-registration.component';
@@ -47,6 +49,12 @@ import { MyBookingComponent } from './my-booking/my-booking.component';
 import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
 import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
 
+// import { GoogleChartsModule } from 'angular-google-charts';
+
+
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +74,7 @@ import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details
     NavbarManagerComponent,
     SidebarManagerComponent,
     MyTourProgramComponent,
-    NavbarGuideComponent,  // NavbarGuideComponent is correctly declared here
+    NavbarGuideComponent,  
     SidebarGuideComponent,
     HomeGuideComponent,
     AllTourComponent,
@@ -88,18 +96,25 @@ import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details
     MyBookingComponent,
     ManagerRegsitrationComponent,
     TouristDetailsComponent,
+ 
+
 
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule // HttpClientModule goes in imports
+    Ng2GoogleChartsModule,
+    HttpClientModule,
   ],
+  
+
   providers: [
     ProgramTourService
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

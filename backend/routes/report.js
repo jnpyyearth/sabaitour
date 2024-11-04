@@ -15,4 +15,6 @@ router.get('/getoutboundguide',reportCon.getOutboundguide)
 router.get('/getallpar',reportCon.getallpar)
 router.get('/getpaidpar',reportCon.getpaidpar)
 router.get('/getpendingpar',reportCon.getpendingpar)
+router.get('/getcountinbound' , reportCon.getcountinbound)
+router.get('/getcountoutbound' , reportCon.getcountoutbound)
 module.exports =router;

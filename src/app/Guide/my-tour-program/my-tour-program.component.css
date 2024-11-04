@@ -11,8 +11,8 @@
 }
 
 .btn{
-   margin-left: 2rem;
-   margin-top: 1rem;
+margin-left: 2rem;
+margin-top: 1rem;
 }
 
 .card{
@@ -62,4 +62,22 @@
 
 .swalWithBootstrapButtons{
     margin-left: 1rem;
+}
+
+#cardmytourprogram {
+    margin-top: 50px;
+    height: 50px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(0, 0, 0, 0.951);
+    text-align: center;
+    width: 400px;
+    margin-left: 250px;
+    
+}
+
+h2 {
+    padding-top: 5px;
+    font-family: Poppins ,sans-serif;
+    font-weight: bolder;
 }

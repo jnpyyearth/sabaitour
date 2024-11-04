@@ -166,6 +166,8 @@
                     </div>
                 </div>
         </div>
+
+                <!-- ... ...............................................................................................................................................       -->
         <!-- card here  -->
         <div class="input-group mb-3 mt-5">
             <label class="input-group-text" for="inputGroupSelect01">เรียงตามรายได้:</label>
@@ -202,6 +204,29 @@
                 <td>{{ report.vacant_seats_rate | number: '1.0-2' }}%</td>
             </tr>
         </tbody>
-    </table>
+        </table>
+
+        <div class="test">
+            <div class="card">
+              <!-- {{countprograminbound.TotalBookings}}
+              {{countprogramoutbound.TotalBookings}} -->
+          
+              <h1>แผนภาพวงกลม</h1>
+              <!-- <google-chart [data]="pieChart"></google-chart> -->
+            </div>
+        
+            <div class="card">
+               <!-- my-chart.component.html -->
+               <canvas id="myPieChart" width="400" height="200"></canvas>
+
+
+            </div>
+          </div>
+
+
     </div>
 </div>
+
+
+
+

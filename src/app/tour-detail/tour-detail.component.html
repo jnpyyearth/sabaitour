@@ -118,20 +118,18 @@
             </div>
 
             <label>ข้อความเพิ่มเติม</label>
-            <textarea [(ngModel)]="participant.special_request" placeholder="เขียนคำขอพิเศษ" row="5" cols="50"
-              maxlength="100" name="special_request{{i}}"></textarea>
-
+            <textarea [(ngModel)]="participant.special_request" placeholder="เขียนคำขอพิเศษ"  row="5" cols="50"
+              maxlength="255" name="special_request{{i}}"></textarea>
+              
           </div>
-          
         </div>
         <button type="submit">ส่งข้อมูลการจอง</button>
       </form>
     </div>
-
   </div>
 
-  <!-- review -->
-  <div class="container mt-4" id="boxreview">
+    <!-- review -->
+    <div class="container mt-4" id="boxreview">
 
     <h3>Submit a Review</h3>
     <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
@@ -155,6 +153,7 @@
     </form>
   </div>
 
+</div>
 
   <!-- comment -->
   <div class="container" id="headercomment">

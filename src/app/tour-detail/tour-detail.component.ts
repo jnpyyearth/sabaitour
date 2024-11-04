@@ -33,7 +33,12 @@ export class TourDetailComponent implements OnInit {
   reviewForm!: FormGroup;
   showForms = false;
   booking = {};
-  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService,private fb: FormBuilder) { }
+  form: any;
+  constructor(private route: ActivatedRoute, private tourService: ProgramTourService, private authService: AuthService,private fb: FormBuilder) { 
+    this.form = this.fb.group({
+      inputText: ['']
+    });
+  }
 
 
   ngOnInit(): void {

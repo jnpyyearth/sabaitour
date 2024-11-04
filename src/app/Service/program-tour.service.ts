@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { GuideInOutbound, ProgramTour, ProgramTourForCard, Tour } from '../interfaces/tour';
 
 
+
 const apiUrl = 'http://localhost:3000';
 @Injectable({
   providedIn: 'root'
@@ -138,4 +139,17 @@ export class ProgramTourService {
   getpendingpar():Observable<any[]>{
     return this.http.get<any[]>(`${apiUrl}/getpendingpar`)
   }
+
+
+  // ซน
+
+  getcountprograminbound():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getcountinbound`)
+  }
+
+  getcountprogramoutbound():Observable<any[]>{
+    return this.http.get<any[]>(`${apiUrl}/getcountoutbound`)
+  }
+
+
 }
