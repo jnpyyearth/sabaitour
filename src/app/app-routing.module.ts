@@ -30,42 +30,44 @@ import { ContactusComponent } from './contact-us/contact-us.component';
 import { MyBookingComponent } from './my-booking/my-booking.component';
 import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
 import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
+import { NoAccessComponent } from './no-access/no-access.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    // { path: '', redirectTo: 'login', pathMatch: 'full' },
     // { path: 'home', component: HomeComponent ,canActivate: [AuthGuard],data:{roles:['manager']}},
-    { path: 'home', component: HomeComponent },
+    { path: 'home', component: HomeComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
     { path: 'news', component: NewsComponent },
-    { path: 'about-us', component: AboutUsComponent},
-    { path: 'contact-us', component: ContactusComponent},
-    {path: 'my-booking', component: MyBookingComponent},
+    { path: 'about-us', component: AboutUsComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
+    { path: 'contact-us', component: ContactusComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
+    {path: 'my-booking', component: MyBookingComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
    
     { path: 'login', component: LogInComponent},
-    { path: 'about-us', component: AboutUsComponent},
-    { path: 'nationaltour', component: NationaltourComponent},
+    
+    { path: 'nationaltour', component: NationaltourComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
     { path: 'japan-tour', component: JapanTourComponent},
     { path: 'navbar', component: NavbarComponent},
-    { path: 'add-tour', component: AddTourComponent},
-    { path: 'home-manager', component: HomeManagerComponent},
+    { path: 'add-tour', component: AddTourComponent,canActivate: [AuthGuard],data:{roles:['manager']} },
+    { path: 'home-manager', component: HomeManagerComponent,canActivate: [AuthGuard],data:{roles:['manager']} },
     { path: 'manager-info', component: ManagerInfoComponent},
     { path: 'navbar-manager', component: NavbarManagerComponent},
-    { path: 'sale-report', component: SaleReportComponent},
+    { path: 'sale-report', component: SaleReportComponent,canActivate: [AuthGuard],data:{roles:['manager']} },
     { path: 'sidebar-manager', component: SidebarManagerComponent},
     { path: 'all-tour', component: AllTourComponent},
-    { path: 'guide-regis', component: GuideRegistrationComponent},
-    { path: 'guide-info', component: GuideInfoComponent},
+    { path: 'guide-regis', component: GuideRegistrationComponent,canActivate: [AuthGuard],data:{roles:['manager']} },
+    { path: 'guide-info', component: GuideInfoComponent,canActivate: [AuthGuard],data:{roles:['manager']} },
     { path: 'sidebar-guide', component: SidebarGuideComponent},
     { path: 'navbar-guide', component: NavbarGuideComponent},
-    { path: 'home-guide', component: HomeGuideComponent},
-    { path: 'my-tour-program', component: MyTourProgramComponent},
+    { path: 'home-guide', component: HomeGuideComponent,canActivate: [AuthGuard],data:{roles:['guide']} },
+    { path: 'my-tour-program', component: MyTourProgramComponent,canActivate: [AuthGuard],data:{roles:['guide']} },
     { path: 'edit-program', component: EditProgramComponent},
-    { path: 'tour-detail/:id', component: TourDetailComponent},
-    { path: 'tourist-detail/:id', component: TouristDetailsComponent},
-    { path: 'internationaltour', component: InternationaltourComponent},
-    { path: 'my-information', component: MyInformationComponent},
-    { path: 'mg-regis', component: ManagerRegsitrationComponent},
-];
+    { path: 'tour-detail/:id', component: TourDetailComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
+    { path: 'tourist-detail/:id', component: TouristDetailsComponent,canActivate: [AuthGuard],data:{roles:['guide']} },
+    { path: 'internationaltour', component: InternationaltourComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
+    { path: 'my-information', component: MyInformationComponent,canActivate: [AuthGuard],data:{roles:['guide']} },
+    { path: 'mg-regis', component: ManagerRegsitrationComponent,canActivate: [AuthGuard],data:{roles:['manager']} },
+  {path:'NoAccess',component:NoAccessComponent}
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

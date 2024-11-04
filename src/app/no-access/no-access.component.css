@@ -1,0 +1,14 @@
+.no-access-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .no-access-container h1 {
+    color: red;
+    font-size: 36px;
+  }
+  
+  .no-access-container p {
+    font-size: 18px;
+  }
+  

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramTourService } from '../../Service/program-tour.service';
 import { Observable } from 'rxjs';
 import { response } from 'express';
-import { GoogleChartInterface } from 'ng2-google-charts';
-import { Chart } from 'chart.js';
+
 
 @Component({
   selector: 'app-sale-report',

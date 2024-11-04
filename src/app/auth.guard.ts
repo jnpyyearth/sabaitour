@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService } from './Service/auth.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class AuthGuard implements CanActivate {
       if (requiredRoles.length === 0 || (userRole && requiredRoles.includes(userRole))) {
         return true; // อนุญาตให้เข้าถึงเส้นทางนี้ได้
       } else {
-        this.router.navigate(['/NoAccess']); // เปลี่ยนเส้นทางไปยังหน้าที่ไม่อนุญาต
+        this.router.navigate(['/NoAccess']);
+        Swal.fire('ไม่มีสิทธิ์', 'ไม่สามารถเข้าถึงได้', 'error'); // เปลี่ยนเส้นทางไปยังหน้าที่ไม่อนุญาต
         return false; // ไม่อนุญาตให้เข้าถึง
       }
     } else {

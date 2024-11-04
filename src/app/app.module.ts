@@ -48,11 +48,12 @@ import { ContactusComponent } from './contact-us/contact-us.component';
 import { MyBookingComponent } from './my-booking/my-booking.component';
 import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
 import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
+import { NoAccessComponent } from './no-access/no-access.component';
 
 // import { GoogleChartsModule } from 'angular-google-charts';
 
 
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 
 
 @NgModule({
@@ -96,6 +97,7 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
     MyBookingComponent,
     ManagerRegsitrationComponent,
     TouristDetailsComponent,
+    NoAccessComponent,
  
 
 
@@ -106,7 +108,7 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    Ng2GoogleChartsModule,
+  
     HttpClientModule,
   ],
   
