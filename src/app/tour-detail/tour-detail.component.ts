@@ -167,6 +167,7 @@ export class TourDetailComponent implements OnInit {
       
           this.Participants =[];
           this.ngOnInit();
+         
         },
         (error) => {
           console.log("Error add booking  tour:", error);
