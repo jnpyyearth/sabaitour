@@ -6,7 +6,7 @@
     left: 0;
     box-shadow: 0 10px 10px  rgba(0, 0, 0, 0.329); 
     height: 100px;
-    width: 1550px;
+    width: 1560px;
     margin-left: -2rem;
     margin-top: -2rem;
     z-index: 1000;
@@ -73,3 +73,8 @@ form{
    
   }
 
+  .custom-icon-size {
+    font-size: 2rem; 
+    margin-right: 40px;
+  }
+  
