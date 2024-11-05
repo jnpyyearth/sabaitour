@@ -92,20 +92,37 @@ export class TourDetailComponent implements OnInit {
     this.selectedTour = { ...ProgramTour }
     if(this.numberParticipant  > this.selectedTour.available_seats){
       Swal.fire('จองไม่สำเร็จ', 'ขอภัยมีที่ว่างไม่่พอตามที่ท่านจอง', 'error');
-    }
-    this.Participants = []
+      this.showForms = false;
+    }else{
+        this.Participants = []
     for (let i = 0; i < this.numberParticipant; i++) {
       this.Participants.push({ firstname: '', lastname: '', id_card: '', DateOfBirth: new Date(), email: '', phone: '', special_request: '' });
     }
     
     console.log('hello createform')
     this.showForms = true;
+    }
+  
     this.closeModal();
   }
 
   //ส่งform
   submitForms() {
     console.log("hello")
+    const allFieldsFilled = this.Participants.every(participant => 
+      participant.firstname && 
+      participant.lastname && 
+      participant.id_card && 
+      participant.DateOfBirth && 
+      participant.email && 
+      participant.phone
+  );
+
+  if (!allFieldsFilled) {
+      Swal.fire('ข้อมูลไม่ครบ', 'กรุณากรอกข้อมูลทั้งหมดสำหรับทุกคนที่จอง', 'error');
+      return; 
+  }
+
     if (this.selectedTour && this.Participants) {
       const bookingData = {
         username: this.username,
@@ -120,7 +137,7 @@ export class TourDetailComponent implements OnInit {
           Swal.fire('จองสำเร็จ', 'ส่งข้อมูลการจองสำเร็จ', 'success');
           const BookingID =response.Booking_ID;;
           Swal.fire({
-            title: "ท่านต้องการขำระเงินตอนนี้หรือไม่?",
+            title: "ท่านต้องการชำระเงินตอนนี้หรือไม่?",
             text: "ท่านสามารถชำระเงินได้ภายหลังก่อนวันเดินทาง",
             icon: "warning",
             showCancelButton: true,
@@ -150,6 +167,7 @@ export class TourDetailComponent implements OnInit {
       
           this.Participants =[];
           this.ngOnInit();
+         
         },
         (error) => {
           console.log("Error add booking  tour:", error);
@@ -158,8 +176,6 @@ export class TourDetailComponent implements OnInit {
       )
     }
    
-
- 
   }
   submitReview() {
     if (this.reviewForm.invalid) {
@@ -178,6 +194,7 @@ export class TourDetailComponent implements OnInit {
       (response) => {
         Swal.fire('สำเร็จ', 'ความเห็นของคุณถูกส่งเรียบร้อยแล้ว', 'success');
         this.reviewForm.reset();  // เคลียร์ฟอร์มหลังจากส่งเสร็จ
+        this.ngOnInit();
       },
       (error) => {
         Swal.fire('ข้อผิดพลาด', 'ไม่สามารถส่งความเห็นได้', 'error');
