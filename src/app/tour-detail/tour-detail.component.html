@@ -19,13 +19,17 @@
         <img [src]="'http://localhost:3000/' + tourDetails.Tour_Picture" class="card-img-top" alt="Tour Image">
       </div>
       <div class="detail col-md-6">
-
+       <div class="row">
+        <div class="col-md-6">
         <h3>รายละเอียดทัวร์ </h3>
-
+        </div>
+        <div class="col-md-6">
         <a *ngIf="tourDetails.pdf_Tour" [href]="'http://localhost:3000/' + tourDetails.pdf_Tour" target="_blank"
           download class="btn btn-primary">
-          ดาวน์โหลดกำหนดการ
-        </a>
+          <i class="bi bi-filetype-pdf"></i>  ดาวน์โหลดกำหนดการ
+        </a> 
+        </div>
+      </div>
         <hr>
         <div class="row">
 

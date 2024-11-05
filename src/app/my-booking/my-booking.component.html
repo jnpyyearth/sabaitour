@@ -42,13 +42,24 @@
       <div class="card flex-row shadow-sm">
         <img [src]="'http://localhost:3000/' + booked.Tour_Picture" class="card-img-left" alt="Tour Image">
         <div class="card-body">
-          <h5 class="card-title">{{ booked.Tour_name }}    {{booked.Status}}</h5>
-
-          
+          <div class="d-flex justify-content-start align-items-center">
+              <h3 class="card-title m-0">{{ booked.Tour_name }}</h3>
+              <div class="status">
+                  <span class="badge text-white"  style="background-color: green; width: 100px;  width: 90px; padding: 8px 12px;
+                  font-size: 16px; border-radius: 50px;" *ngIf="booked.Status == 'paid'">
+                    {{ booked.Status }}
+                  </span>
+                  <span class="badge text-white" style="background-color: rgb(189, 0, 38); width: 90px; padding: 8px 12px; 
+                  font-size: 16px; border-radius: 50px;" *ngIf="booked.Status == 'pending'">
+                    {{ booked.Status }}
+                  </span>
+              </div>
+          </div>
+      
           <hr>
           <div class="card-text">
             <strong>ประเทศ:</strong> {{ booked.Tour_Country }} <br>
-            
+    
             <div class="row">
               <div class="col-6">
                 <strong>เริ่มวันที่:</strong> {{ booked.StartDate | date: 'shortDate' }}
@@ -129,6 +140,5 @@
     </div>
 
   </div>
-
 </div>
  
