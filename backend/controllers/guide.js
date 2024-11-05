@@ -120,3 +120,45 @@ module.exports.UpdateGuideProfile = async (req, res) => {
         res.status(500).json({ error: 'Failed to update guide and user', details: error.message })
     }
 }
+
+module.exports.getmanagerprofile = async (req, res) => {
+    let transaction;
+    const {username} =req.body
+
+    try {
+        console.log('hello manager profile')
+        const pool = await sql.connect(config);
+        transaction = new sql.Transaction(pool);
+        await transaction.begin();
+        const getUser_ID = await transaction.request()
+            .input('username', sql.VarChar, username)
+            .query('select User_ID from Users where username =@username')
+
+        if (getUser_ID.recordset.length === 0) {
+            return res.status(400).json({ message: 'User_ID not found' });
+        }
+        const User_ID = getUser_ID.recordset[0].User_ID
+        console.log('user_ID', User_ID)
+
+        const getManager_ID = await transaction.request()
+            .input('User_ID', sql.Int, User_ID)
+            .query(`select Manager_ID from Manager where User_ID =@User_ID`)
+        if (getManager_ID.recordset.length === 0) {
+            return res.status(400).json({ message: 'Manager_ID not found' });
+        }
+        const Manager_ID = getManager_ID.recordset[0].Manager_ID
+        console.log('Manager_ID', Manager_ID)
+        const result = await transaction.request()
+            .input('Manager_ID', sql.Int, Manager_ID)
+            .query(`SELECT Manager.Manager_ID, Users.firstname, Users.lastname, Users.email, Users.phone, Users.User_Picture
+                    FROM Users
+                    INNER JOIN Manager ON Users.User_ID = Manager.User_ID
+                    where Manager.Manager_ID = @Manager_ID`)
+        await transaction.commit();
+        console.log('guide profile',result.recordset[0])
+        res.status(200).json(result.recordset[0]);
+
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching Guide profile', error });
+    }
+}

@@ -86,7 +86,7 @@ export class MyBookingComponent implements OnInit {
       console.log('hello bookingdata', BookingData, BookingData.Booking_ID)
       this.tourService.bookcanceling(BookingData).subscribe(
         (response: any) => {
-          if (response.Status == 'pending') {
+          if (response.Status == 'paid') {
             if (this.TotalPrice) {
               let refund: number = 0;
               refund = this.TotalPrice - response.TotalPrice;
@@ -95,7 +95,7 @@ export class MyBookingComponent implements OnInit {
               this.ngOnInit();
             }
 
-          } else if (response.Status === 'paid') {
+          } else if (response.Status === 'pending') {
             if (this.TotalPrice) {
              
               if (response.TotalPrice > 0) {

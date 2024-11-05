@@ -42,11 +42,11 @@ export class TourDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // Get the tour ID from the route parameters
+    
     this.route.paramMap.subscribe(params => {
-      this.tourId = Number(params.get('id')); // 'id' should match the parameter name in the route configuration
+      this.tourId = Number(params.get('id')); 
       
-      // Fetch the tour details using the tour ID
+      
       if (this.tourId) {
         this.getTourDetails(this.tourId);
         this.getTourReviews(this.tourId);

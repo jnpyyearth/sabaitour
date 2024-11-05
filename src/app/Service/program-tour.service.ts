@@ -18,6 +18,9 @@ export class ProgramTourService {
   Guideprofile(username:string): Observable<any> {
     return this.http.post(`${apiUrl}/guideProfile`, {username});
   }
+  Manager(username:string): Observable<any> {
+    return this.http.post(`${apiUrl}/getManagerProfile`, {username});
+  }
 
 
   getProgramTourById(ProgramTour: number): Observable<any> {
