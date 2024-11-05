@@ -31,3 +31,16 @@ img{
     align-items: center; 
      
 }
+
+.under{
+    display: flex;
+}
+
+.map{
+    margin-left: 20px;
+    padding-bottom: 40px ;
+}
+
+.info{
+    margin-left: 20px;
+}
