@@ -3,7 +3,7 @@
 
 <div class="bg-sideorange"
   style="background-color: #F7A601; width: 280px; height: 730px; border-radius: 0 30px 30px 0; position: fixed; top: 0; left: 60px; ">
-  <ul class="nav nav-pills flex-column mb-auto">
+  <ul class="nav nav-pills flex-column mb-auto" >
 
    
 
@@ -59,50 +59,50 @@
   
 
     <li class="nav-item">
-      <a href="#" class="nav-link text-white"  routerLink="/all-tour">
+      <a href="#" class="nav-link text-white"  routerLink="/add-tour">
         <i class="bi bi-suitcase-lg-fill"></i>
         <!-- All Tour -->
       </a>
     </li>
 
     <li class="nav-item">
-      <a href="#" class="nav-link text-white">
+      <a href="#" class="nav-link text-white" routerLink="/edit-program">
         <i class="bi bi-table"></i>
         <!-- Tour-management -->
       </a>
     </li>
 
     <li class="nav-item">
-      <a href="#" class="nav-link text-white">
+      <a href="#" class="nav-link text-white" routerLink="/guide-regis">
         <i class="bi bi-person-lines-fill"></i>
         <!-- Add-GuideinTour -->
       </a>
     </li>
 
     <li class="nav-item">
-      <a href="#" class="nav-link text-white">
+      <a href="#" class="nav-link text-white" routerLink="/guide-info">
         <i class="bi bi-people-fill"></i>
         <!-- Guide-management -->
       </a>
     </li>
 
     <li class="nav-item">
-      <a href="#" class="nav-link text-white">
+      <a href="#" class="nav-link text-white" routerLink="/sale-report">
         <i class="bi bi-clipboard-data"></i>
         <!-- Sale-report -->
       </a>
     </li>
 
     <li class="nav-item" id="regis-manager">
-      <a href="#" class="nav-link text-white">
+      <a href="#" class="nav-link text-white" routerLink="/mg-regis">
         <i class="bi bi-person-fill-add"></i>
         <!-- Logout -->
       </a>
     </li>
 
 
-    <li class="nav-item" id="logout">
-      <a href="#" class="nav-link text-white">
+    <li class="nav-item" id="logout" >
+      <a href="#" class="nav-link text-white" (click)="logout()" href="/">
         <i class="bi bi-box-arrow-left"></i>
         <!-- Logout -->
       </a>
