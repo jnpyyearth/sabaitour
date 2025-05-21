@@ -49,6 +49,7 @@ import { MyBookingComponent } from './my-booking/my-booking.component';
 import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
 import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
 import { NoAccessComponent } from './no-access/no-access.component';
+import { ManagerProfileComponent } from './Manager/manager-profile/manager-profile.component';
 
 // import { GoogleChartsModule } from 'angular-google-charts';
 
@@ -98,6 +99,7 @@ import { NoAccessComponent } from './no-access/no-access.component';
     ManagerRegsitrationComponent,
     TouristDetailsComponent,
     NoAccessComponent,
+    ManagerProfileComponent,
  
 
 

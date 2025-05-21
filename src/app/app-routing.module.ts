@@ -31,6 +31,7 @@ import { MyBookingComponent } from './my-booking/my-booking.component';
 import { ManagerRegsitrationComponent } from './Manager/manager-regsitration/manager-regsitration.component';
 import { TouristDetailsComponent } from './Guide/tourist-details/tourist-details.component';
 import { NoAccessComponent } from './no-access/no-access.component';
+import { ManagerProfileComponent } from './Manager/manager-profile/manager-profile.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
     { path: 'about-us', component: AboutUsComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
     { path: 'contact-us', component: ContactusComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
     {path: 'my-booking', component: MyBookingComponent,canActivate: [AuthGuard],data:{roles:['customer']} },
-   
+   {path:'manager-profile',component:ManagerProfileComponent},
     { path: 'login', component: LogInComponent},
     
     { path: 'nationaltour', component: NationaltourComponent,canActivate: [AuthGuard],data:{roles:['customer']} },

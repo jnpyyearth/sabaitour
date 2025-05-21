@@ -85,7 +85,7 @@ export class MyBookingComponent implements OnInit {
       console.log('hello bookingdata', BookingData, BookingData.Booking_ID)
       this.tourService.bookcanceling(BookingData).subscribe(
         (response: any) => {
-          if (response.Status == 'pending') {
+          if (response.Status == 'paid') {
             if (this.TotalPrice) {
               let refund: number = 0;
               refund = this.TotalPrice - response.TotalPrice; //เงินที่จ่าย - ค่าที่ต้องเสีย
@@ -94,8 +94,12 @@ export class MyBookingComponent implements OnInit {
               this.ngOnInit();
             }
 
+<<<<<<< HEAD
             // ถ้าจะยกเลิกแล้วมันต้องคืนเงิน50% ให้เอาค่าที่ต้องจ่ายใน database มาลบออกแล้วบันทึกใหม่ลงใน database
           } else if (response.Status === 'paid') {
+=======
+          } else if (response.Status === 'pending') {
+>>>>>>> 217ebf98bc00c136aa2f756713ef71726793ba54
             if (this.TotalPrice) {
              
               if (response.TotalPrice > 0) {

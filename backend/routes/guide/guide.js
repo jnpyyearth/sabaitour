@@ -8,4 +8,5 @@ router.get('/inbound-guide',guideCon.getInboundGuides)
 router.get('/outbound-guide',guideCon.getOutboundGuides)
 router.put('/updateGuideProfile',guideCon.UpdateGuideProfile)
 router.post('/guideProfile',guideCon.getguideprofile)
+router.post('/getManagerProfile',guideCon.getmanagerprofile)
 module.exports =router;
