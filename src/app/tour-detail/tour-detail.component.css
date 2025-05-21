@@ -12,8 +12,6 @@
   margin-bottom: 15px;
 }
 
-
-
 .star-review {
   display: flex;
   align-items: center; 
@@ -22,7 +20,6 @@
   height: 40px;
   border-radius: 10px;
   border-top: 5rem;
-  
 }
 
 .star-review i {

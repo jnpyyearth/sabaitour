@@ -44,7 +44,7 @@ export class TourDetailComponent implements OnInit {
   ngOnInit(): void {
     // Get the tour ID from the route parameters
     this.route.paramMap.subscribe(params => {
-      this.tourId = Number(params.get('id')); // 'id' should match the parameter name in the route configuration
+      this.tourId = Number(params.get('id')); // ดึงค่าไอดี ที่มาจาก url
       
       // Fetch the tour details using the tour ID
       if (this.tourId) {
@@ -63,10 +63,10 @@ export class TourDetailComponent implements OnInit {
 
   getTourDetails(id: number) {
     this.tourService.getProgramTourById(id).subscribe(data => {
-      console.log('Tour details:', data); // ตรวจสอบข้อมูลที่ถูกส่งกลับ
-      this.tourDetails = data[0];
+      console.log('Tour details:', data); // เอาไว้ตรวจสอบข้อมูลที่ถูกส่งกลับ
+      this.tourDetails = data[0];//สร้างเพื่อเก็บข้อมูลที่ส่งมาจากapi
     }, error => {
-      console.error('Error fetching tour details:', error); // จับ error ถ้ามี
+      console.error('Error fetching tour details:', error); // เช็ค error ถ้ามีผิดพลาด
     });
   }
 
@@ -79,8 +79,8 @@ export class TourDetailComponent implements OnInit {
       console.error('Error fetching reviews:', error);
     });
   }
-  openModal() {
 
+  openModal() {
     this.isModalOpen = true;
   }
   closeModal() {
@@ -102,7 +102,6 @@ export class TourDetailComponent implements OnInit {
     console.log('hello createform')
     this.showForms = true;
     }
-  
     this.closeModal();
   }
 
@@ -202,6 +201,7 @@ export class TourDetailComponent implements OnInit {
       }
     );
   }
+
   //นับอักษร
   charCount: number = 255;
   updateCount(): void {

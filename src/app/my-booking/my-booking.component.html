@@ -1,5 +1,3 @@
-
-
 <!-- modal -->
 <div class="modal " id="confirmCancelModal" tabindex="-1" aria-labelledby="confirmCancelModalLabel" aria-hidden="true" *ngIf="isModalOpen">
   <div class="modal-dialog">
@@ -25,10 +23,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 
 <app-navbar></app-navbar>
@@ -120,18 +114,16 @@
           </div>
 
         <div class="row-button">
-          
           <div class="b-payment" *ngIf="booked.Status ==='pending'">
             <button id="payment" *ngIf="booked.Status ==='pending'"   class="btn btn-success" (click)="payment(booked)">
               ชำระเงิน
             </button>
           </div>
        
-        
           <div class="b-cancel ">
             <button id="cancel" class="btn btn-danger" (click)="openModal(booked)">ยกเลิก</button>
+          </div>
         </div>
-      </div>
       
 
         </div>

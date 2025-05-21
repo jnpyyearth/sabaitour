@@ -13,11 +13,13 @@
       <h5>Hot</h5>
     </div>
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <img [src]="'http://localhost:3000/' + tourDetails.Tour_Picture" class="card-img-top" alt="Tour Image">
+        <img [src]="'http://localhost:3000/' + tourDetails.Tour_Picture " class="card-img-top" alt="Tour Image">
       </div>
+
       <div class="detail col-md-6">
        <div class="row">
         <div class="col-md-6">
@@ -26,7 +28,7 @@
         <div class="col-md-6">
         <a *ngIf="tourDetails.pdf_Tour" [href]="'http://localhost:3000/' + tourDetails.pdf_Tour" target="_blank"
           download class="btn btn-primary">
-          <i class="bi bi-filetype-pdf"></i>  ดาวน์โหลดกำหนดการ
+          <i class="bi bi-filetype-pdf"></i>ดาวน์โหลดกำหนดการ
         </a> 
         </div>
       </div>
@@ -51,7 +53,7 @@
         </div>
 
 
-
+        <!-- ฟอร์มจอง -->
         <div class="row">
           <div class="col-md-5">
             <button class="btn btn-success" (click)="openModal()">จองเลย</button>
@@ -62,10 +64,6 @@
         </div>
       </div>
     </div>
-
-
-
-
   </div>
 
   <!--ปุ่มback เดวทำ-->
@@ -79,7 +77,8 @@
       <button (click)="createForm(tourDetails)">ยืนยัน</button>
     </div>
   </div>
-  <!-- form for participants -->
+  
+  <!-- form for participants ตามจำนวนคนที่ไป -->
   <div class="bgnameParticipants">
     <div class="nameParticipants">
       <form *ngIf="showForms" (ngSubmit)="submitForms()">
@@ -103,7 +102,6 @@
             </div>
 
             <div class="row">
-
               <div class="col-4">
                 <label>วันเกิด</label>
                 <input type="date" [(ngModel)]="participant.DateOfBirth" name="DateOfBirth{{i}}" >
@@ -132,15 +130,12 @@
     </div>
   </div>
 
-    <!-- review -->
+    <!-- ฟอร์ม review คอมเม้น -->
     <div class="container mt-4" id="boxreview">
-
     <h3>Submit a Review</h3>
     <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
       <div class="form-group mt-3">
         <label for="comment">Comment:</label>
-        
-
         
         <textarea id="comment" formControlName="comment"  class="form-control" rows="4" maxlength="255" (input)="updateCount()"  required></textarea>
         
@@ -156,7 +151,6 @@
       <button type="submit" class="btn btn-primary mt-3" [disabled]="reviewForm.invalid">Submit Review</button>
     </form>
   </div>
-
 </div>
 
   <!-- comment -->

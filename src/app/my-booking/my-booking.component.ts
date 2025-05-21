@@ -26,14 +26,14 @@ export class MyBookingComponent implements OnInit {
     this.username = this.authService.getUsername();
 
     if (this.username) {
-      // ดึงCus_ID
+      // api getcustomerinfo ดึงCus_ID มาแสดง
       this.tourService.getCustomerInfo(this.username).subscribe({
         next: (response) => {
           const { User_ID, Cus_ID } = response;
           console.log(`User_ID: ${User_ID}, Cus_ID: ${Cus_ID}`);
           this.Cus_ID = Cus_ID;
           if (this.Cus_ID) {
-            // ใช้ forkJoin เพื่อดึงข้อมูลการจองและข้อมูลผู้เข้าร่วมพร้อมกัน
+            // ใช้ forkJoin เพื่อดึงข้อมูลการจองและข้อมูลผู้เข้าร่วมพร้อมกันมาแสดง
             forkJoin([
               this.tourService.getmybooked(this.Cus_ID),
               this.tourService.getParticipants()
@@ -44,8 +44,8 @@ export class MyBookingComponent implements OnInit {
                 this.books.forEach((book) => {
                   book.Participants = this.participants.filter(
                     (p) => p.Booking_ID === book.Booking_ID
-                  );
-
+                  ); 
+                        //กำหนดให้ booking มี participants ด้วย participant ที่มี ID ตรงกับ booking นั้น
                 });
               },
               (error) => {
@@ -75,9 +75,8 @@ export class MyBookingComponent implements OnInit {
     this.isModalOpen = false;
   }
   confirmCancel() {
-    // เรียกapi 2 ตัว ยกเลบิก กับ  get totalpride status
+    // เรียกapi 2 ตัว ยกเลิก กับ  get totalprice status
     console.log('confirmCancel')
-
     if (this.selectedbook) {
       const BookingData = {
         Booking_ID: this.selectedbook.Booking_ID,
@@ -89,12 +88,13 @@ export class MyBookingComponent implements OnInit {
           if (response.Status == 'pending') {
             if (this.TotalPrice) {
               let refund: number = 0;
-              refund = this.TotalPrice - response.TotalPrice;
+              refund = this.TotalPrice - response.TotalPrice; //เงินที่จ่าย - ค่าที่ต้องเสีย
               Swal.fire('ยกเลิกสำเร็จ', `คืนเงิน${refund}บาท`, 'success');
               this.isModalOpen = false;
               this.ngOnInit();
             }
 
+            // ถ้าจะยกเลิกแล้วมันต้องคืนเงิน50% ให้เอาค่าที่ต้องจ่ายใน database มาลบออกแล้วบันทึกใหม่ลงใน database
           } else if (response.Status === 'paid') {
             if (this.TotalPrice) {
              
@@ -114,6 +114,7 @@ export class MyBookingComponent implements OnInit {
             }
 
           }
+         //จ่าย 0 บาทเพราะยกเลิกไปแล้ว 
 
         },
         (error) => {
@@ -123,7 +124,7 @@ export class MyBookingComponent implements OnInit {
       )
     }
   }
-
+   // ปิด modal
   deniedCancel() {
     this.isModalOpen = false;
   }
@@ -131,6 +132,7 @@ export class MyBookingComponent implements OnInit {
     this.isModalOpen = false;
   }
   
+  // อัปเดตpayment
   payment(booked: any) {
     this.BID_payment = booked.Booking_ID;
   
